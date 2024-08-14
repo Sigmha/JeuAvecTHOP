@@ -36,3 +36,11 @@ scale = Vector2(24.9251, 1.11405)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(13.75, 109.75)
 shape = SubResource("RectangleShape2D_m5lq3")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 483.0
+offset_top = 258.0
+offset_right = 523.0
+offset_bottom = 281.0
+scale = Vector2(6.0719, 3.35448)
+text = "PROUTTT"
