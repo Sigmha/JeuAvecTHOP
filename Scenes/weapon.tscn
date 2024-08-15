@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc5ea8icchh2o"]
+
+[ext_resource type="Texture2D" uid="uid://0nga2ukjv76y" path="res://Assets/weapon.png" id="1_pn0lt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0j3t1"]
+size = Vector2(12, 1)
+
+[node name="weapon" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 0)
+texture = ExtResource("1_pn0lt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, -0.5)
+shape = SubResource("RectangleShape2D_0j3t1")

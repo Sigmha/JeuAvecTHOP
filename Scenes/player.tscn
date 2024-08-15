@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://b43h0vguqe8jw"]
+
+[ext_resource type="Texture2D" uid="uid://djr7kdx6sq5ji" path="res://Assets/Sprite-0001-Sheet.png" id="1_cxm34"]
+[ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="1_fvtmh"]
+[ext_resource type="PackedScene" uid="uid://bc5ea8icchh2o" path="res://Scenes/weapon.tscn" id="2_ii4go"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8kua"]
+atlas = ExtResource("1_cxm34")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gq3c"]
+atlas = ExtResource("1_cxm34")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s3f36"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8kua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gq3c")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1vnpl"]
+radius = 5.80932
+height = 28.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_fvtmh")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.49012e-08, -16)
+sprite_frames = SubResource("SpriteFrames_s3f36")
+frame_progress = 1.0
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-5.80932, -13.9854)
+shape = SubResource("CapsuleShape2D_1vnpl")
+
+[node name="Weapon" parent="." instance=ExtResource("2_ii4go")]
+position = Vector2(4.94868, -21.0857)
+scale = Vector2(1, 1)
