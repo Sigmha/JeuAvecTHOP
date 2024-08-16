@@ -1,11 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://b43h0vguqe8jw"]
+[gd_scene load_steps=21 format=3 uid="uid://b43h0vguqe8jw"]
 
-[ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="1_fvtmh"]
+[ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_na8sa"]
 [ext_resource type="PackedScene" uid="uid://bc5ea8icchh2o" path="res://Scenes/weapon.tscn" id="2_ii4go"]
 [ext_resource type="Texture2D" uid="uid://bu2508c7g1vl5" path="res://Assets/Player/body_attacking.png" id="3_7q16u"]
 [ext_resource type="Texture2D" uid="uid://cyjpq6do3v68i" path="res://Assets/Player/high_arm.png" id="4_hwnmw"]
 [ext_resource type="Texture2D" uid="uid://20mgmlf68kit" path="res://Assets/Player/medium_arm.png" id="5_j4sn0"]
 [ext_resource type="Texture2D" uid="uid://dqojviws512bp" path="res://Assets/Player/low_arm.png" id="6_q27kk"]
+[ext_resource type="Script" path="res://Scripts/Player/TouchedLabel.gd" id="7_oidbd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1vnpl"]
 radius = 5.80932
@@ -100,7 +101,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_fvtmh")
+script = ExtResource("1_na8sa")
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-5.80932, -13.9854)
@@ -130,3 +131,19 @@ animation = &"attack"
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_ab1xs")
 animation = &"attack"
+
+[node name="TouchedLabel" type="Label" parent="."]
+offset_left = -14.0
+offset_top = -38.0
+offset_right = 50.0
+offset_bottom = -15.0
+scale = Vector2(0.298121, 0.298121)
+text = "touched"
+script = ExtResource("7_oidbd")
+
+[node name="TouchedTimer" type="Timer" parent="TouchedLabel"]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="dummy_touched" from="Weapon" to="." method="_on_weapon_dummy_touched"]
+[connection signal="weapon_touched" from="Weapon" to="." method="_on_weapon_weapon_touched"]

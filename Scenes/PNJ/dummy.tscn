@@ -1,0 +1,156 @@
+[gd_scene load_steps=21 format=3 uid="uid://h7pceacrhwep"]
+
+[ext_resource type="Texture2D" uid="uid://b230ch00nclaq" path="res://Assets/PNJ/Dummy/body_attacking.png" id="1_kcqkt"]
+[ext_resource type="Script" path="res://Scripts/PNJ/dummy.gd" id="1_vx45n"]
+[ext_resource type="Texture2D" uid="uid://dsj01qfxsas4d" path="res://Assets/PNJ/Dummy/high_arm.png" id="2_w608c"]
+[ext_resource type="PackedScene" uid="uid://bc5ea8icchh2o" path="res://Scenes/weapon.tscn" id="2_ys2no"]
+[ext_resource type="Texture2D" uid="uid://6guvx0h1om1r" path="res://Assets/PNJ/Dummy/medium_arm.png" id="3_f4bde"]
+[ext_resource type="Texture2D" uid="uid://b3nf5wxcwtck2" path="res://Assets/PNJ/Dummy/low_arm.png" id="4_lcm5e"]
+[ext_resource type="Script" path="res://Scripts/PNJ/TouchedLabel.gd" id="7_r0wgd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvijp"]
+radius = 6.0
+height = 28.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccs5g"]
+atlas = ExtResource("1_kcqkt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huwn1"]
+atlas = ExtResource("1_kcqkt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rlic7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccs5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huwn1")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vi5kt"]
+atlas = ExtResource("2_w608c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ns2e"]
+atlas = ExtResource("2_w608c")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wtq38"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vi5kt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ns2e")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdten"]
+atlas = ExtResource("3_f4bde")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvjae"]
+atlas = ExtResource("3_f4bde")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ubi55"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdten")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvjae")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s175"]
+atlas = ExtResource("4_lcm5e")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfrmo"]
+atlas = ExtResource("4_lcm5e")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gyndk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3s175")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfrmo")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}]
+
+[node name="Dummy" type="CharacterBody2D"]
+script = ExtResource("1_vx45n")
+
+[node name="DummyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-6, -14)
+shape = SubResource("CapsuleShape2D_hvijp")
+
+[node name="weapon" parent="." instance=ExtResource("2_ys2no")]
+position = Vector2(3, -23)
+
+[node name="DummySpriteComposition" type="Node2D" parent="."]
+
+[node name="BodySprite" type="AnimatedSprite2D" parent="DummySpriteComposition"]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_rlic7")
+animation = &"attack"
+
+[node name="HighArmSprite" type="AnimatedSprite2D" parent="DummySpriteComposition"]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_wtq38")
+animation = &"attack"
+
+[node name="MediumArmSprite" type="AnimatedSprite2D" parent="DummySpriteComposition"]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_ubi55")
+animation = &"attack"
+
+[node name="LowArmSprite" type="AnimatedSprite2D" parent="DummySpriteComposition"]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_gyndk")
+animation = &"attack"
+
+[node name="ChangeStanceTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="TouchedLabel" type="Label" parent="."]
+offset_left = -12.0
+offset_top = -34.0
+offset_right = 52.0
+offset_bottom = -11.0
+scale = Vector2(0.193293, 0.193293)
+text = "touched"
+script = ExtResource("7_r0wgd")
+
+[node name="TouchedTimer" type="Timer" parent="TouchedLabel"]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="player_touched" from="weapon" to="." method="_on_weapon_player_touched"]
+[connection signal="weapon_touched" from="weapon" to="." method="_on_weapon_weapon_touched"]
+[connection signal="timeout" from="ChangeStanceTimer" to="." method="_on_change_stance_timer_timeout"]
+[connection signal="timeout" from="TouchedLabel/TouchedTimer" to="TouchedLabel" method="_on_touched_timer_timeout"]

@@ -23,3 +23,6 @@ offset_top = -0.5
 offset_right = 6.0
 offset_bottom = 0.5
 color = Color(1, 0.0901961, 0.0901961, 0.658824)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

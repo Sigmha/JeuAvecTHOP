@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 const SPEED = 500.0
 
@@ -15,6 +16,9 @@ var attacking: bool
 @onready var player_low_arm_sprite = $PlayerSpriteComposition/LowArmSprite
 @onready var weapon = $Weapon 
 @onready var player_collision = $PlayerCollision
+@onready var touched_label:Label = $TouchedLabel
+@onready var touched_timer:Timer = $TouchedLabel/TouchedTimer
+
 
 func _ready():
 	win_size = get_viewport_rect().size
@@ -30,10 +34,9 @@ func _physics_process(delta):
 	set_stance_sprite(stance)
 	move_player(delta)
 	set_looking_side(looking_direction)
-		
 	weapon.set_weapon_position(looking_direction, distance_weapon, attacking, stance)
 	attack(stance_sprite)
-
+	
 	move_and_slide()
 
 #A CHANGER SI ON CHANGE LE SPRITE, reprendre les mesures pour la position de
@@ -142,3 +145,13 @@ func get_looking_direction():
 		return 1
 	else:
 		return -1
+
+
+func _on_weapon_dummy_touched():
+	touched_label.text = "dummy touched"
+	touched_timer.start()
+
+func _on_weapon_weapon_touched():
+	touched_label.text = "weapon touched"
+	touched_timer.start()
+

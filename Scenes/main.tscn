@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5pmo0ul8igcs"]
+[gd_scene load_steps=5 format=3 uid="uid://c5pmo0ul8igcs"]
 
 [ext_resource type="PackedScene" uid="uid://b43h0vguqe8jw" path="res://Scenes/player.tscn" id="1_nognl"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_ro2m0"]
+[ext_resource type="PackedScene" uid="uid://h7pceacrhwep" path="res://Scenes/PNJ/dummy.tscn" id="3_2a7o6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5lq3"]
 size = Vector2(996.5, 43)
@@ -48,5 +49,9 @@ offset_bottom = 293.0
 scale = Vector2(6.0719, 3.35448)
 
 [node name="Player" parent="." instance=ExtResource("1_nognl")]
-position = Vector2(640, 659)
+position = Vector2(1043, 667)
 scale = Vector2(6.58201, 6.58201)
+
+[node name="Dummy" parent="." instance=ExtResource("3_2a7o6")]
+position = Vector2(603, 672)
+scale = Vector2(6.582, 6.582)
