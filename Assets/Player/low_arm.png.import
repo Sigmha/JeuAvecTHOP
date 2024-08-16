@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djr7kdx6sq5ji"
-path="res://.godot/imported/Sprite-0001-Sheet.png-7df01ec5ef15771f6c4c595f604d584c.ctex"
+uid="uid://dqojviws512bp"
+path="res://.godot/imported/low_arm.png-e58409bd71d1a5d03f31505788d3f20b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprite-0001-Sheet.png"
-dest_files=["res://.godot/imported/Sprite-0001-Sheet.png-7df01ec5ef15771f6c4c595f604d584c.ctex"]
+source_file="res://Assets/Player/low_arm.png"
+dest_files=["res://.godot/imported/low_arm.png-e58409bd71d1a5d03f31505788d3f20b.ctex"]
 
 [params]
 

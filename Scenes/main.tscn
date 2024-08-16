@@ -38,8 +38,14 @@ offset_right = 211.0
 offset_bottom = 257.0
 scale = Vector2(6.0719, 3.35448)
 text = "fleches pour bouger
-espace sauter
 click gauche attaquer"
+
+[node name="stance" type="Label" parent="."]
+offset_left = 1219.0
+offset_top = 218.0
+offset_right = 1385.0
+offset_bottom = 293.0
+scale = Vector2(6.0719, 3.35448)
 
 [node name="Player" parent="." instance=ExtResource("1_nognl")]
 position = Vector2(640, 659)

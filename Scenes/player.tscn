@@ -1,47 +1,132 @@
-[gd_scene load_steps=8 format=3 uid="uid://b43h0vguqe8jw"]
+[gd_scene load_steps=20 format=3 uid="uid://b43h0vguqe8jw"]
 
-[ext_resource type="Texture2D" uid="uid://djr7kdx6sq5ji" path="res://Assets/Sprite-0001-Sheet.png" id="1_cxm34"]
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="1_fvtmh"]
 [ext_resource type="PackedScene" uid="uid://bc5ea8icchh2o" path="res://Scenes/weapon.tscn" id="2_ii4go"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a8kua"]
-atlas = ExtResource("1_cxm34")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2gq3c"]
-atlas = ExtResource("1_cxm34")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_s3f36"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a8kua")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2gq3c")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://bu2508c7g1vl5" path="res://Assets/Player/body_attacking.png" id="3_7q16u"]
+[ext_resource type="Texture2D" uid="uid://cyjpq6do3v68i" path="res://Assets/Player/high_arm.png" id="4_hwnmw"]
+[ext_resource type="Texture2D" uid="uid://20mgmlf68kit" path="res://Assets/Player/medium_arm.png" id="5_j4sn0"]
+[ext_resource type="Texture2D" uid="uid://dqojviws512bp" path="res://Assets/Player/low_arm.png" id="6_q27kk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1vnpl"]
 radius = 5.80932
 height = 28.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc84t"]
+atlas = ExtResource("3_7q16u")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ny1cv"]
+atlas = ExtResource("3_7q16u")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bsnbn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lc84t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ny1cv")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruguy"]
+atlas = ExtResource("4_hwnmw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k54ib"]
+atlas = ExtResource("4_hwnmw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vbrqx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruguy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k54ib")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p4mh"]
+atlas = ExtResource("5_j4sn0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uspt5"]
+atlas = ExtResource("5_j4sn0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ieogs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4p4mh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uspt5")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7tms"]
+atlas = ExtResource("6_q27kk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yldgj"]
+atlas = ExtResource("6_q27kk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ab1xs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7tms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yldgj")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_fvtmh")
-
-[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(1.49012e-08, -16)
-sprite_frames = SubResource("SpriteFrames_s3f36")
-frame_progress = 1.0
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-5.80932, -13.9854)
 shape = SubResource("CapsuleShape2D_1vnpl")
 
 [node name="Weapon" parent="." instance=ExtResource("2_ii4go")]
-position = Vector2(4.94868, -21.0857)
-scale = Vector2(1, 1)
+position = Vector2(3, -23)
+
+[node name="PlayerSpriteComposition" type="Node2D" parent="."]
+
+[node name="BodySprite" type="AnimatedSprite2D" parent="PlayerSpriteComposition"]
+position = Vector2(1.49012e-08, -16)
+sprite_frames = SubResource("SpriteFrames_bsnbn")
+animation = &"attack"
+
+[node name="HighArmSprite" type="AnimatedSprite2D" parent="PlayerSpriteComposition"]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_vbrqx")
+animation = &"attack"
+
+[node name="MediumArmSprite" type="AnimatedSprite2D" parent="PlayerSpriteComposition"]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_ieogs")
+animation = &"attack"
+
+[node name="LowArmSprite" type="AnimatedSprite2D" parent="PlayerSpriteComposition"]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_ab1xs")
+animation = &"attack"

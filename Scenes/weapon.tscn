@@ -1,16 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://bc5ea8icchh2o"]
+[gd_scene load_steps=4 format=3 uid="uid://bc5ea8icchh2o"]
 
-[ext_resource type="Texture2D" uid="uid://0nga2ukjv76y" path="res://Assets/weapon.png" id="1_pn0lt"]
+[ext_resource type="Script" path="res://Scripts/weapon.gd" id="1_338rv"]
+[ext_resource type="Texture2D" uid="uid://0nga2ukjv76y" path="res://Assets/Weapons/weapon.png" id="2_gphie"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0j3t1"]
 size = Vector2(12, 1)
 
 [node name="weapon" type="Area2D"]
+script = ExtResource("1_338rv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="WeaponSprite" type="Sprite2D" parent="."]
 position = Vector2(8, 0)
-texture = ExtResource("1_pn0lt")
+texture = ExtResource("2_gphie")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="WeaponCollision" type="CollisionShape2D" parent="."]
 position = Vector2(10, -0.5)
 shape = SubResource("RectangleShape2D_0j3t1")
+
+[node name="ColorRect" type="ColorRect" parent="WeaponCollision"]
+offset_left = -6.0
+offset_top = -0.5
+offset_right = 6.0
+offset_bottom = 0.5
+color = Color(1, 0.0901961, 0.0901961, 0.658824)
