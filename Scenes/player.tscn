@@ -120,7 +120,7 @@ sprite_frames = SubResource("SpriteFrames_5idhf")
 [node name="Arm" type="AnimatedSprite2D" parent="PlayerSpriteComposition"]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_hcgma")
-animation = &"MediumArm"
+animation = &"HighArm"
 
 [node name="TouchedLabel" type="Label" parent="."]
 offset_left = -14.0
@@ -155,6 +155,10 @@ body_sprite = NodePath("../../PlayerSpriteComposition/BodySprite")
 arm_sprite = NodePath("../../PlayerSpriteComposition/Arm")
 weapon = NodePath("../../Weapon")
 immobile_timing = 0.1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -63)
+position_smoothing_enabled = true
 
 [connection signal="dummy_touched" from="Weapon" to="." method="_on_weapon_dummy_touched"]
 [connection signal="weapon_touched" from="Weapon" to="." method="_on_weapon_weapon_touched"]
