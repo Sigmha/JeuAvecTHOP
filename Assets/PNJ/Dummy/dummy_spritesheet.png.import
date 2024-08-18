@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://20mgmlf68kit"
-path="res://.godot/imported/medium_arm.png-16c48a27b04554e0c31aa37175784e5b.ctex"
+uid="uid://bryuv4osb7u11"
+path="res://.godot/imported/dummy_spritesheet.png-359b25538c33ce2c2c42736ef7e95b75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/medium_arm.png"
-dest_files=["res://.godot/imported/medium_arm.png-16c48a27b04554e0c31aa37175784e5b.ctex"]
+source_file="res://Assets/PNJ/Dummy/dummy_spritesheet.png"
+dest_files=["res://.godot/imported/dummy_spritesheet.png-359b25538c33ce2c2c42736ef7e95b75.ctex"]
 
 [params]
 

@@ -6,7 +6,7 @@ signal dummy_touched
 signal player_touched
 
 var weapon_length: int = 16
-var collison_weapon_size: Vector2i
+var collison_weapon_size: Vector2
 var play_once_attacking: bool
 
 @onready var weapon_sprite = $WeaponSprite

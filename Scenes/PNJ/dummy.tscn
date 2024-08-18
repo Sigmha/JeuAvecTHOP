@@ -1,102 +1,95 @@
-[gd_scene load_steps=21 format=3 uid="uid://h7pceacrhwep"]
+[gd_scene load_steps=18 format=3 uid="uid://h7pceacrhwep"]
 
-[ext_resource type="Texture2D" uid="uid://b230ch00nclaq" path="res://Assets/PNJ/Dummy/body_attacking.png" id="1_kcqkt"]
 [ext_resource type="Script" path="res://Scripts/PNJ/dummy.gd" id="1_vx45n"]
-[ext_resource type="Texture2D" uid="uid://dsj01qfxsas4d" path="res://Assets/PNJ/Dummy/high_arm.png" id="2_w608c"]
 [ext_resource type="PackedScene" uid="uid://bc5ea8icchh2o" path="res://Scenes/weapon.tscn" id="2_ys2no"]
-[ext_resource type="Texture2D" uid="uid://6guvx0h1om1r" path="res://Assets/PNJ/Dummy/medium_arm.png" id="3_f4bde"]
-[ext_resource type="Texture2D" uid="uid://b3nf5wxcwtck2" path="res://Assets/PNJ/Dummy/low_arm.png" id="4_lcm5e"]
+[ext_resource type="Texture2D" uid="uid://bryuv4osb7u11" path="res://Assets/PNJ/Dummy/dummy_spritesheet.png" id="3_vj1gv"]
+[ext_resource type="Script" path="res://Scripts/PNJ/StateMachine.gd" id="5_tpvig"]
+[ext_resource type="Script" path="res://Scripts/PNJ/DummyCombatMove.gd" id="6_ijmkv"]
 [ext_resource type="Script" path="res://Scripts/PNJ/TouchedLabel.gd" id="7_r0wgd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvijp"]
-radius = 6.0
+radius = 3.0
 height = 28.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ccs5g"]
-atlas = ExtResource("1_kcqkt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4qlj"]
+atlas = ExtResource("3_vj1gv")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_huwn1"]
-atlas = ExtResource("1_kcqkt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8lbv"]
+atlas = ExtResource("3_vj1gv")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_rlic7"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_68wyd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ccs5g")
+"texture": SubResource("AtlasTexture_f4qlj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_huwn1")
+"texture": SubResource("AtlasTexture_p8lbv")
 }],
 "loop": true,
-"name": &"attack",
+"name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vi5kt"]
-atlas = ExtResource("2_w608c")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu7di"]
+atlas = ExtResource("3_vj1gv")
+region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ns2e"]
-atlas = ExtResource("2_w608c")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg36n"]
+atlas = ExtResource("3_vj1gv")
+region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_wtq38"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc4kb"]
+atlas = ExtResource("3_vj1gv")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb0n6"]
+atlas = ExtResource("3_vj1gv")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfgbl"]
+atlas = ExtResource("3_vj1gv")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g41gw"]
+atlas = ExtResource("3_vj1gv")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhp8s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vi5kt")
+"texture": SubResource("AtlasTexture_cu7di")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6ns2e")
+"texture": SubResource("AtlasTexture_qg36n")
 }],
 "loop": true,
-"name": &"attack",
+"name": &"HighArm",
 "speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jdten"]
-atlas = ExtResource("3_f4bde")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cvjae"]
-atlas = ExtResource("3_f4bde")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ubi55"]
-animations = [{
+}, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jdten")
+"texture": SubResource("AtlasTexture_rc4kb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cvjae")
+"texture": SubResource("AtlasTexture_hb0n6")
 }],
 "loop": true,
-"name": &"attack",
+"name": &"LowArm",
 "speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3s175"]
-atlas = ExtResource("4_lcm5e")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tfrmo"]
-atlas = ExtResource("4_lcm5e")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_gyndk"]
-animations = [{
+}, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3s175")
+"texture": SubResource("AtlasTexture_wfgbl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tfrmo")
+"texture": SubResource("AtlasTexture_g41gw")
 }],
 "loop": true,
-"name": &"attack",
+"name": &"MediumArm",
 "speed": 5.0
 }]
 
@@ -104,7 +97,7 @@ animations = [{
 script = ExtResource("1_vx45n")
 
 [node name="DummyCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-6, -14)
+position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_hvijp")
 
 [node name="weapon" parent="." instance=ExtResource("2_ys2no")]
@@ -114,28 +107,12 @@ position = Vector2(3, -23)
 
 [node name="BodySprite" type="AnimatedSprite2D" parent="DummySpriteComposition"]
 position = Vector2(0, -16)
-sprite_frames = SubResource("SpriteFrames_rlic7")
-animation = &"attack"
+sprite_frames = SubResource("SpriteFrames_68wyd")
 
-[node name="HighArmSprite" type="AnimatedSprite2D" parent="DummySpriteComposition"]
+[node name="Arm" type="AnimatedSprite2D" parent="DummySpriteComposition"]
 position = Vector2(0, -16)
-sprite_frames = SubResource("SpriteFrames_wtq38")
-animation = &"attack"
-
-[node name="MediumArmSprite" type="AnimatedSprite2D" parent="DummySpriteComposition"]
-position = Vector2(0, -16)
-sprite_frames = SubResource("SpriteFrames_ubi55")
-animation = &"attack"
-
-[node name="LowArmSprite" type="AnimatedSprite2D" parent="DummySpriteComposition"]
-position = Vector2(0, -16)
-sprite_frames = SubResource("SpriteFrames_gyndk")
-animation = &"attack"
-
-[node name="ChangeStanceTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-autostart = true
+sprite_frames = SubResource("SpriteFrames_bhp8s")
+animation = &"MediumArm"
 
 [node name="TouchedLabel" type="Label" parent="."]
 offset_left = -12.0
@@ -147,10 +124,21 @@ text = "touched"
 script = ExtResource("7_r0wgd")
 
 [node name="TouchedTimer" type="Timer" parent="TouchedLabel"]
-wait_time = 3.0
+wait_time = 1.5
 one_shot = true
+
+[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_tpvig")
+initial_state = NodePath("DummyCombatMove")
+
+[node name="DummyCombatMove" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "character_collision", "body_sprite", "arm_sprite", "weapon")]
+script = ExtResource("6_ijmkv")
+character = NodePath("../..")
+character_collision = NodePath("../../DummyCollision")
+body_sprite = NodePath("../../DummySpriteComposition/BodySprite")
+arm_sprite = NodePath("../../DummySpriteComposition/Arm")
+weapon = NodePath("../../weapon")
 
 [connection signal="player_touched" from="weapon" to="." method="_on_weapon_player_touched"]
 [connection signal="weapon_touched" from="weapon" to="." method="_on_weapon_weapon_touched"]
-[connection signal="timeout" from="ChangeStanceTimer" to="." method="_on_change_stance_timer_timeout"]
 [connection signal="timeout" from="TouchedLabel/TouchedTimer" to="TouchedLabel" method="_on_touched_timer_timeout"]

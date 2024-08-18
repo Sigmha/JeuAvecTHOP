@@ -112,7 +112,7 @@ offset_bottom = 293.0
 scale = Vector2(6.0719, 3.35448)
 
 [node name="Player" parent="." instance=ExtResource("1_nognl")]
-position = Vector2(1043, 667)
+position = Vector2(121, 662)
 scale = Vector2(6.58201, 6.58201)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -121,7 +121,7 @@ scale = Vector2(0.151929, 0.151929)
 position_smoothing_enabled = true
 
 [node name="Dummy" parent="." instance=ExtResource("3_2a7o6")]
-position = Vector2(603, 672)
+position = Vector2(368, 650)
 scale = Vector2(6.582, 6.582)
 
 [node name="TileMap" type="TileMap" parent="."]
