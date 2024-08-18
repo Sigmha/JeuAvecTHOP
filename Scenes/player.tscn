@@ -157,7 +157,7 @@ weapon = NodePath("../../Weapon")
 immobile_timing = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -63)
+position = Vector2(0, -53)
 position_smoothing_enabled = true
 
 [connection signal="dummy_touched" from="Weapon" to="." method="_on_weapon_dummy_touched"]

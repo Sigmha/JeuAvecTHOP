@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://btxfcmjx1tg57"]
+[gd_scene load_steps=12 format=3 uid="uid://btxfcmjx1tg57"]
 
 [ext_resource type="PackedScene" uid="uid://b43h0vguqe8jw" path="res://Scenes/player.tscn" id="1_qbcf1"]
+[ext_resource type="Script" path="res://Scenes/monde_principale.gd" id="1_qmpw3"]
 [ext_resource type="Texture2D" uid="uid://cy2eulmifile0" path="res://Assets/tileset/tileset_dehors_V1.0.png" id="2_o3pmo"]
 [ext_resource type="Texture2D" uid="uid://cdy60y1yi4jwj" path="res://Assets/background/monde_principal/background_monde_principal.png" id="3_uxtes"]
 [ext_resource type="Script" path="res://Scenes/ParallaxTour.gd" id="4_fd32b"]
+[ext_resource type="Shader" path="res://Scenes/shader/monde_principale_water.gdshader" id="6_77anr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_32q56"]
 texture = ExtResource("2_o3pmo")
@@ -78,11 +80,29 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_32q56")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ryj02"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5wksg"]
+seamless = true
+noise = SubResource("FastNoiseLite_ryj02")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdqng"]
+shader = ExtResource("6_77anr")
+shader_parameter/CAST_COLOR = Color(0, 0, 0.282353, 1)
+shader_parameter/speed = Vector2(0.03, 0.07)
+shader_parameter/wave_strength = 2.0
+shader_parameter/scale_y = 2500.0
+shader_parameter/y_zoom = 0.4
+shader_parameter/fast_noise = SubResource("NoiseTexture2D_5wksg")
+
 [node name="Monde_principale" type="Node2D"]
+script = ExtResource("1_qmpw3")
 
 [node name="Player" parent="." instance=ExtResource("1_qbcf1")]
+scale = Vector2(6.582, 6.582)
 
 [node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(2.367, 2.367)
 tile_set = SubResource("TileSet_7kd8v")
 format = 2
 layer_0/tile_data = PackedInt32Array(65535, 131072, 1, 0, 196608, 1, 1, 131072, 1, 2, 196608, 1, 3, 131072, 1, 4, 196608, 1, 5, 131072, 1, 6, 196608, 1, 7, 131072, 1, 8, 196608, 1, 9, 131072, 1, 10, 196608, 1, 65545, 131072, 2, 65546, 196608, 2, 65547, 131072, 2, 65548, 196608, 2, 65532, 196608, 1, 65533, 131072, 1, 65534, 196608, 1, 11, 131072, 1, 65525, 131072, 1, 65526, 196608, 1, 65527, 131072, 1, 65528, 196608, 1, 65529, 131072, 1, 65530, 196608, 1, 65531, 131072, 1, 12, 196608, 1, 13, 131072, 1, 14, 196608, 1, 15, 131072, 1, 16, 196608, 1, 17, 131072, 1, 18, 196608, 1, 19, 131072, 1, 20, 196608, 1, 131061, 131072, 2, 196597, 131072, 3, 131062, 196608, 2, 196598, 196608, 3, 262133, 131072, 2, 327669, 131072, 3, 262134, 196608, 2, 327670, 196608, 3, 393205, 131072, 2, 393206, 196608, 2, 131063, 131072, 2, 196599, 131072, 3, 131064, 196608, 2, 196600, 196608, 3, 262135, 131072, 2, 327671, 131072, 3, 262136, 196608, 2, 327672, 196608, 3, 393207, 131072, 2, 393208, 196608, 2, 131065, 131072, 2, 196601, 131072, 3, 131066, 196608, 2, 196602, 196608, 3, 262137, 131072, 2, 327673, 131072, 3, 262138, 196608, 2, 327674, 196608, 3, 393209, 131072, 2, 393210, 196608, 2, 131067, 131072, 2, 196603, 131072, 3, 131068, 196608, 2, 196604, 196608, 3, 262139, 131072, 2, 327675, 131072, 3, 262140, 196608, 2, 327676, 196608, 3, 393211, 131072, 2, 393212, 196608, 2, 131069, 131072, 2, 196605, 131072, 3, 131070, 196608, 2, 196606, 196608, 3, 262141, 131072, 2, 327677, 131072, 3, 262142, 196608, 2, 327678, 196608, 3, 393213, 131072, 2, 393214, 196608, 2, 131071, 131072, 2, 196607, 131072, 3, 65536, 196608, 2, 131072, 196608, 3, 262143, 131072, 2, 327679, 131072, 3, 196608, 196608, 2, 262144, 196608, 3, 393215, 131072, 2, 327680, 196608, 2, 65537, 131072, 2, 131073, 131072, 3, 65538, 196608, 2, 131074, 196608, 3, 196609, 131072, 2, 262145, 131072, 3, 196610, 196608, 2, 262146, 196608, 3, 327681, 131072, 2, 327682, 196608, 2, 65539, 131072, 2, 131075, 131072, 3, 65540, 196608, 2, 131076, 196608, 3, 196611, 131072, 2, 262147, 131072, 3, 196612, 196608, 2, 262148, 196608, 3, 327683, 131072, 2, 327684, 196608, 2, 65541, 131072, 2, 131077, 131072, 3, 65542, 196608, 2, 131078, 196608, 3, 196613, 131072, 2, 262149, 131072, 3, 196614, 196608, 2, 262150, 196608, 3, 327685, 131072, 2, 327686, 196608, 2, 65543, 131072, 2, 131079, 131072, 3, 65544, 196608, 2, 131080, 196608, 3, 196615, 131072, 2, 262151, 131072, 3, 196616, 196608, 2, 262152, 196608, 3, 327687, 131072, 2, 327688, 196608, 2, 131081, 131072, 3, 131082, 196608, 3, 196617, 131072, 2, 262153, 131072, 3, 196618, 196608, 2, 262154, 196608, 3, 327689, 131072, 2, 327690, 196608, 2, 131083, 131072, 3, 131084, 196608, 3, 196619, 131072, 2, 262155, 131072, 3, 196620, 196608, 2, 262156, 196608, 3, 327691, 131072, 2, 327692, 196608, 2, 65549, 131072, 2, 131085, 131072, 3, 65550, 196608, 2, 131086, 196608, 3, 196621, 131072, 2, 262157, 131072, 3, 196622, 196608, 2, 262158, 196608, 3, 327693, 131072, 2, 327694, 196608, 2, 65551, 131072, 2, 131087, 131072, 3, 65552, 196608, 2, 131088, 196608, 3, 196623, 131072, 2, 262159, 131072, 3, 196624, 196608, 2, 262160, 196608, 3, 327695, 131072, 2, 327696, 196608, 2, 65553, 131072, 2, 131089, 131072, 3, 65554, 196608, 2, 131090, 196608, 3, 196625, 131072, 2, 262161, 131072, 3, 196626, 196608, 2, 262162, 196608, 3, 327697, 131072, 2, 327698, 196608, 2, 65555, 131072, 2, 131091, 131072, 3, 65556, 196608, 2, 131092, 196608, 3, 196627, 131072, 2, 262163, 131072, 3, 196628, 196608, 2, 262164, 196608, 3, 327699, 131072, 2, 327700, 196608, 2)
@@ -91,7 +111,7 @@ layer_0/tile_data = PackedInt32Array(65535, 131072, 1, 0, 196608, 1, 1, 131072, 
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 visibility_layer = 4
-position = Vector2(-918, -336)
+position = Vector2(-21, 235)
 motion_scale = Vector2(0, 0)
 
 [node name="montage" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
@@ -102,7 +122,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 1000, 500)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-918, -336)
+position = Vector2(-21, 235)
 motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(0, 1000)
 script = ExtResource("4_fd32b")
@@ -115,7 +135,7 @@ region_enabled = true
 region_rect = Rect2(0, 500, 1000, 500)
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-918, -336)
+position = Vector2(-21, 235)
 motion_scale = Vector2(0, 0)
 
 [node name="nuage" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
@@ -126,7 +146,7 @@ region_enabled = true
 region_rect = Rect2(0, 1000, 1000, 500)
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-918, -376)
+position = Vector2(-21, 195)
 motion_scale = Vector2(0.1, 0)
 motion_mirroring = Vector2(2200, 0)
 
@@ -138,7 +158,7 @@ region_enabled = true
 region_rect = Rect2(0, 1500, 1000, 500)
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-918, -376)
+position = Vector2(-21, 195)
 motion_scale = Vector2(0.3, 0)
 motion_mirroring = Vector2(2200, 0)
 
@@ -148,3 +168,11 @@ scale = Vector2(2.2, 2.2)
 texture = ExtResource("3_uxtes")
 region_enabled = true
 region_rect = Rect2(0, 2000, 1000, 500)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_cdqng")
+offset_left = -1499.0
+offset_top = 37.0
+offset_right = -1282.0
+offset_bottom = 258.0
+scale = Vector2(301.995, 2.58859)
