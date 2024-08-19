@@ -33,7 +33,10 @@ func Enter():
 func Exit():
 	pass
 
-func Update(delta):
+func Update(_delta):
+	pass
+
+func Physics_Update(delta):
 	if action_timer <= 0:
 		attacking = rand_attack()
 		if attacking:
@@ -42,9 +45,6 @@ func Update(delta):
 			Transiotioned.emit(self,"DummyCombatMove")
 	
 	action_timer -= delta
-
-func Physics_Update(_delta):
-	pass
 
 func set_looking_side(looking_direction):
 	if looking_direction == 1:

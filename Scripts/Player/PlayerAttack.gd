@@ -27,6 +27,9 @@ func Exit():
 	pass
 
 func Update(delta):
+	var touched = character.touched
+	if touched:
+		Transiotioned.emit(self,"PlayerHit")
 	if !Input.is_action_pressed("LeftClick") and immobile_timer < 0:
 		Transiotioned.emit(self, "PlayerCombatMove")
 	

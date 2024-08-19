@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmj41ig0sbm8y"
-path="res://.godot/imported/player_rolling.png-bb7f41e2cce4167ef0d65c5126070d2b.ctex"
+uid="uid://bu4fujg5jd5hy"
+path="res://.godot/imported/test_player_spritesheet.png-3c3414966d7861a513a34125268a14f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/player_rolling.png"
-dest_files=["res://.godot/imported/player_rolling.png-bb7f41e2cce4167ef0d65c5126070d2b.ctex"]
+source_file="res://Assets/Player/test_player_spritesheet.png"
+dest_files=["res://.godot/imported/test_player_spritesheet.png-3c3414966d7861a513a34125268a14f8.ctex"]
 
 [params]
 

@@ -15,13 +15,14 @@ var player:Player
 func Enter():
 	immobile_timer = immobile_timing
 	player = get_tree().get_first_node_in_group("Joueur")
+	
 	var looking_direction:int = get_looking_direction()
 	var stance = character.get_stance()
 	var distance_weapon = character.get_distance_weapon(stance)
 	
 	set_looking_side(looking_direction)
 	set_stance_sprite(stance)
-	weapon.set_weapon_position(looking_direction, distance_weapon, 1, stance)
+	weapon.set_dummy_weapon_position(looking_direction, distance_weapon, 1, stance)
 	
 	character_collision.position.x = character.init_collision_player_position.x + looking_direction * 3
 	body_sprite.set_frame(1)

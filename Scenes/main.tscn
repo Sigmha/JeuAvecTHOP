@@ -114,6 +114,8 @@ scale = Vector2(6.0719, 3.35448)
 [node name="Player" parent="." instance=ExtResource("1_nognl")]
 position = Vector2(121, 662)
 scale = Vector2(6.58201, 6.58201)
+collision_layer = 2
+collision_mask = 3
 
 [node name="Dummy" parent="." instance=ExtResource("3_2a7o6")]
 position = Vector2(368, 650)

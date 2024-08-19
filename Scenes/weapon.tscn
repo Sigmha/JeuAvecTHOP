@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://0nga2ukjv76y" path="res://Assets/Weapons/weapon.png" id="2_gphie"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0j3t1"]
-size = Vector2(12, 3)
+size = Vector2(15, 3)
 
 [node name="weapon" type="Area2D"]
 collision_layer = 2
@@ -16,13 +16,13 @@ position = Vector2(8, 0)
 texture = ExtResource("2_gphie")
 
 [node name="WeaponCollision" type="CollisionShape2D" parent="."]
-position = Vector2(10, -0.5)
+position = Vector2(8.5, -0.5)
 shape = SubResource("RectangleShape2D_0j3t1")
 
 [node name="ColorRect" type="ColorRect" parent="WeaponCollision"]
-offset_left = -6.0
+offset_left = -7.5
 offset_top = -1.5
-offset_right = 6.0
+offset_right = 7.5
 offset_bottom = 1.5
 color = Color(1, 0.0901961, 0.0901961, 0.658824)
 

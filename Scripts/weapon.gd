@@ -64,11 +64,9 @@ func set_dummy_weapon_position(looking_direction, distance_weapon, attacking, st
 			weapon_sprite.flip_h = false
 			position = distance_weapon[0]
 			weapon_collision.position.x = weapon_length - collison_weapon_size.x / 2
-			play_once_attacking = false
 		else:
 			position = distance_weapon[1]
 			rotation = 0
-			play_once_attacking = true
 	elif looking_direction == -1:
 		if !attacking:
 			if stance == "high":
@@ -79,18 +77,18 @@ func set_dummy_weapon_position(looking_direction, distance_weapon, attacking, st
 				rotation = -PI/12
 			weapon_sprite.flip_h = true
 			weapon_collision.position.x = collison_weapon_size.x / 2
-			position = Vector2(-1, 1) * distance_weapon[0] - Vector2(weapon_length * cos(rotation), + weapon_length * sin(rotation)) 
-			play_once_attacking = false
+			position = Vector2(-1, 1) * distance_weapon[0] - Vector2(weapon_length * cos(rotation), + weapon_length * sin(rotation))
 		else:
 			position = Vector2(-1, 1) * distance_weapon[1] - Vector2(weapon_length, 0)
 			rotation = 0
-			play_once_attacking = true
 
 func disable_weapon():
+	$WeaponCollision/ColorRect.visible = false
 	weapon_sprite.visible = false
 	weapon_collision.disabled = true
 
 func enable_weapon():
+	$WeaponCollision/ColorRect.visible = true
 	weapon_sprite.visible = true
 	weapon_collision.disabled = false
 

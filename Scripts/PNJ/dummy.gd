@@ -3,12 +3,14 @@ class_name Dummy
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var init_collision_player_position:Vector2
+var player:Player
 
 @onready var collision = $DummyCollision
 @onready var touched_label:Label = $TouchedLabel
 @onready var touched_timer:Timer = $TouchedLabel/TouchedTimer
 
 func _ready():
+	player = get_tree().get_first_node_in_group("Joueur")
 	init_collision_player_position = collision.position
 
 func _physics_process(delta):
@@ -58,6 +60,7 @@ func get_stance():
 	return stance_tab[rand_stance]
 
 func _on_weapon_player_touched():
+	player.touched = true
 	touched_label.text = "player touched"
 	touched_timer.start()
 

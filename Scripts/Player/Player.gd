@@ -5,20 +5,24 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var win_size: Vector2
 var init_collision_player_position:Vector2
 var attacking: bool
+var touched:bool = false
+var ennemy:CharacterBody2D
 
 @onready var player_collision = $PlayerCollision
 @onready var touched_label:Label = $TouchedLabel
 @onready var touched_timer:Timer = $TouchedLabel/TouchedTimer
+@onready var state_machine = $StateMachine
 
 
 func _ready():
+	ennemy = get_tree().get_first_node_in_group("Ennemy")
 	init_collision_player_position = player_collision.position
 	win_size = get_viewport_rect().size
 
-func _physics_process(delta):
+func _physics_process(delta):	
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	move_and_slide()
+		move_and_slide()
 
 #A CHANGER SI ON CHANGE LE SPRITE, reprendre les mesures pour la position de
 #l'épée en idle et en attaque pour les 3 stances
