@@ -86,6 +86,14 @@ func set_dummy_weapon_position(looking_direction, distance_weapon, attacking, st
 			rotation = 0
 			play_once_attacking = true
 
+func disable_weapon():
+	weapon_sprite.visible = false
+	weapon_collision.disabled = true
+
+func enable_weapon():
+	weapon_sprite.visible = true
+	weapon_collision.disabled = false
+
 func _on_body_entered(body):
 	if body is Dummy:
 		dummy_touched.emit()

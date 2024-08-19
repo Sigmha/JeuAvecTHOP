@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://h7pceacrhwep"]
+[gd_scene load_steps=19 format=3 uid="uid://h7pceacrhwep"]
 
 [ext_resource type="Script" path="res://Scripts/PNJ/dummy.gd" id="1_vx45n"]
 [ext_resource type="PackedScene" uid="uid://bc5ea8icchh2o" path="res://Scenes/weapon.tscn" id="2_ys2no"]
 [ext_resource type="Texture2D" uid="uid://bryuv4osb7u11" path="res://Assets/PNJ/Dummy/dummy_spritesheet.png" id="3_vj1gv"]
 [ext_resource type="Script" path="res://Scripts/PNJ/StateMachine.gd" id="5_tpvig"]
 [ext_resource type="Script" path="res://Scripts/PNJ/DummyCombatMove.gd" id="6_ijmkv"]
+[ext_resource type="Script" path="res://Scripts/PNJ/DummyAttack.gd" id="7_q56ib"]
 [ext_resource type="Script" path="res://Scripts/PNJ/TouchedLabel.gd" id="7_r0wgd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvijp"]
@@ -94,11 +95,20 @@ animations = [{
 }]
 
 [node name="Dummy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_vx45n")
 
 [node name="DummyCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_hvijp")
+
+[node name="ColorRect" type="ColorRect" parent="DummyCollision"]
+offset_left = -3.0
+offset_top = -14.0
+offset_right = 3.0
+offset_bottom = 14.0
+color = Color(1, 0, 1, 0.247059)
 
 [node name="weapon" parent="." instance=ExtResource("2_ys2no")]
 position = Vector2(3, -23)
@@ -133,6 +143,14 @@ initial_state = NodePath("DummyCombatMove")
 
 [node name="DummyCombatMove" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "character_collision", "body_sprite", "arm_sprite", "weapon")]
 script = ExtResource("6_ijmkv")
+character = NodePath("../..")
+character_collision = NodePath("../../DummyCollision")
+body_sprite = NodePath("../../DummySpriteComposition/BodySprite")
+arm_sprite = NodePath("../../DummySpriteComposition/Arm")
+weapon = NodePath("../../weapon")
+
+[node name="DummyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "character_collision", "body_sprite", "arm_sprite", "weapon")]
+script = ExtResource("7_q56ib")
 character = NodePath("../..")
 character_collision = NodePath("../../DummyCollision")
 body_sprite = NodePath("../../DummySpriteComposition/BodySprite")

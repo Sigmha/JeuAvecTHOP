@@ -9,7 +9,6 @@ class_name PlayerAttack
 @export var immobile_timing: float = 0.5
 
 var init_collision_position:Vector2
-var move_speed := 500
 var immobile_timer: float
 
 func Enter():

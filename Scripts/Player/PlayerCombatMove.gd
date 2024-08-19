@@ -31,15 +31,18 @@ func Physics_Update(delta):
 	set_stance_sprite(stance)
 	weapon.set_weapon_position(looking_direction, distance_weapon, 0, stance)
 	
-	if Input.is_action_just_pressed("LeftClick"):
-		Transiotioned.emit(self,"PlayerAttack")
-	
 	var direction:int = 0
 	if Input.is_action_pressed("MoveLeft"):
 		direction = -1
 	elif  Input.is_action_pressed("MoveRight"):
 		direction = 1
 	character.position.x += delta * direction * move_speed
+	
+	if Input.is_action_just_pressed("LeftClick"):
+		Transiotioned.emit(self,"PlayerAttack")
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		Transiotioned.emit(self,"PlayerRolling")
 	
 func set_looking_side(looking_direction):
 	if looking_direction == 1:
