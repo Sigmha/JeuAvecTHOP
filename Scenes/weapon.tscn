@@ -4,9 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://0nga2ukjv76y" path="res://Assets/Weapons/weapon.png" id="2_gphie"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0j3t1"]
-size = Vector2(12, 1)
+size = Vector2(12, 3)
 
 [node name="weapon" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_338rv")
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
@@ -19,9 +21,9 @@ shape = SubResource("RectangleShape2D_0j3t1")
 
 [node name="ColorRect" type="ColorRect" parent="WeaponCollision"]
 offset_left = -6.0
-offset_top = -0.5
+offset_top = -1.5
 offset_right = 6.0
-offset_bottom = 0.5
+offset_bottom = 1.5
 color = Color(1, 0.0901961, 0.0901961, 0.658824)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cy2eulmifile0" path="res://Assets/tileset/tileset_dehors_V1.0.png" id="4_j174d"]
 [ext_resource type="Texture2D" uid="uid://cdy60y1yi4jwj" path="res://Assets/background/monde_principal/background_monde_principal.png" id="5_un1lc"]
 [ext_resource type="Texture2D" uid="uid://rbfag0nhbhs7" path="res://Assets/decoration/maison_V1.0.png" id="6_ok4xs"]
-[ext_resource type="Script" path="res://Scenes/ParallaxTour.gd" id="7_tiklh"]
+[ext_resource type="Script" path="res://Scripts/ParallaxTour.gd" id="7_bvxpi"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ygtah"]
 
@@ -152,7 +152,7 @@ region_rect = Rect2(0, 0, 1000, 500)
 position = Vector2(-21, 235)
 motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(0, 1000)
-script = ExtResource("7_tiklh")
+script = ExtResource("7_bvxpi")
 
 [node name="tour" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2(1004, 288)
