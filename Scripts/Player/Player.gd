@@ -1,12 +1,15 @@
 extends CharacterBody2D
 class_name Player
 
+@export var rooling_cooldown:float = 1
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var win_size: Vector2
 var init_collision_player_position:Vector2
 var attacking: bool
 var touched:bool = false
 var ennemy:CharacterBody2D
+var rooling_cooldown_timer
 
 @onready var player_collision = $PlayerCollision
 @onready var touched_label:Label = $TouchedLabel
@@ -15,6 +18,7 @@ var ennemy:CharacterBody2D
 
 
 func _ready():
+	rooling_cooldown_timer = 0
 	ennemy = get_tree().get_first_node_in_group("Ennemy")
 	init_collision_player_position = player_collision.position
 	win_size = get_viewport_rect().size
@@ -23,7 +27,10 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		move_and_slide()
-
+	
+	if rooling_cooldown_timer > 0:
+		rooling_cooldown_timer -= delta
+	
 #A CHANGER SI ON CHANGE LE SPRITE, reprendre les mesures pour la position de
 #l'épée en idle et en attaque pour les 3 stances
 #Retourne la position de l'épée selon la stance et si on attaque ou non

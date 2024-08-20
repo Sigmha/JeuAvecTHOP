@@ -10,7 +10,6 @@ class_name PlayerCombatMove
 var init_collision_position:Vector2
 var move_speed := 500
 
-
 func Enter():
 	character_collision.position.x = character.init_collision_player_position.x
 	body_sprite.set_frame(0)
@@ -46,7 +45,7 @@ func Physics_Update(delta):
 	if Input.is_action_just_pressed("LeftClick"):
 		Transiotioned.emit(self,"PlayerAttack")
 	
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and character.rooling_cooldown_timer <= 0:
 		Transiotioned.emit(self,"PlayerRolling")
 	
 func set_looking_side(looking_direction):

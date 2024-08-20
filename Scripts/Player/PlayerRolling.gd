@@ -20,6 +20,7 @@ func Enter():
 	rolling_speed = rolling_distance / rolling_time
 	rolling_timer = rolling_time
 	
+	character.rooling_cooldown_timer = character.rooling_cooldown
 	character.set_collision_layer_value(2,false)
 	character.set_collision_mask_value(2,false)
 	body_sprite.visible = false
