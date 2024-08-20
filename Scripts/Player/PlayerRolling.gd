@@ -3,8 +3,6 @@ class_name PlayerRolling
 
 @export var character:Player
 @export var character_collision:CollisionShape2D
-@export var body_sprite:AnimatedSprite2D
-@export var arm_sprite:AnimatedSprite2D
 @export var rolling_sprite:AnimatedSprite2D
 @export var weapon:Weapon
 @export var rolling_time:float = 0.35
@@ -23,8 +21,6 @@ func Enter():
 	character.rooling_cooldown_timer = character.rooling_cooldown
 	character.set_collision_layer_value(2,false)
 	character.set_collision_mask_value(2,false)
-	body_sprite.visible = false
-	arm_sprite.visible = false
 	rolling_sprite.visible = true
 	
 	looking_direction = character.get_looking_direction()
@@ -34,8 +30,6 @@ func Enter():
 	rolling_sprite.play("default")
 
 func Exit():
-	body_sprite.visible = true
-	arm_sprite.visible = true
 	rolling_sprite.visible = false
 	character.set_collision_layer_value(2,true)
 	character.set_collision_mask_value(2,true)

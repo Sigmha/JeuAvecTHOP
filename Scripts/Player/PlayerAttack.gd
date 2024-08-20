@@ -12,6 +12,8 @@ var init_collision_position:Vector2
 var immobile_timer: float
 
 func Enter():
+	body_sprite.visible = true
+	arm_sprite.visible = true
 	immobile_timer = immobile_timing
 	var looking_direction:int = character.get_looking_direction()
 	var stance = character.get_stance()
@@ -24,7 +26,8 @@ func Enter():
 	arm_sprite.set_frame(1)
 
 func Exit():
-	pass
+	body_sprite.visible = false
+	arm_sprite.visible = false
 
 func Update(delta):
 	var touched = character.touched

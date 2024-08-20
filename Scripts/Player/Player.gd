@@ -4,9 +4,10 @@ class_name Player
 @export var rooling_cooldown:float = 1
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var win_size: Vector2
+var win_size:Vector2
+var is_in_fight:bool = true
 var init_collision_player_position:Vector2
-var attacking: bool
+var attacking:bool
 var touched:bool = false
 var ennemy:CharacterBody2D
 var rooling_cooldown_timer
@@ -30,6 +31,9 @@ func _physics_process(delta):
 	
 	if rooling_cooldown_timer > 0:
 		rooling_cooldown_timer -= delta
+	
+	if Input.is_action_just_pressed("ui_focus_next"):
+		is_in_fight = !is_in_fight
 	
 #A CHANGER SI ON CHANGE LE SPRITE, reprendre les mesures pour la position de
 #l'épée en idle et en attaque pour les 3 stances

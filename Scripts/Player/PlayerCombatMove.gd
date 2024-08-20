@@ -11,12 +11,15 @@ var init_collision_position:Vector2
 var move_speed := 500
 
 func Enter():
+	body_sprite.visible = true
+	arm_sprite.visible = true
 	character_collision.position.x = character.init_collision_player_position.x
 	body_sprite.set_frame(0)
 	arm_sprite.set_frame(0)
 
 func Exit():
-	pass
+	body_sprite.visible = false
+	arm_sprite.visible = false
 
 func Update(_delta):
 	pass
@@ -33,6 +36,9 @@ func Physics_Update(delta):
 	var touched = character.touched
 	if touched:
 		Transiotioned.emit(self,"PlayerHit")
+		
+	if !character.is_in_fight:
+		Transiotioned.emit(self,"PlayerCityMove")
 		
 	var direction:int = 0
 	if Input.is_action_pressed("MoveLeft"):

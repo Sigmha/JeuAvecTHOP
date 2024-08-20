@@ -3,8 +3,6 @@ class_name PlayerHit
 
 @export var character:Player
 @export var character_collision:CollisionShape2D
-@export var body_sprite:AnimatedSprite2D
-@export var arm_sprite:AnimatedSprite2D
 @export var hit_sprite:AnimatedSprite2D
 @export var weapon:Weapon
 @export var stun_timing: float = 1
@@ -25,8 +23,6 @@ func Enter():
 	
 	character.set_collision_layer_value(2,false)
 	character.set_collision_mask_value(2,false)
-	body_sprite.visible = false
-	arm_sprite.visible = false
 	hit_sprite.visible = true
 	
 	hit_sprite.play("default")
@@ -35,8 +31,6 @@ func Enter():
 func Exit():
 	character.set_collision_layer_value(2,true)
 	character.set_collision_mask_value(2,true)
-	body_sprite.visible = true
-	arm_sprite.visible = true
 	hit_sprite.visible = false
 	
 	hit_sprite.stop()

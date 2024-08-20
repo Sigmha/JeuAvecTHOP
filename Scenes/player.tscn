@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://b43h0vguqe8jw"]
+[gd_scene load_steps=53 format=3 uid="uid://b43h0vguqe8jw"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_na8sa"]
 [ext_resource type="PackedScene" uid="uid://bc5ea8icchh2o" path="res://Scenes/weapon.tscn" id="2_ii4go"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/Player/TouchedLabel.gd" id="7_oidbd"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerHit.gd" id="9_ifbag"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerRolling.gd" id="10_6tsuu"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerCityMove.gd" id="11_r5y8r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1vnpl"]
 radius = 3.0
@@ -232,6 +233,89 @@ animations = [{
 "speed": 14.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7hbc"]
+atlas = ExtResource("4_c7r1f")
+region = Rect2(0, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23drh"]
+atlas = ExtResource("4_c7r1f")
+region = Rect2(32, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfm81"]
+atlas = ExtResource("4_c7r1f")
+region = Rect2(64, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70k0t"]
+atlas = ExtResource("4_c7r1f")
+region = Rect2(96, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lstpe"]
+atlas = ExtResource("4_c7r1f")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwl7b"]
+atlas = ExtResource("4_c7r1f")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nx5eg"]
+atlas = ExtResource("4_c7r1f")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbtbq"]
+atlas = ExtResource("4_c7r1f")
+region = Rect2(128, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyjlj"]
+atlas = ExtResource("4_c7r1f")
+region = Rect2(160, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sejmj"]
+atlas = ExtResource("4_c7r1f")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0exs4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7hbc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23drh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfm81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70k0t")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lstpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwl7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nx5eg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbtbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyjlj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sejmj")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 7.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["Joueur"]]
 script = ExtResource("1_na8sa")
 
@@ -270,6 +354,12 @@ visible = false
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_ey3xb")
 
+[node name="CityMove" type="AnimatedSprite2D" parent="PlayerSpriteComposition"]
+visible = false
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_0exs4")
+animation = &"Idle"
+
 [node name="TouchedLabel" type="Label" parent="."]
 offset_left = -14.0
 offset_top = -38.0
@@ -304,23 +394,27 @@ arm_sprite = NodePath("../../PlayerSpriteComposition/Arm")
 weapon = NodePath("../../Weapon")
 immobile_timing = 0.1
 
-[node name="PlayerHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "character_collision", "body_sprite", "arm_sprite", "hit_sprite", "weapon")]
+[node name="PlayerHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "character_collision", "hit_sprite", "weapon")]
 script = ExtResource("9_ifbag")
 character = NodePath("../..")
 character_collision = NodePath("../../PlayerCollision")
-body_sprite = NodePath("../../PlayerSpriteComposition/BodySprite")
-arm_sprite = NodePath("../../PlayerSpriteComposition/Arm")
 hit_sprite = NodePath("../../PlayerSpriteComposition/Hit")
 weapon = NodePath("../../Weapon")
 
-[node name="PlayerRolling" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "character_collision", "body_sprite", "arm_sprite", "rolling_sprite", "weapon")]
+[node name="PlayerRolling" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "character_collision", "rolling_sprite", "weapon")]
 script = ExtResource("10_6tsuu")
 character = NodePath("../..")
 character_collision = NodePath("../../PlayerCollision")
-body_sprite = NodePath("../../PlayerSpriteComposition/BodySprite")
-arm_sprite = NodePath("../../PlayerSpriteComposition/Arm")
 rolling_sprite = NodePath("../../PlayerSpriteComposition/Rolling")
 weapon = NodePath("../../Weapon")
+
+[node name="PlayerCityMove" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "character_collision", "city_move_sprite", "weapon")]
+script = ExtResource("11_r5y8r")
+character = NodePath("../..")
+character_collision = NodePath("../../PlayerCollision")
+city_move_sprite = NodePath("../../PlayerSpriteComposition/CityMove")
+weapon = NodePath("../../Weapon")
+move_speed = 300
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -53)
