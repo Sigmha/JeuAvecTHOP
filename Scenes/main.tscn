@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c5pmo0ul8igcs"]
 
-[ext_resource type="PackedScene" uid="uid://b43h0vguqe8jw" path="res://Scenes/player.tscn" id="1_nognl"]
+[ext_resource type="PackedScene" uid="uid://b43h0vguqe8jw" path="res://Scenes/playerthop.tscn" id="1_nognl"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_ro2m0"]
 [ext_resource type="PackedScene" uid="uid://h7pceacrhwep" path="res://Scenes/PNJ/dummy.tscn" id="3_2a7o6"]
 [ext_resource type="Texture2D" uid="uid://cy2eulmifile0" path="res://Assets/tileset/tileset_dehors_V1.0.png" id="4_j174d"]

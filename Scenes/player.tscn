@@ -420,6 +420,15 @@ move_speed = 300
 position = Vector2(0, -53)
 position_smoothing_enabled = true
 
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+visible = false
+offset_left = -273.0
+offset_top = -172.0
+offset_right = -233.0
+offset_bottom = -132.0
+scale = Vector2(13.6593, 13.2624)
+color = Color(0.713726, 0, 0.176471, 0.356863)
+
 [connection signal="dummy_touched" from="Weapon" to="." method="_on_weapon_dummy_touched"]
 [connection signal="weapon_touched" from="Weapon" to="." method="_on_weapon_weapon_touched"]
 [connection signal="timeout" from="TouchedLabel/TouchedTimer" to="TouchedLabel" method="_on_touched_timer_timeout"]

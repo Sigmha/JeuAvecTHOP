@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://btxfcmjx1tg57"]
+[gd_scene load_steps=29 format=3 uid="uid://btxfcmjx1tg57"]
 
-[ext_resource type="PackedScene" uid="uid://b43h0vguqe8jw" path="res://Scenes/player.tscn" id="1_qbcf1"]
+[ext_resource type="PackedScene" uid="uid://b43h0vguqe8jw" path="res://Scenes/playerthop.tscn" id="1_qbcf1"]
 [ext_resource type="Script" path="res://Scenes/monde_principale.gd" id="1_qmpw3"]
 [ext_resource type="Texture2D" uid="uid://cy2eulmifile0" path="res://Assets/tileset/tileset_dehors_V1.0.png" id="2_o3pmo"]
-[ext_resource type="Texture2D" uid="uid://cdy60y1yi4jwj" path="res://Assets/background/monde_principal/background_monde_principal.png" id="3_uxtes"]
+[ext_resource type="Texture2D" uid="uid://xbygtleelwa" path="res://Assets/tileset/tileset_dehors_V1.2.png" id="3_gs48f"]
+[ext_resource type="Texture2D" uid="uid://bj5lgflu1s7fc" path="res://Assets/background/monde_principal/background_monde_principal_V2.0.png" id="5_pvd1c"]
 [ext_resource type="Shader" path="res://Scenes/shader/monde_principale_water.gdshader" id="6_77anr"]
+[ext_resource type="Texture2D" uid="uid://bddafkpqodw6k" path="res://Assets/Player/player_fishingV1.0.png" id="7_8v4v6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_32q56"]
 texture = ExtResource("2_o3pmo")
@@ -98,10 +100,178 @@ texture_region_size = Vector2i(32, 32)
 5:2/0/physics_layer_0/angular_velocity = 0.0
 5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xhj6k"]
+texture = ExtResource("3_gs48f")
+texture_region_size = Vector2i(32, 32)
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0.75, 16, 0.75, 16, 16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0.75, 16, 0.75, 16, 16, -16, 16)
+4:1/0 = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0.75, 16, 0.75, 16, 16, -16, 16)
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0.75, 16, 0.75, 16, 16, -16, 16)
+6:1/0 = 0
+6:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:1/0/physics_layer_0/angular_velocity = 0.0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0.75, 16, 0.75, 16, 16, -16, 16)
+7:1/0 = 0
+7:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:1/0/physics_layer_0/angular_velocity = 0.0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0.75, 16, 0.75, 16, 16, -16, 16)
+8:1/0 = 0
+8:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:1/0/physics_layer_0/angular_velocity = 0.0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0.75, 16, 0.75, 16, 16, -16, 16)
+9:1/0 = 0
+9:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+9:1/0/physics_layer_0/angular_velocity = 0.0
+9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0.75, 16, 0.75, 16, 16, -16, 16)
+10:1/0 = 0
+10:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+10:1/0/physics_layer_0/angular_velocity = 0.0
+10:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0.5, 16, 1, 16, 16, -16, 16)
+11:1/0 = 0
+11:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+11:1/0/physics_layer_0/angular_velocity = 0.0
+11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0.5, 16, 1, 16, 16, -16, 16)
+12:1/0 = 0
+12:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+12:1/0/physics_layer_0/angular_velocity = 0.0
+15:1/0 = 0
+15:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+15:1/0/physics_layer_0/angular_velocity = 0.0
+15:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0.5, 16, 1, 16, 16, -16, 16)
+16:1/0 = 0
+16:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+16:1/0/physics_layer_0/angular_velocity = 0.0
+16:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0.5, 16, 1, 16, 16, -16, 16)
+17:1/0 = 0
+17:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+17:1/0/physics_layer_0/angular_velocity = 0.0
+17:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0.5, 16, 1, 16, 16, -16, 16)
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:2/0 = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:2/0 = 0
+4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:2/0/physics_layer_0/angular_velocity = 0.0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:2/0 = 0
+5:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:2/0/physics_layer_0/angular_velocity = 0.0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:2/0 = 0
+6:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:2/0/physics_layer_0/angular_velocity = 0.0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+7:2/0 = 0
+7:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:2/0/physics_layer_0/angular_velocity = 0.0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+8:2/0 = 0
+8:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:2/0/physics_layer_0/angular_velocity = 0.0
+8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+9:2/0 = 0
+9:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+9:2/0/physics_layer_0/angular_velocity = 0.0
+9:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+10:2/0 = 0
+10:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+10:2/0/physics_layer_0/angular_velocity = 0.0
+10:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+11:2/0 = 0
+11:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+11:2/0/physics_layer_0/angular_velocity = 0.0
+11:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+12:2/0 = 0
+12:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+12:2/0/physics_layer_0/angular_velocity = 0.0
+15:2/0 = 0
+15:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+15:2/0/physics_layer_0/angular_velocity = 0.0
+17:2/0 = 0
+17:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+17:2/0/physics_layer_0/angular_velocity = 0.0
+
 [sub_resource type="TileSet" id="TileSet_7kd8v"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_32q56")
+sources/1 = SubResource("TileSetAtlasSource_xhj6k")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8ifm"]
+atlas = ExtResource("5_pvd1c")
+region = Rect2(0, 500, 1000, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yp43a"]
+atlas = ExtResource("5_pvd1c")
+region = Rect2(1000, 500, 1000, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y12ke"]
+atlas = ExtResource("5_pvd1c")
+region = Rect2(2000, 500, 1000, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6nkyc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8ifm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yp43a")
+}],
+"loop": true,
+"name": &"parle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y12ke")
+}],
+"loop": true,
+"name": &"tombe",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dr2j"]
+atlas = ExtResource("5_pvd1c")
+region = Rect2(0, 1000, 1000, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_visgx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dr2j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ryj02"]
 
@@ -118,6 +288,70 @@ shader_parameter/scale_y = 2500.0
 shader_parameter/y_zoom = 0.4
 shader_parameter/fast_noise = SubResource("NoiseTexture2D_5wksg")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqr3m"]
+atlas = ExtResource("7_8v4v6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v10xc"]
+atlas = ExtResource("7_8v4v6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pobp"]
+atlas = ExtResource("7_8v4v6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbao7"]
+atlas = ExtResource("7_8v4v6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y0kp"]
+atlas = ExtResource("7_8v4v6")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eofk0"]
+atlas = ExtResource("7_8v4v6")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6637"]
+atlas = ExtResource("7_8v4v6")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttk34"]
+atlas = ExtResource("7_8v4v6")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ejgx6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqr3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v10xc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pobp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbao7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7y0kp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eofk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6637")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttk34")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Monde_principale" type="Node2D"]
 script = ExtResource("1_qmpw3")
 
@@ -126,7 +360,7 @@ position = Vector2(96, -49)
 scale = Vector2(6.582, 6.582)
 tile_set = SubResource("TileSet_7kd8v")
 format = 2
-layer_0/tile_data = PackedInt32Array(65529, 65536, 2, -7, 65536, 1, -6, 524288, 1, -5, 524288, 1, -4, 655360, 1, -3, 131072, 1, -2, 393216, 1, -1, 393216, 1, -65536, 131072, 1, -65535, 262144, 1, -65534, 131072, 1, -65533, 458752, 1, -65532, 196608, 1, -65531, 524288, 1, -65530, 196608, 1, -65529, 458752, 1, -65528, 655360, 1, -65527, 327680, 1, -65526, 262144, 1, -65525, 589824, 1, -65524, 655360, 1, -65523, 196608, 1, -65522, 655360, 1, -65521, 393216, 1, -65520, 393216, 1, -65519, 458752, 1, -65518, 327680, 1, -65517, 131072, 1, -65516, 262144, 1, -65515, 458752, 1, -65514, 131072, 1, -65513, 524288, 1, -65512, 327680, 1, -65511, 393216, 1, -65510, 589824, 1, -65509, 524288, 1, -65508, 196608, 1, -65507, 720896, 1, 29, 720896, 2, 28, 393216, 2, 27, 655360, 2, 26, 196608, 2, 25, 655360, 2, 24, 262144, 2, 23, 393216, 2, 22, 393216, 2, 21, 262144, 2, 20, 262144, 2, 19, 458752, 2, 18, 458752, 2, 17, 458752, 2, 16, 262144, 2, 15, 393216, 2, 14, 131072, 2, 13, 262144, 2, 12, 262144, 2, 11, 196608, 2, 10, 262144, 2, 9, 196608, 2, 8, 655360, 2, 7, 524288, 2, 6, 262144, 2, 5, 393216, 2, 4, 327680, 2, 3, 655360, 2, 2, 458752, 2, 1, 524288, 2, 0, 262144, 2, 65535, 524288, 2, 65534, 458752, 2, 65533, 458752, 2, 65532, 393216, 2, 65531, 196608, 2, 65530, 131072, 2)
+layer_0/tile_data = PackedInt32Array(65529, 131073, 2, -7, 1114113, 1, -6, 327681, 1, -5, 327681, 1, -4, 589825, 1, -3, 458753, 1, -2, 131073, 1, -1, 262145, 1, -65536, 458753, 1, -65535, 327681, 1, -65534, 393217, 1, -65533, 327681, 1, -65532, 131073, 1, -65531, 393217, 1, -65530, 393217, 1, -65529, 589825, 1, -65528, 458753, 1, -65527, 327681, 1, -65526, 655361, 1, -65525, 524289, 1, -65524, 131073, 1, -65523, 131073, 1, -65522, 524289, 1, -65521, 393217, 1, -65520, 458753, 1, -65519, 524289, 1, -65518, 131073, 1, -65517, 327681, 1, -65516, 327681, 1, -65515, 131073, 1, -65514, 458753, 1, -65513, 458753, 1, -65512, 589825, 1, -65511, 393216, 1, -65510, 589824, 1, -65509, 524288, 1, -65508, 196608, 1, -65507, 720896, 1, 29, 720897, 2, 28, 393217, 2, 27, 589825, 2, 26, 458753, 2, 25, 655361, 2, 24, 393217, 2, 23, 196609, 2, 22, 589825, 2, 21, 524289, 2, 20, 327681, 2, 19, 524289, 2, 18, 589825, 2, 17, 458753, 2, 16, 589825, 2, 15, 458753, 2, 14, 393217, 2, 13, 327681, 2, 12, 327681, 2, 11, 196609, 2, 10, 458753, 2, 9, 458753, 2, 8, 655361, 2, 7, 589825, 2, 6, 262145, 2, 5, 589825, 2, 4, 327681, 2, 3, 196609, 2, 2, 589825, 2, 1, 589825, 2, 0, 720897, 2, 65535, 655361, 2, 65534, 655361, 2, 65533, 262145, 2, 65532, 458753, 2, 65531, 524289, 2, 65530, 655361, 2, -8, 1048577, 1, 65527, 983041, 2)
 
 [node name="Player" parent="." instance=ExtResource("1_qbcf1")]
 position = Vector2(-22, -199)
@@ -142,32 +376,33 @@ motion_scale = Vector2(0, 0)
 [node name="montage" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(1004, 288)
 scale = Vector2(2.2, 2.2)
-texture = ExtResource("3_uxtes")
+texture = ExtResource("5_pvd1c")
 region_enabled = true
 region_rect = Rect2(0, 0, 1000, 500)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-21, 235)
-motion_scale = Vector2(0, 0)
+motion_scale = Vector2(0.05, 0)
 motion_mirroring = Vector2(0, 1000)
 
-[node name="tour" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+[node name="tour" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2(1004, 288)
 scale = Vector2(2.2, 2.2)
-texture = ExtResource("3_uxtes")
-region_enabled = true
-region_rect = Rect2(0, 500, 1000, 500)
+sprite_frames = SubResource("SpriteFrames_6nkyc")
+
+[node name="shadow" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer2/tour"]
+sprite_frames = SubResource("SpriteFrames_visgx")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-21, 235)
-motion_scale = Vector2(0, 0)
+motion_scale = Vector2(0.05, 0)
 
 [node name="nuage" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 position = Vector2(1004, 288)
 scale = Vector2(2.2, 2.2)
-texture = ExtResource("3_uxtes")
+texture = ExtResource("5_pvd1c")
 region_enabled = true
-region_rect = Rect2(0, 1000, 1000, 500)
+region_rect = Rect2(0, 1500, 1000, 500)
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-21, 195)
@@ -177,9 +412,9 @@ motion_mirroring = Vector2(2200, 0)
 [node name="foret_lontaine" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 position = Vector2(1004, 288)
 scale = Vector2(2.2, 2.2)
-texture = ExtResource("3_uxtes")
+texture = ExtResource("5_pvd1c")
 region_enabled = true
-region_rect = Rect2(0, 1500, 1000, 500)
+region_rect = Rect2(0, 2000, 1000, 500)
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-21, 195)
@@ -189,14 +424,21 @@ motion_mirroring = Vector2(2200, 0)
 [node name="foret_proche" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
 position = Vector2(1004, 288)
 scale = Vector2(2.2, 2.2)
-texture = ExtResource("3_uxtes")
+texture = ExtResource("5_pvd1c")
 region_enabled = true
-region_rect = Rect2(0, 2000, 1000, 500)
+region_rect = Rect2(0, 2500, 1000, 500)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_cdqng")
-offset_left = -1499.0
+offset_left = -4069.0
 offset_top = 5.0
-offset_right = -1282.0
+offset_right = -3843.0
 offset_bottom = 226.0
 scale = Vector2(301.995, 2.58859)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1598, -162)
+scale = Vector2(6.582, 6.582)
+sprite_frames = SubResource("SpriteFrames_ejgx6")
+autoplay = "default"
+frame_progress = 0.411714
