@@ -1,12 +1,14 @@
-[gd_scene load_steps=29 format=3 uid="uid://btxfcmjx1tg57"]
+[gd_scene load_steps=33 format=3 uid="uid://btxfcmjx1tg57"]
 
 [ext_resource type="PackedScene" uid="uid://b43h0vguqe8jw" path="res://Scenes/playerthop.tscn" id="1_qbcf1"]
 [ext_resource type="Script" path="res://Scenes/monde_principale.gd" id="1_qmpw3"]
 [ext_resource type="Texture2D" uid="uid://cy2eulmifile0" path="res://Assets/tileset/tileset_dehors_V1.0.png" id="2_o3pmo"]
+[ext_resource type="Script" path="res://Scenes/Camera2D_monde_principale.gd" id="2_txt8p"]
 [ext_resource type="Texture2D" uid="uid://xbygtleelwa" path="res://Assets/tileset/tileset_dehors_V1.2.png" id="3_gs48f"]
 [ext_resource type="Texture2D" uid="uid://bj5lgflu1s7fc" path="res://Assets/background/monde_principal/background_monde_principal_V2.0.png" id="5_pvd1c"]
 [ext_resource type="Shader" path="res://Scenes/shader/monde_principale_water.gdshader" id="6_77anr"]
 [ext_resource type="Texture2D" uid="uid://bddafkpqodw6k" path="res://Assets/Player/player_fishingV1.0.png" id="7_8v4v6"]
+[ext_resource type="Texture2D" uid="uid://c75br5ys7rp6n" path="res://Assets/intro/light.png" id="7_cabwj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_32q56"]
 texture = ExtResource("2_o3pmo")
@@ -352,8 +354,177 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_87ykm"]
+resource_name = "intro"
+length = 80.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2, 10, 12.4, 26.6, 32.8, 50.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 13.8, 0.0, 0.0, 16.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/PointLight2D:texture_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 10, 12.4, 26.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.01, 50.0, 0.01, 50.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ParallaxBackground/ParallaxLayer2/tour:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(10, 51.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"tombe", &"default"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ParallaxBackground/ParallaxLayer2/tour:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2000, -450)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ParallaxBackground/ParallaxLayer3/nuage:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 51.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ParallaxBackground/ParallaxLayer2:motion_offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(10.1, 42.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10000)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ParallaxBackground/ParallaxLayer2/tour/shadow:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AnimationPlayer/Sprite2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 19.3, 50),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-2000, -450), Vector2(-2000, -450), Vector2(-2000, -1000)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AnimationPlayer/Sprite2D:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(19.3, 32.4, 50),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5.75692, 5.75692), Vector2(50, 50)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AnimationPlayer/PointLight2D:color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(26.7),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.678431, 0.666667, 0.666667, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AnimationPlayer/Sprite2D:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(19.3, 37.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AnimationPlayer/Control:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.3, 29.7, 45.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0nfo2"]
+_data = {
+"intro": SubResource("Animation_87ykm")
+}
+
 [node name="Monde_principale" type="Node2D"]
 script = ExtResource("1_qmpw3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-2000, -450)
+script = ExtResource("2_txt8p")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(96, -49)
@@ -363,7 +534,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(65529, 131073, 2, -7, 1114113, 1, -6, 327681, 1, -5, 327681, 1, -4, 589825, 1, -3, 458753, 1, -2, 131073, 1, -1, 262145, 1, -65536, 458753, 1, -65535, 327681, 1, -65534, 393217, 1, -65533, 327681, 1, -65532, 131073, 1, -65531, 393217, 1, -65530, 393217, 1, -65529, 589825, 1, -65528, 458753, 1, -65527, 327681, 1, -65526, 655361, 1, -65525, 524289, 1, -65524, 131073, 1, -65523, 131073, 1, -65522, 524289, 1, -65521, 393217, 1, -65520, 458753, 1, -65519, 524289, 1, -65518, 131073, 1, -65517, 327681, 1, -65516, 327681, 1, -65515, 131073, 1, -65514, 458753, 1, -65513, 458753, 1, -65512, 589825, 1, -65511, 393216, 1, -65510, 589824, 1, -65509, 524288, 1, -65508, 196608, 1, -65507, 720896, 1, 29, 720897, 2, 28, 393217, 2, 27, 589825, 2, 26, 458753, 2, 25, 655361, 2, 24, 393217, 2, 23, 196609, 2, 22, 589825, 2, 21, 524289, 2, 20, 327681, 2, 19, 524289, 2, 18, 589825, 2, 17, 458753, 2, 16, 589825, 2, 15, 458753, 2, 14, 393217, 2, 13, 327681, 2, 12, 327681, 2, 11, 196609, 2, 10, 458753, 2, 9, 458753, 2, 8, 655361, 2, 7, 589825, 2, 6, 262145, 2, 5, 589825, 2, 4, 327681, 2, 3, 196609, 2, 2, 589825, 2, 1, 589825, 2, 0, 720897, 2, 65535, 655361, 2, 65534, 655361, 2, 65533, 262145, 2, 65532, 458753, 2, 65531, 524289, 2, 65530, 655361, 2, -8, 1048577, 1, 65527, 983041, 2)
 
 [node name="Player" parent="." instance=ExtResource("1_qbcf1")]
-position = Vector2(-22, -199)
+position = Vector2(419, -217)
 scale = Vector2(6.582, 6.582)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -383,14 +554,17 @@ region_rect = Rect2(0, 0, 1000, 500)
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-21, 235)
 motion_scale = Vector2(0.05, 0)
+motion_offset = Vector2(0, 10000)
 motion_mirroring = Vector2(0, 1000)
 
 [node name="tour" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2(1004, 288)
 scale = Vector2(2.2, 2.2)
 sprite_frames = SubResource("SpriteFrames_6nkyc")
+animation = &"tombe"
 
 [node name="shadow" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer2/tour"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_visgx")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -398,6 +572,7 @@ position = Vector2(-21, 235)
 motion_scale = Vector2(0.05, 0)
 
 [node name="nuage" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+visible = false
 position = Vector2(1004, 288)
 scale = Vector2(2.2, 2.2)
 texture = ExtResource("5_pvd1c")
@@ -442,3 +617,54 @@ scale = Vector2(6.582, 6.582)
 sprite_frames = SubResource("SpriteFrames_ejgx6")
 autoplay = "default"
 frame_progress = 0.411714
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0nfo2")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimationPlayer"]
+visible = false
+z_index = 10
+position = Vector2(-2000, -937.296)
+scale = Vector2(41.2017, 41.2017)
+texture = ExtResource("5_pvd1c")
+region_enabled = true
+region_rect = Rect2(1989.3, 3000, 1000, 500)
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimationPlayer"]
+position = Vector2(-2000, -950)
+color = Color(0.678431, 0.666667, 0.666667, 1)
+energy = 3.4023
+range_layer_min = -100
+texture = ExtResource("7_cabwj")
+texture_scale = 50.0
+
+[node name="Control" type="Control" parent="AnimationPlayer"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2000.0
+offset_top = -450.0
+offset_right = -1960.0
+offset_bottom = -410.0
+
+[node name="Label" type="Label" parent="AnimationPlayer/Control"]
+offset_left = -230.0
+offset_top = -367.0
+offset_right = -187.0
+offset_bottom = -344.0
+scale = Vector2(10.84, 10.84)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "TITRE"
+
+[node name="Label2" type="Label" parent="AnimationPlayer/Control"]
+offset_left = -655.0
+offset_top = 142.0
+offset_right = -256.0
+offset_bottom = 217.0
+scale = Vector2(3.16, 3.16)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "a game by
+Athur (rajoute ton nom j'ai peur de le massacrer ^^)
+Thomas DELLAGIACOMA"
