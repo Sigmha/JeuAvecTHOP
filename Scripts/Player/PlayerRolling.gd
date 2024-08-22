@@ -46,9 +46,9 @@ func Physics_Update(delta):
 	else:
 		Transiotioned.emit(self,"PlayerCombatMove")
 
-func set_looking_side(looking_direction):
-	if looking_direction == 1:
+func set_looking_side(_looking_direction):
+	if _looking_direction == 1:
 		rolling_sprite.flip_h = false
 	
-	elif looking_direction == -1:
+	elif _looking_direction == -1:
 		rolling_sprite.flip_h = true

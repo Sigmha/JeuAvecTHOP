@@ -17,6 +17,7 @@ func Enter():
 	
 
 func Exit():
+	character.touched = false
 	city_move_sprite.visible = false
 	weapon.enable_weapon()
 
