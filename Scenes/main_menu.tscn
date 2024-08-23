@@ -1,0 +1,129 @@
+[gd_scene load_steps=3 format=3 uid="uid://hawtudqu0i81"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ajtab"]
+[ext_resource type="Texture2D" uid="uid://bj5lgflu1s7fc" path="res://Assets/background/monde_principal/background_monde_principal_V2.0.png" id="1_r517e"]
+
+[node name="Main_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ajtab")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 626.0
+offset_bottom = 626.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+position = Vector2(961.176, 541)
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("1_r517e")
+region_enabled = true
+region_rect = Rect2(0, 0, 1000, 500)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Control"]
+position = Vector2(957, 541)
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("1_r517e")
+region_enabled = true
+region_rect = Rect2(0, 500, 1000, 500)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Control"]
+position = Vector2(957, 541)
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("1_r517e")
+region_enabled = true
+region_rect = Rect2(0, 1000, 1000, 500)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Control"]
+position = Vector2(957, 541)
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("1_r517e")
+region_enabled = true
+region_rect = Rect2(0, 1500, 1000, 500)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Control"]
+position = Vector2(957, 541)
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("1_r517e")
+region_enabled = true
+region_rect = Rect2(0, 2000, 1000, 500)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Control"]
+position = Vector2(957, 541)
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("1_r517e")
+region_enabled = true
+region_rect = Rect2(0, 2500, 1000, 500)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 120
+
+[node name="separateur" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 14
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/font_size = 150
+text = "TITRE DU JEU"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="separateur" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="separateur2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="separateur3" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button_monde_test" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Monde test
+"
+
+[node name="Button_monde_principale" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Monde principale
+"
+
+[node name="Button_quitter" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Quitter
+"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Button_monde_test" to="." method="_on_button_monde_test_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Button_monde_principale" to="." method="_on_button_monde_principale_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Button_quitter" to="." method="_on_button_quitter_pressed"]
