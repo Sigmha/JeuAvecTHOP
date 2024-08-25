@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://btxfcmjx1tg57"]
+[gd_scene load_steps=36 format=3 uid="uid://btxfcmjx1tg57"]
 
 [ext_resource type="PackedScene" uid="uid://b43h0vguqe8jw" path="res://Scenes/player.tscn" id="1_qbcf1"]
 [ext_resource type="Script" path="res://Scripts/monde_principale.gd" id="1_qmpw3"]
@@ -6,9 +6,11 @@
 [ext_resource type="Script" path="res://Scenes/Camera2D_monde_principale.gd" id="2_txt8p"]
 [ext_resource type="Texture2D" uid="uid://xbygtleelwa" path="res://Assets/tileset/tileset_dehors_V1.2.png" id="3_gs48f"]
 [ext_resource type="Texture2D" uid="uid://bj5lgflu1s7fc" path="res://Assets/background/monde_principal/background_monde_principal_V2.0.png" id="5_pvd1c"]
+[ext_resource type="Texture2D" uid="uid://bbdl1sfktwnms" path="res://Assets/tileset/tileset_dehors_V1.3.png" id="5_rrkw1"]
 [ext_resource type="Shader" path="res://Scenes/shader/monde_principale_water.gdshader" id="6_77anr"]
 [ext_resource type="Texture2D" uid="uid://bddafkpqodw6k" path="res://Assets/Player/player_fishingV1.0.png" id="7_8v4v6"]
 [ext_resource type="Texture2D" uid="uid://c75br5ys7rp6n" path="res://Assets/intro/light.png" id="7_cabwj"]
+[ext_resource type="Texture2D" uid="uid://de8c600r3gxlk" path="res://Assets/decoration/maison_joueurV2.png" id="10_d288r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_32q56"]
 texture = ExtResource("2_o3pmo")
@@ -210,11 +212,54 @@ texture_region_size = Vector2i(32, 32)
 17:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 17:2/0/physics_layer_0/angular_velocity = 0.0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mncp6"]
+texture = ExtResource("5_rrkw1")
+texture_region_size = Vector2i(32, 32)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -15.0339, 16, -15.0339, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -15.0339, 16, -15.0339, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -15.0339, 16, -15.0339, 16, 16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -15.0339, 16, -15.0339, 16, 16, -16, 16)
+4:1/0 = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -15.0339, 16, -15.0339, 16, 16, -16, 16)
+16:1/0 = 0
+16:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+16:1/0/physics_layer_0/angular_velocity = 0.0
+16:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+17:1/0 = 0
+17:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+17:1/0/physics_layer_0/angular_velocity = 0.0
+17:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -15.0339, 16, -15.0339, 16, 16, -16, 16)
+18:1/0 = 0
+18:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+18:1/0/physics_layer_0/angular_velocity = 0.0
+18:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -15.0339, 16, -15.0339, 16, 16, -16, 16)
+16:2/0 = 0
+16:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+16:2/0/physics_layer_0/angular_velocity = 0.0
+16:3/0 = 0
+16:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+16:3/0/physics_layer_0/angular_velocity = 0.0
+
 [sub_resource type="TileSet" id="TileSet_7kd8v"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_32q56")
 sources/1 = SubResource("TileSetAtlasSource_xhj6k")
+sources/2 = SubResource("TileSetAtlasSource_mncp6")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i8ifm"]
 atlas = ExtResource("5_pvd1c")
@@ -289,70 +334,6 @@ shader_parameter/wave_strength = 2.0
 shader_parameter/scale_y = 2500.0
 shader_parameter/y_zoom = 0.4
 shader_parameter/fast_noise = SubResource("NoiseTexture2D_5wksg")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kqr3m"]
-atlas = ExtResource("7_8v4v6")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v10xc"]
-atlas = ExtResource("7_8v4v6")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5pobp"]
-atlas = ExtResource("7_8v4v6")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mbao7"]
-atlas = ExtResource("7_8v4v6")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7y0kp"]
-atlas = ExtResource("7_8v4v6")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eofk0"]
-atlas = ExtResource("7_8v4v6")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y6637"]
-atlas = ExtResource("7_8v4v6")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ttk34"]
-atlas = ExtResource("7_8v4v6")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ejgx6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kqr3m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v10xc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5pobp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mbao7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7y0kp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eofk0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y6637")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ttk34")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="Animation" id="Animation_87ykm"]
 resource_name = "intro"
@@ -519,6 +500,70 @@ _data = {
 "intro": SubResource("Animation_87ykm")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqr3m"]
+atlas = ExtResource("7_8v4v6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v10xc"]
+atlas = ExtResource("7_8v4v6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pobp"]
+atlas = ExtResource("7_8v4v6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbao7"]
+atlas = ExtResource("7_8v4v6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y0kp"]
+atlas = ExtResource("7_8v4v6")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eofk0"]
+atlas = ExtResource("7_8v4v6")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6637"]
+atlas = ExtResource("7_8v4v6")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttk34"]
+atlas = ExtResource("7_8v4v6")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ejgx6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqr3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v10xc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pobp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbao7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7y0kp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eofk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6637")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttk34")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Monde_principale" type="Node2D"]
 script = ExtResource("1_qmpw3")
 
@@ -531,10 +576,13 @@ position = Vector2(96, -49)
 scale = Vector2(6.582, 6.582)
 tile_set = SubResource("TileSet_7kd8v")
 format = 2
-layer_0/tile_data = PackedInt32Array(65529, 131073, 2, -7, 1114113, 1, -6, 327681, 1, -5, 327681, 1, -4, 589825, 1, -3, 458753, 1, -2, 131073, 1, -1, 262145, 1, -65536, 458753, 1, -65535, 327681, 1, -65534, 393217, 1, -65533, 327681, 1, -65532, 131073, 1, -65531, 393217, 1, -65530, 393217, 1, -65529, 589825, 1, -65528, 458753, 1, -65527, 327681, 1, -65526, 655361, 1, -65525, 524289, 1, -65524, 131073, 1, -65523, 131073, 1, -65522, 524289, 1, -65521, 393217, 1, -65520, 458753, 1, -65519, 524289, 1, -65518, 131073, 1, -65517, 327681, 1, -65516, 327681, 1, -65515, 131073, 1, -65514, 458753, 1, -65513, 458753, 1, -65512, 589825, 1, -65511, 393216, 1, -65510, 589824, 1, -65509, 524288, 1, -65508, 196608, 1, -65507, 720896, 1, 29, 720897, 2, 28, 393217, 2, 27, 589825, 2, 26, 458753, 2, 25, 655361, 2, 24, 393217, 2, 23, 196609, 2, 22, 589825, 2, 21, 524289, 2, 20, 327681, 2, 19, 524289, 2, 18, 589825, 2, 17, 458753, 2, 16, 589825, 2, 15, 458753, 2, 14, 393217, 2, 13, 327681, 2, 12, 327681, 2, 11, 196609, 2, 10, 458753, 2, 9, 458753, 2, 8, 655361, 2, 7, 589825, 2, 6, 262145, 2, 5, 589825, 2, 4, 327681, 2, 3, 196609, 2, 2, 589825, 2, 1, 589825, 2, 0, 720897, 2, 65535, 655361, 2, 65534, 655361, 2, 65533, 262145, 2, 65532, 458753, 2, 65531, 524289, 2, 65530, 655361, 2, -8, 1048577, 1, 65527, 983041, 2)
+layer_0/tile_data = PackedInt32Array(-7, 1179650, 1, -6, 65538, 1, -5, 65538, 1, -4, 262146, 1, -3, 65538, 1, -2, 131074, 1, -1, 65538, 1, -65536, 196610, 1, -65535, 131074, 1, -65534, 65538, 1, -65533, 65538, 1, -65532, 196610, 1, -65531, 262146, 1, -65530, 65538, 1, -65529, 131074, 1, -65528, 65538, 1, -65527, 65538, 1, -65526, 65538, 1, -65525, 262146, 1, -65524, 196610, 1, -65523, 65538, 1, -65522, 262146, 1, -65521, 262146, 1, -9, 1048578, 1, -8, 1114114, 1)
+layer_1/name = "devant"
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array(-65545, 1048578, 2, -9, 1048578, 3)
 
 [node name="Player" parent="." instance=ExtResource("1_qbcf1")]
-position = Vector2(419, -217)
+position = Vector2(425, -266)
 scale = Vector2(6.582, 6.582)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -602,22 +650,17 @@ texture = ExtResource("5_pvd1c")
 region_enabled = true
 region_rect = Rect2(0, 2500, 1000, 500)
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="eau" type="ColorRect" parent="."]
+z_index = 10
 material = SubResource("ShaderMaterial_cdqng")
-offset_left = -4069.0
-offset_top = 5.0
-offset_right = -3843.0
-offset_bottom = 226.0
+offset_left = -4054.0
+offset_top = -150.0
+offset_right = -3828.0
+offset_bottom = 71.0
 scale = Vector2(301.995, 2.58859)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1598, -162)
-scale = Vector2(6.582, 6.582)
-sprite_frames = SubResource("SpriteFrames_ejgx6")
-autoplay = "default"
-frame_progress = 0.411714
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+active = false
 libraries = {
 "": SubResource("AnimationLibrary_0nfo2")
 }
@@ -633,7 +676,7 @@ region_enabled = true
 region_rect = Rect2(1989.3, 3000, 1000, 500)
 
 [node name="PointLight2D" type="PointLight2D" parent="AnimationPlayer"]
-position = Vector2(-2000, -950)
+position = Vector2(-2003.44, -1032.44)
 color = Color(0.678431, 0.666667, 0.666667, 1)
 energy = 0.0
 range_layer_min = -100
@@ -643,10 +686,11 @@ texture_scale = 0.01
 [node name="Control" type="Control" parent="AnimationPlayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -2000.0
-offset_top = -450.0
-offset_right = -1960.0
-offset_bottom = -410.0
+offset_left = -2003.44
+offset_top = -532.44
+offset_right = -1963.44
+offset_bottom = -492.44
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="AnimationPlayer/Control"]
 z_index = 10
@@ -658,6 +702,7 @@ offset_bottom = -344.0
 scale = Vector2(10.84, 10.84)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "TITRE"
+metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="AnimationPlayer/Control"]
 z_index = 10
@@ -671,3 +716,20 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "a game by
 Athur (rajoute ton nom j'ai peur de le massacrer ^^)
 Thomas DELLAGIACOMA"
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimationPlayer"]
+position = Vector2(-1813, -298)
+scale = Vector2(6.582, 6.582)
+sprite_frames = SubResource("SpriteFrames_ejgx6")
+autoplay = "default"
+frame = 4
+frame_progress = 0.306632
+
+[node name="decoration" type="Node2D" parent="."]
+
+[node name="MaisonJoueurV2" type="Sprite2D" parent="decoration"]
+z_index = -1
+position = Vector2(1089, -492)
+scale = Vector2(7.4785, 7.4785)
+texture = ExtResource("10_d288r")
