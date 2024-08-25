@@ -1,6 +1,8 @@
 extends State
 class_name PlayerCombatMove
 
+signal changed_stance
+
 @export var character:Player
 @export var character_collision:CollisionShape2D
 @export var body_sprite:AnimatedSprite2D
@@ -9,13 +11,15 @@ class_name PlayerCombatMove
 
 var init_collision_position:Vector2
 var move_speed := 500
+var arm_frame:int
+var stance:String
 
 func Enter():
 	body_sprite.visible = true
 	arm_sprite.visible = true
 	character_collision.position.x = character.init_collision_player_position.x
-	body_sprite.set_frame(0)
-	arm_sprite.set_frame(0)
+	body_sprite.play("idle")
+	_on_changed_stance()
 
 func Exit():
 	body_sprite.visible = false
@@ -25,13 +29,15 @@ func Update(_delta):
 	pass
 
 func Physics_Update(delta):
+	if stance != character.get_stance():
+		changed_stance.emit()
+	
 	var looking_direction:int = character.get_looking_direction()
-	var stance = character.get_stance()
 	var distance_weapon = character.get_distance_weapon(stance)
+	arm_frame = arm_sprite.get_frame()
 	
 	set_looking_side(looking_direction)
-	set_stance_sprite(stance)
-	weapon.set_weapon_position(looking_direction, distance_weapon, 0, stance)
+	weapon.set_weapon_position(looking_direction, distance_weapon, 0, stance, arm_frame)
 	
 	var touched = character.touched
 	if touched:
@@ -63,10 +69,18 @@ func set_looking_side(looking_direction):
 		body_sprite.flip_h = true
 		arm_sprite.flip_h = true
 
-func set_stance_sprite(stance):
-	if stance == "high":
-		arm_sprite.animation = "HighArm"
-	elif stance == "medium":
-		arm_sprite.animation = "MediumArm"
+func set_stance_sprite(new_stance):
+	var arm_animation:String
+	if new_stance == "high":
+		arm_animation= "HighArmIdle"
+	elif new_stance == "medium":
+		arm_animation = "MediumArmIdle"
 	else:
-		arm_sprite.animation = "LowArm"
+		arm_animation = "LowArmIdle"
+	arm_sprite.set_frame(0)
+	arm_sprite.play(arm_animation)
+
+func _on_changed_stance():
+	stance = character.get_stance()
+	set_stance_sprite(stance)
+	body_sprite.set_frame(0)

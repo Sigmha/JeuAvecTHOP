@@ -39,17 +39,17 @@ func _physics_process(delta):
 #l'épée en idle et en attaque pour les 3 stances
 #Retourne la position de l'épée selon la stance et si on attaque ou non
 func get_distance_weapon(stance):
-	var distance_weapon_idle: Vector2
-	var distance_weapon_attack: Vector2
+	var distance_weapon_idle = []
+	var distance_weapon_attack = []
 	if stance == "high":
-		distance_weapon_idle = Vector2i(8, -23) 
-		distance_weapon_attack = Vector2i(16, -23)
+		distance_weapon_idle = [Vector2(8, -23), Vector2(8, -22), Vector2(8, -23), Vector2(8, -24)] 
+		distance_weapon_attack = [Vector2(8, -23), Vector2(9, -23), Vector2(16, -22)]
 	elif stance == "medium":
-		distance_weapon_idle = Vector2i(8, -18)
-		distance_weapon_attack = Vector2i(16, -17)
+		distance_weapon_idle = [Vector2(8, -18), Vector2(8, -17), Vector2(8, -18), Vector2(8, -19)] 
+		distance_weapon_attack = [Vector2(8, -18), Vector2(9, -18), Vector2(16, -16)]
 	else:
-		distance_weapon_idle = Vector2i(8, -10)
-		distance_weapon_attack = Vector2i(16, -10)
+		distance_weapon_idle = [Vector2(8, -10), Vector2(8, -9), Vector2(8, -10), Vector2(8, -11)] 
+		distance_weapon_attack = [Vector2(8, -10), Vector2(9, -11), Vector2(16, -9)]
 	return [distance_weapon_idle, distance_weapon_attack]
 
 #Renvoie la stance actuelle

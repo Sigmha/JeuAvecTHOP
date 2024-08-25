@@ -18,7 +18,7 @@ func _ready():
 #Change la position de l'épée en fonction de la direction dans laquelle on
 #regarde, si on est en train d'attaquer et la stance.
 #La stance se fait automatiquement avec les valeurs données par distance_weapon
-func set_weapon_position(looking_direction, distance_weapon, attacking, stance):
+func set_weapon_position(looking_direction, distance_weapon, attacking, stance, arm_frame):
 	if looking_direction == 1:
 		if !attacking:
 			if stance == "high":
@@ -28,13 +28,12 @@ func set_weapon_position(looking_direction, distance_weapon, attacking, stance):
 			else:
 				rotation = PI/12
 			weapon_sprite.flip_h = false
-			position = distance_weapon[0]
+			position = distance_weapon[0][arm_frame]
 			weapon_collision.position.x = weapon_length - collison_weapon_size.x / 2
 			play_once_attacking = false
-		elif !play_once_attacking:
-			position = distance_weapon[1]
+		else:
+			position = distance_weapon[1][arm_frame]
 			rotation = 0
-			play_once_attacking = true
 	elif looking_direction == -1:
 		if !attacking:
 			if stance == "high":
@@ -45,12 +44,11 @@ func set_weapon_position(looking_direction, distance_weapon, attacking, stance):
 				rotation = -PI/12
 			weapon_sprite.flip_h = true
 			weapon_collision.position.x = collison_weapon_size.x / 2
-			position = Vector2(-1, 1) * distance_weapon[0] - Vector2(weapon_length * cos(rotation), + weapon_length * sin(rotation)) 
+			position = Vector2(-1, 1) * distance_weapon[0][arm_frame] - Vector2(weapon_length * cos(rotation), + weapon_length * sin(rotation)) 
 			play_once_attacking = false
-		elif !play_once_attacking:
-			position = Vector2(-1, 1) * distance_weapon[1] - Vector2(weapon_length, 0)
+		else:
+			position = Vector2(-1, 1) * distance_weapon[1][arm_frame] - Vector2(weapon_length, 0)
 			rotation = 0
-			play_once_attacking = true
 
 func set_dummy_weapon_position(looking_direction, distance_weapon, attacking, stance):
 	if looking_direction == 1:
