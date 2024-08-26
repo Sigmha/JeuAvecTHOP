@@ -14,6 +14,7 @@ var rolling_timer:float
 var looking_direction:int
 
 func Enter():
+	character.actual_state = 'rooling'
 	rolling_sprite.speed_scale = 1 / rolling_time
 	rolling_speed = rolling_distance / rolling_time
 	rolling_timer = rolling_time

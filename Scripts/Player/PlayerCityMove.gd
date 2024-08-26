@@ -11,6 +11,7 @@ var init_collision_position:Vector2
 var immobile_timer: float
 
 func Enter():
+	character.actual_state = 'city move'
 	city_move_sprite.visible = true
 	weapon.disable_weapon()
 	

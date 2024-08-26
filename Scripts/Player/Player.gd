@@ -9,12 +9,13 @@ var is_in_fight:bool = true
 var init_collision_player_position:Vector2
 var attacking:bool
 var touched:bool = false
+var parried:bool = false
 var ennemy:CharacterBody2D
 var rooling_cooldown_timer
+var actual_state:String
 
 @onready var player_collision = $PlayerCollision
 @onready var touched_label:Label = $TouchedLabel
-@onready var touched_timer:Timer = $TouchedLabel/TouchedTimer
 @onready var state_machine = $StateMachine
 
 
@@ -24,7 +25,8 @@ func _ready():
 	init_collision_player_position = player_collision.position
 	win_size = get_viewport_rect().size
 
-func _physics_process(delta):	
+func _physics_process(delta):
+	touched_label.text = actual_state
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		move_and_slide()
@@ -74,10 +76,8 @@ func get_looking_direction():
 		return -1
 
 func _on_weapon_dummy_touched():
-	touched_label.text = "dummy touched"
-	touched_timer.start()
+	pass
 
 func _on_weapon_weapon_touched():
-	touched_label.text = "weapon touched"
-	touched_timer.start()
+	parried = true
 

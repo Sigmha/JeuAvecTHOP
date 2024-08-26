@@ -15,6 +15,7 @@ var ennemy:CharacterBody2D
 var falling_direction:int
 
 func Enter():
+	character.actual_state = 'hit'
 	hit_sprite.speed_scale = 1 / stun_timing
 	stun_timer = stun_timing
 	

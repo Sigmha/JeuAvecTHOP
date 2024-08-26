@@ -18,5 +18,4 @@ func _process(delta):
 func postition_joueur(delta):
 	var x = lerp(position,player.position, 5*delta)
 	var pos = Vector2(x[0],y_en_plus)
-	print(pos)
 	return pos
