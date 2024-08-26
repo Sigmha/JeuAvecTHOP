@@ -7,7 +7,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var win_size:Vector2
 var is_in_fight:bool = true
 var init_collision_player_position:Vector2
-var attacking:bool
+var attacking:bool = false
 var touched:bool = false
 var parried:bool = false
 var ennemy:CharacterBody2D
@@ -43,6 +43,7 @@ func _physics_process(delta):
 func get_distance_weapon(stance):
 	var distance_weapon_idle = []
 	var distance_weapon_attack = []
+	var distance_weapon_stun = [Vector2(10, -15), Vector2(6, -12), Vector2(2, -11)]
 	if stance == "high":
 		distance_weapon_idle = [Vector2(8, -23), Vector2(8, -22), Vector2(8, -23), Vector2(8, -24)] 
 		distance_weapon_attack = [Vector2(8, -23), Vector2(9, -23), Vector2(16, -22)]

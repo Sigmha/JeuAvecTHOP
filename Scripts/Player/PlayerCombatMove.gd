@@ -20,6 +20,7 @@ func Enter():
 	character.actual_state = "combat move"
 	body_sprite.visible = true
 	arm_sprite.visible = true
+	character.attacking = false
 	character_collision.position.x = character.init_collision_player_position.x
 	_on_changed_looking_direction()
 	_on_changed_stance()

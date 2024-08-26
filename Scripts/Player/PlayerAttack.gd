@@ -14,6 +14,7 @@ var distance_weapon
 
 func Enter():
 	character.actual_state = 'attack'
+	character.attacking = true
 	body_sprite.visible = true
 	arm_sprite.visible = true
 	looking_direction = character.get_looking_direction()

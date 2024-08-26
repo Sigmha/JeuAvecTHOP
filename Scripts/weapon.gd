@@ -30,8 +30,7 @@ func set_weapon_position(looking_direction, distance_weapon, attacking, stance, 
 			weapon_sprite.flip_h = false
 			position = distance_weapon[0][arm_frame]
 			weapon_collision.position.x = weapon_length - collison_weapon_size.x / 2
-			play_once_attacking = false
-		else:
+		elif attacking:
 			position = distance_weapon[1][arm_frame]
 			rotation = 0
 	elif looking_direction == -1:
@@ -45,7 +44,6 @@ func set_weapon_position(looking_direction, distance_weapon, attacking, stance, 
 			weapon_sprite.flip_h = true
 			weapon_collision.position.x = collison_weapon_size.x / 2
 			position = Vector2(-1, 1) * distance_weapon[0][arm_frame] - Vector2(weapon_length * cos(rotation), + weapon_length * sin(rotation)) 
-			play_once_attacking = false
 		else:
 			position = Vector2(-1, 1) * distance_weapon[1][arm_frame] - Vector2(weapon_length, 0)
 			rotation = 0
@@ -54,11 +52,11 @@ func set_dummy_weapon_position(looking_direction, distance_weapon, attacking, st
 	if looking_direction == 1:
 		if !attacking:
 			if stance == "high":
-				rotation = -PI/12
+				rotation = -PI/24
 			elif stance == "medium":
 				rotation = 0
 			else:
-				rotation = PI/12
+				rotation = PI/24
 			weapon_sprite.flip_h = false
 			position = distance_weapon[0]
 			weapon_collision.position.x = weapon_length - collison_weapon_size.x / 2
@@ -68,11 +66,11 @@ func set_dummy_weapon_position(looking_direction, distance_weapon, attacking, st
 	elif looking_direction == -1:
 		if !attacking:
 			if stance == "high":
-				rotation = PI/12
+				rotation = PI/24
 			elif stance == "medium":
 				rotation = 0
 			else:
-				rotation = -PI/12
+				rotation = -PI/24
 			weapon_sprite.flip_h = true
 			weapon_collision.position.x = collison_weapon_size.x / 2
 			position = Vector2(-1, 1) * distance_weapon[0] - Vector2(weapon_length * cos(rotation), + weapon_length * sin(rotation))

@@ -5,8 +5,8 @@ class_name PlayerRolling
 @export var character_collision:CollisionShape2D
 @export var rolling_sprite:AnimatedSprite2D
 @export var weapon:Weapon
-@export var rolling_time:float = 0.35
-@export var rolling_distance:float = 300
+@export var rolling_time:float = 0.5
+@export var rolling_distance:float = 400
 
 var init_collision_position:Vector2
 var rolling_speed:float 
@@ -25,10 +25,9 @@ func Enter():
 	rolling_sprite.visible = true
 	
 	looking_direction = character.get_looking_direction()
-	set_looking_side(looking_direction)
 	
+	play_rolling()
 	weapon.disable_weapon()
-	rolling_sprite.play("default")
 
 func Exit():
 	rolling_sprite.visible = false
@@ -47,9 +46,9 @@ func Physics_Update(delta):
 	else:
 		Transiotioned.emit(self,"PlayerCombatMove")
 
-func set_looking_side(_looking_direction):
-	if _looking_direction == 1:
-		rolling_sprite.flip_h = false
+func play_rolling():
+	if looking_direction == 1:
+		rolling_sprite.play("right")
 	
-	elif _looking_direction == -1:
-		rolling_sprite.flip_h = true
+	elif looking_direction == -1:
+		rolling_sprite.play("left")

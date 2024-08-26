@@ -6,7 +6,7 @@ class_name PlayerHit
 @export var hit_sprite:AnimatedSprite2D
 @export var weapon:Weapon
 @export var stun_timing: float = 1
-@export var pushed_velocity: float = 200
+@export var pushed_velocity: float = 800
 @export var coeff_frott: float = 10
 
 var init_collision_position:Vector2
@@ -16,6 +16,7 @@ var falling_direction:int
 
 func Enter():
 	character.actual_state = 'hit'
+	character.parried = false
 	hit_sprite.speed_scale = 1 / stun_timing
 	stun_timer = stun_timing
 	
@@ -26,7 +27,11 @@ func Enter():
 	character.set_collision_mask_value(2,false)
 	hit_sprite.visible = true
 	
-	hit_sprite.play("default")
+	if falling_direction == 1:
+		hit_sprite.play("right")
+	elif falling_direction == -1:
+		hit_sprite.play("left")
+	
 	weapon.disable_weapon()
 
 func Exit():
@@ -51,17 +56,15 @@ func Physics_Update(delta):
 func get_falling_direction():
 	var direction = ennemy.global_position.x - character.global_position.x
 	if direction > 0:
-		hit_sprite.flip_h = false
 		return 1
 	else:
-		hit_sprite.flip_h = true
 		return -1
 
 func pushed(delta):
 	if stun_timing < stun_timer * 14/10:
-		character.velocity.x = 500
+		character.velocity.x = pushed_velocity
 	elif stun_timing < stun_timer * 14/6:
-		character.velocity.x = character.velocity.x * exp(- coeff_frott * delta)
+		character.velocity.x *= exp(- coeff_frott * delta)
 	else:
 		character.velocity.x = 0
 	character.position.x += - falling_direction * character.velocity.x * delta	
