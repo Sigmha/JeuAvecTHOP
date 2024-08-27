@@ -1,11 +1,11 @@
-[gd_scene load_steps=130 format=3 uid="uid://b43h0vguqe8jw"]
+[gd_scene load_steps=140 format=3 uid="uid://b43h0vguqe8jw"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_na8sa"]
 [ext_resource type="PackedScene" uid="uid://bc5ea8icchh2o" path="res://Scenes/weapon.tscn" id="2_ii4go"]
 [ext_resource type="Texture2D" uid="uid://dcmmn2v367p2v" path="res://Assets/Player/test_player_AttackMove_left_spritesheet.png" id="3_khyeq"]
-[ext_resource type="Texture2D" uid="uid://bu4fujg5jd5hy" path="res://Assets/Player/test_player_spritesheet.png" id="4_c7r1f"]
 [ext_resource type="Texture2D" uid="uid://cipctxnwxvbd" path="res://Assets/Player/test_player_AttackMove_right_spritesheet.png" id="4_k6b8x"]
 [ext_resource type="Script" path="res://Scripts/Player/StateMachine.gd" id="5_q3hq0"]
+[ext_resource type="Texture2D" uid="uid://br0hkp7m8j76q" path="res://Assets/Player/test_player_CityMove_spritesheet.png" id="5_xyw0r"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCombatMove.gd" id="6_sjw7j"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAttack.gd" id="7_mhdk2"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerHit.gd" id="9_ifbag"]
@@ -773,86 +773,166 @@ animations = [{
 "speed": 14.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j7hbc"]
-atlas = ExtResource("4_c7r1f")
-region = Rect2(0, 256, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn4gr"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(0, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_23drh"]
-atlas = ExtResource("4_c7r1f")
-region = Rect2(32, 256, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8fsn"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(32, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pfm81"]
-atlas = ExtResource("4_c7r1f")
-region = Rect2(64, 256, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_abpar"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(64, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_70k0t"]
-atlas = ExtResource("4_c7r1f")
-region = Rect2(96, 256, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tg0dq"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(96, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lstpe"]
-atlas = ExtResource("4_c7r1f")
-region = Rect2(32, 224, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrb0s"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wwl7b"]
-atlas = ExtResource("4_c7r1f")
-region = Rect2(64, 224, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf1n6"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nx5eg"]
-atlas = ExtResource("4_c7r1f")
-region = Rect2(96, 224, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_phgvk"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(64, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pbtbq"]
-atlas = ExtResource("4_c7r1f")
-region = Rect2(128, 224, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dj5d"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(96, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qyjlj"]
-atlas = ExtResource("4_c7r1f")
-region = Rect2(160, 224, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_kc8xf"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(0, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sejmj"]
-atlas = ExtResource("4_c7r1f")
-region = Rect2(0, 224, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_doqh0"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ri7ru"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_howfn"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgvvv"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj2l7"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m21wy"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6lk7"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0usqr"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_348br"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnw82"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bei4"]
+atlas = ExtResource("5_xyw0r")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0exs4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j7hbc")
+"texture": SubResource("AtlasTexture_vn4gr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_23drh")
+"texture": SubResource("AtlasTexture_p8fsn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pfm81")
+"texture": SubResource("AtlasTexture_abpar")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_70k0t")
+"texture": SubResource("AtlasTexture_tg0dq")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"Idle_left",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lstpe")
+"texture": SubResource("AtlasTexture_lrb0s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wwl7b")
+"texture": SubResource("AtlasTexture_yf1n6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nx5eg")
+"texture": SubResource("AtlasTexture_phgvk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pbtbq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qyjlj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sejmj")
+"texture": SubResource("AtlasTexture_2dj5d")
 }],
 "loop": true,
-"name": &"Walk",
+"name": &"Idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kc8xf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doqh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ri7ru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_howfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgvvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj2l7")
+}],
+"loop": true,
+"name": &"Walk_left",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m21wy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6lk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0usqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_348br")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnw82")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bei4")
+}],
+"loop": true,
+"name": &"Walk_right",
 "speed": 7.0
 }]
 
@@ -980,7 +1060,7 @@ animation = &"left"
 visible = false
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_0exs4")
-animation = &"Idle"
+animation = &"Walk_left"
 
 [node name="Stun" type="AnimatedSprite2D" parent="PlayerSpriteComposition"]
 visible = false
@@ -1050,3 +1130,5 @@ weapon = NodePath("../../Weapon")
 [connection signal="weapon_touched" from="Weapon" to="." method="_on_weapon_weapon_touched"]
 [connection signal="changed_looking_direction" from="StateMachine/PlayerCombatMove" to="StateMachine/PlayerCombatMove" method="_on_changed_looking_direction"]
 [connection signal="changed_stance" from="StateMachine/PlayerCombatMove" to="StateMachine/PlayerCombatMove" method="_on_changed_stance"]
+[connection signal="changed_looking_side" from="StateMachine/PlayerCityMove" to="StateMachine/PlayerCityMove" method="_on_changed_looking_side"]
+[connection signal="changed_movement" from="StateMachine/PlayerCityMove" to="StateMachine/PlayerCityMove" method="_on_changed_movement"]
