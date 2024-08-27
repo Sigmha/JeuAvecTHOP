@@ -11,7 +11,8 @@ class_name PlayerParried
 @export var arm_sprite:AnimatedSprite2D
 @export var stun_sprite:AnimatedSprite2D
 @export var weapon:Weapon
-
+@export var particules_sol:GPUParticles2D
+@export var particles_weapon:GPUParticles2D
 
 var move_speed:float
 var pushed_timer:float
@@ -24,9 +25,17 @@ var distance_weapon
 var direction:String
 
 func Enter():
+	
 	looking_direction = character.get_looking_direction()
 	stance = character.get_stance()
 	distance_weapon = character.get_distance_weapon(stance)
+	
+	particules_sol.emitting = true
+	if character.attacking:
+		particles_weapon.position = Vector2(looking_direction, 1) * distance_weapon[1][arm_sprite.get_frame()]
+	else:
+		particles_weapon.position = Vector2(looking_direction, 1) * (distance_weapon[0][arm_sprite.get_frame()] + weapon.weapon_length * Vector2(cos(weapon.rotation), looking_direction * sin(weapon.rotation)) )
+	particles_weapon.emitting = true
 	
 	move_speed = pushed_velocity
 	pushed_timer = pushed_time
@@ -60,19 +69,21 @@ func Physics_Update(delta):
 	if pushed_timer > 0:
 		character.global_position.x -= looking_direction * move_speed * delta
 		move_speed *=  exp(-coef_frott * delta)
-		character.move_and_slide()
 		pushed_timer -= delta
+		character.touched = false
 		
+		character.move_and_slide()
 		arm_frame = arm_sprite.get_frame()
 		weapon.set_weapon_position(looking_direction, distance_weapon, 0, stance, arm_frame)
-		character.touched = false
 	elif stun_timer > 0:
+		particules_sol.emitting = false
 		stun_timer -= delta
 	elif up_timer > 0:
 		stun_sprite.speed_scale = 1 / up_timer
 		stun_sprite.play("up" + direction)
 		up_timer -= delta
 	else:
+		particules_sol.emitting = false
 		Transiotioned.emit(self,"PlayerCombatMove")
 
 func play_stun_animation():

@@ -5,9 +5,10 @@ class_name PlayerHit
 @export var character_collision:CollisionShape2D
 @export var hit_sprite:AnimatedSprite2D
 @export var weapon:Weapon
+@export var particules_sol:GPUParticles2D
 @export var stun_timing: float = 1
 @export var pushed_velocity: float = 800
-@export var coeff_frott: float = 10
+@export var coeff_frott: float = 5
 
 var init_collision_position:Vector2
 var stun_timer: float
@@ -64,7 +65,9 @@ func pushed(delta):
 	if stun_timing < stun_timer * 14/10:
 		character.velocity.x = pushed_velocity
 	elif stun_timing < stun_timer * 14/6:
+		particules_sol.emitting = true
 		character.velocity.x *= exp(- coeff_frott * delta)
 	else:
+		particules_sol.emitting = false
 		character.velocity.x = 0
 	character.position.x += - falling_direction * character.velocity.x * delta	
