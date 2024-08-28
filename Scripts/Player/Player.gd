@@ -3,6 +3,7 @@ class_name Player
 
 @export var rooling_cooldown:float = 1
 
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var win_size:Vector2
 var is_in_fight:bool = true

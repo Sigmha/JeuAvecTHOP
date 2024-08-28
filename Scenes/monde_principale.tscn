@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c75br5ys7rp6n" path="res://Assets/intro/light.png" id="7_cabwj"]
 [ext_resource type="Texture2D" uid="uid://osseeaytwhne" path="res://Assets/background/monde_principal/background_monde_principaleV2.png" id="7_hfw42"]
 [ext_resource type="Texture2D" uid="uid://de8c600r3gxlk" path="res://Assets/decoration/maison_joueurV2.png" id="10_d288r"]
-[ext_resource type="Texture2D" uid="uid://mu0h86pchl1y" path="res://Assets/decoration/shopV1.png" id="13_hn726"]
+[ext_resource type="Texture2D" uid="uid://6pl5wsist5nd" path="res://Assets/decoration/shopV2.png" id="13_n67vc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_32q56"]
 texture = ExtResource("2_o3pmo")
@@ -653,4 +653,4 @@ texture = ExtResource("10_d288r")
 z_index = -1
 position = Vector2(2572, -557)
 scale = Vector2(6.582, 6.582)
-texture = ExtResource("13_hn726")
+texture = ExtResource("13_n67vc")
