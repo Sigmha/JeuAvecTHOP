@@ -1077,12 +1077,12 @@ position = Vector2(8, -18)
 [node name="BodySprite" type="AnimatedSprite2D" parent="PlayerSpriteComposition"]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_5idhf")
-animation = &"idle_right"
+animation = &"idle_left"
 
 [node name="Arm" type="AnimatedSprite2D" parent="PlayerSpriteComposition"]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_hcgma")
-animation = &"MediumArmAttack_right"
+animation = &"LowArmIdle_right"
 
 [node name="Rolling" type="AnimatedSprite2D" parent="PlayerSpriteComposition"]
 visible = false
