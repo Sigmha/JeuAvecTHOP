@@ -4,11 +4,12 @@ class_name PlayerCityMove
 signal changed_movement
 signal changed_looking_side
 
+@export var move_speed:int = 200
+@export_group("Necessary")
 @export var character:Player
 @export var character_collision:CollisionShape2D
 @export var city_move_sprite:AnimatedSprite2D
 @export var weapon:Weapon
-@export var move_speed:int = 200
 
 var init_collision_position:Vector2
 var immobile_timer:float

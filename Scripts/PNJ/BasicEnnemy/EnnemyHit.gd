@@ -1,11 +1,11 @@
 extends State
-class_name PlayerHit
+class_name EnnemyHit
 
 @export var stun_timing: float = 1
 @export var pushed_velocity: float = 800
 @export var coeff_frott: float = 5
 @export_group("Necessary")
-@export var character:Player
+@export var character:Ennemy
 @export var character_collision:CollisionShape2D
 @export var hit_sprite:AnimatedSprite2D
 @export var weapon:Weapon
@@ -13,7 +13,6 @@ class_name PlayerHit
 
 var init_collision_position:Vector2
 var stun_timer: float
-var ennemy:CharacterBody2D
 var falling_direction:int
 
 func Enter():
@@ -21,8 +20,6 @@ func Enter():
 	character.parried = false
 	hit_sprite.speed_scale = 1 / stun_timing
 	stun_timer = stun_timing
-	
-	ennemy = character.ennemy
 	falling_direction = get_falling_direction()
 	
 	character.set_collision_layer_value(2,false)
@@ -46,7 +43,7 @@ func Exit():
 
 func Update(delta):	
 	if stun_timer < 0:
-		Transiotioned.emit(self, "PlayerCombatMove")
+		Transiotioned.emit(self, "EnnemyCombatMove")
 	
 	stun_timer -= delta
 	
@@ -55,8 +52,7 @@ func Physics_Update(delta):
 	pushed(delta)
 
 func get_falling_direction():
-	var direction = ennemy.global_position.x - character.global_position.x
-	if direction > 0:
+	if character.distance_to_player > 0:
 		return 1
 	else:
 		return -1

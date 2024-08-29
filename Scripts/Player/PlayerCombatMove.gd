@@ -4,6 +4,7 @@ class_name PlayerCombatMove
 signal changed_stance
 signal changed_looking_direction
 
+@export_group("Necessary")
 @export var character:Player
 @export var character_collision:CollisionShape2D
 @export var body_sprite:AnimatedSprite2D
@@ -22,8 +23,8 @@ func Enter():
 	arm_sprite.visible = true
 	character.attacking = false
 	character_collision.position.x = character.init_collision_player_position.x
-	_on_changed_looking_direction()
-	_on_changed_stance()
+	changed_looking_direction.emit()
+	changed_looking_direction.emit()
 
 func Exit():
 	body_sprite.visible = false
@@ -44,8 +45,7 @@ func Physics_Update(delta):
 	weapon.set_weapon_position(looking_direction, distance_weapon, 0, stance, arm_frame)
 	
 	#Verifie si on a été touché
-	var touched = character.touched
-	if touched:
+	if character.touched:
 		Transiotioned.emit(self,"PlayerHit")
 	
 	#permet de se mettre en mode city

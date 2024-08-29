@@ -11,9 +11,12 @@ var init_collision_player_position:Vector2
 var attacking:bool = false
 var touched:bool = false
 var parried:bool = false
-var ennemy:CharacterBody2D
+var is_rolling:bool = false
 var rooling_cooldown_timer
 var actual_state:String
+var actual_stance:String
+var dummy:Dummy
+var ennemy:Ennemy
 
 @onready var player_collision = $PlayerCollision
 @onready var touched_label:Label = $TouchedLabel
@@ -21,8 +24,9 @@ var actual_state:String
 
 
 func _ready():
-	rooling_cooldown_timer = 0
+	dummy = get_tree().get_first_node_in_group("Dummy")
 	ennemy = get_tree().get_first_node_in_group("Ennemy")
+	rooling_cooldown_timer = 0
 	init_collision_player_position = player_collision.position
 	win_size = get_viewport_rect().size
 
@@ -65,6 +69,7 @@ func get_stance():
 		stance = "medium"
 	else:
 		stance = "low"
+	actual_stance = stance
 	return stance
 
 #Retourne là où on regarde se si la souris est à droite où à gauche du perso
@@ -82,3 +87,7 @@ func _on_weapon_dummy_touched():
 func _on_weapon_weapon_touched():
 	parried = true
 
+func _on_weapon_ennemy_touched():
+	HitStopManager.hit_stop_short()
+	ennemy.touched = true
+	

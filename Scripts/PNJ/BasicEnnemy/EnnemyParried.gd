@@ -1,5 +1,5 @@
 extends State
-class_name PlayerParried
+class_name EnnemyParried
 
 @export var pushed_time:float = 0.3
 @export var stun_time:float = 0.5
@@ -7,13 +7,12 @@ class_name PlayerParried
 @export var pushed_velocity:int = 700
 @export var coef_frott: float = 2
 @export_group("Necessary")
-@export var character:Player
+@export var character:Ennemy
 @export var body_sprite:AnimatedSprite2D
 @export var arm_sprite:AnimatedSprite2D
 @export var stun_sprite:AnimatedSprite2D
 @export var weapon:Weapon
 @export var particules_sol:GPUParticles2D
-@export var particles_weapon:GPUParticles2D
 
 var move_speed:float
 var pushed_timer:float
@@ -28,16 +27,10 @@ var direction:String
 func Enter():
 	
 	looking_direction = character.get_looking_direction()
-	stance = character.get_stance()
+	stance = character.actual_stance
 	distance_weapon = character.get_distance_weapon(stance)
 	
 	particules_sol.emitting = true
-	if character.attacking:
-		particles_weapon.position = Vector2(looking_direction, 1) * distance_weapon[1][arm_sprite.get_frame()]
-	else:
-		particles_weapon.position = Vector2(looking_direction, 1) * (distance_weapon[0][arm_sprite.get_frame()] + weapon.weapon_length * Vector2(cos(weapon.rotation), looking_direction * sin(weapon.rotation)) )
-	particles_weapon.emitting = true
-	
 	move_speed = pushed_velocity
 	pushed_timer = pushed_time
 	
@@ -68,7 +61,7 @@ func Update(_delta):
 
 func Physics_Update(delta):
 	if character.touched:
-		Transiotioned.emit(self,"PlayerHit")
+		Transiotioned.emit(self,"EnnemyHit")
 	
 	if pushed_timer > 0:
 		character.global_position.x -= looking_direction * move_speed * delta
@@ -88,7 +81,7 @@ func Physics_Update(delta):
 		up_timer -= delta
 	else:
 		particules_sol.emitting = false
-		Transiotioned.emit(self,"PlayerCombatMove")
+		Transiotioned.emit(self,"EnnemyCombatMove")
 
 func play_stun_animation():
 	stun_sprite.speed_scale = 1 / pushed_time

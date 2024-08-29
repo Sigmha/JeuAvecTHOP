@@ -4,6 +4,7 @@ class_name Weapon
 signal weapon_touched
 signal dummy_touched
 signal player_touched
+signal ennemy_touched
 
 var weapon_length: int = 16
 var collison_weapon_size: Vector2
@@ -93,6 +94,8 @@ func _on_body_entered(body):
 		dummy_touched.emit()
 	elif body is Player:
 		player_touched.emit()
+	elif body is Ennemy:
+		ennemy_touched.emit()
 
 func _on_area_entered(area):
 	if area is Weapon:

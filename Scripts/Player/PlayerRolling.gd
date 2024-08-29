@@ -1,12 +1,13 @@
 extends State
 class_name PlayerRolling
 
+@export var rolling_time:float = 0.5
+@export var rolling_distance:float = 400
+@export_group("Necessary")
 @export var character:Player
 @export var character_collision:CollisionShape2D
 @export var rolling_sprite:AnimatedSprite2D
 @export var weapon:Weapon
-@export var rolling_time:float = 0.5
-@export var rolling_distance:float = 400
 
 var init_collision_position:Vector2
 var rolling_speed:float 
@@ -14,6 +15,7 @@ var rolling_timer:float
 var looking_direction:int
 
 func Enter():
+	character.is_rolling = true
 	character.actual_state = 'rooling'
 	rolling_sprite.speed_scale = 1 / rolling_time
 	rolling_speed = rolling_distance / rolling_time
@@ -31,6 +33,7 @@ func Enter():
 
 func Exit():
 	rolling_sprite.visible = false
+	character.is_rolling = false
 	character.set_collision_layer_value(2,true)
 	character.set_collision_mask_value(2,true)
 	rolling_sprite.stop()

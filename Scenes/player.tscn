@@ -1020,7 +1020,7 @@ interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.110294, 0.227941, 0.867647)
 colors = PackedColorArray(0.37989, 0.279806, 0.121953, 1, 0.518667, 0.386022, 0.173938, 1, 0.313726, 0.47451, 0.184314, 1, 0.244947, 0.307895, 0.132012, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_00tld"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vf2sm"]
 gradient = SubResource("Gradient_vqy1a")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_33lle"]
@@ -1034,7 +1034,7 @@ initial_velocity_max = 40.0
 gravity = Vector3(0, 980, 0)
 scale_min = 5.0
 scale_max = 10.0
-color_initial_ramp = SubResource("GradientTexture1D_00tld")
+color_initial_ramp = SubResource("GradientTexture1D_vf2sm")
 
 [sub_resource type="Gradient" id="Gradient_aydfa"]
 offsets = PackedFloat32Array(0, 0.419118, 1)
@@ -1077,7 +1077,7 @@ position = Vector2(8, -18)
 [node name="BodySprite" type="AnimatedSprite2D" parent="PlayerSpriteComposition"]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_5idhf")
-animation = &"idle_left"
+animation = &"attack_right"
 
 [node name="Arm" type="AnimatedSprite2D" parent="PlayerSpriteComposition"]
 position = Vector2(0, -16)
@@ -1094,7 +1094,7 @@ animation = &"left"
 visible = false
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_ey3xb")
-animation = &"left"
+animation = &"right"
 
 [node name="CityMove" type="AnimatedSprite2D" parent="PlayerSpriteComposition"]
 visible = false
@@ -1153,14 +1153,16 @@ weapon = NodePath("../../Weapon")
 
 [node name="PlayerCityMove" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "character_collision", "city_move_sprite", "weapon")]
 script = ExtResource("11_r5y8r")
+move_speed = 300
 character = NodePath("../..")
 character_collision = NodePath("../../PlayerCollision")
 city_move_sprite = NodePath("../../PlayerSpriteComposition/CityMove")
 weapon = NodePath("../../Weapon")
-move_speed = 300
 
 [node name="PlayerParried" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "body_sprite", "arm_sprite", "stun_sprite", "weapon", "particules_sol", "particles_weapon")]
 script = ExtResource("13_pxp85")
+stun_time = 1.0
+pushed_velocity = 500
 character = NodePath("../..")
 body_sprite = NodePath("../../PlayerSpriteComposition/BodySprite")
 arm_sprite = NodePath("../../PlayerSpriteComposition/Arm")
@@ -1190,6 +1192,7 @@ explosiveness = 1.0
 randomness = 0.2
 
 [connection signal="dummy_touched" from="Weapon" to="." method="_on_weapon_dummy_touched"]
+[connection signal="ennemy_touched" from="Weapon" to="." method="_on_weapon_ennemy_touched"]
 [connection signal="weapon_touched" from="Weapon" to="." method="_on_weapon_weapon_touched"]
 [connection signal="changed_looking_direction" from="StateMachine/PlayerCombatMove" to="StateMachine/PlayerCombatMove" method="_on_changed_looking_direction"]
 [connection signal="changed_stance" from="StateMachine/PlayerCombatMove" to="StateMachine/PlayerCombatMove" method="_on_changed_stance"]

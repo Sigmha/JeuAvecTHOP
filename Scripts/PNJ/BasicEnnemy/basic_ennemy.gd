@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Ennemy
 
+@export var attacking_distance:int = 35
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var win_size:Vector2
 var init_collision_ennemy_position:Vector2
@@ -9,10 +11,13 @@ var touched:bool = false
 var parried:bool = false
 var player:CharacterBody2D
 var actual_state:String
+var actual_stance:String
+var distance_to_player: float
 
-@onready var ennemy_collision = $PlayerCollision
+@onready var ennemy_collision = $Collision
 @onready var state_machine = $StateMachine
-
+@onready var label = $Label
+@onready var label_2 = $Label2
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Joueur")
@@ -20,10 +25,14 @@ func _ready():
 	win_size = get_viewport_rect().size
 
 func _physics_process(delta):
+	distance_to_player = player.global_position.x - self.global_position.x
+	label.text = str(touched)
+	label_2.text = actual_state
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		move_and_slide()
-
+	
 #A CHANGER SI ON CHANGE LE SPRITE, reprendre les mesures pour la position de
 #l'épée en idle et en attaque pour les 3 stances
 #Retourne la position de l'épée selon la stance et si on attaque ou non
@@ -43,15 +52,23 @@ func get_distance_weapon(stance):
 
 #Renvoie la stance actuelle
 func new_stance():
+	if player:
+		if player.attacking:
+			return player.actual_stance
+		else:
+			return rand_stance()
+	else:
+		return rand_stance()
+
+func rand_stance():
 	var stance_tab = ["high", "medium", "low"]
 	var rand_stance = randi_range(0, 2)
+	actual_stance = stance_tab[rand_stance]
 	return stance_tab[rand_stance]
 
 #Retourne là où on regarde se si la souris est à droite où à gauche du perso
 func get_looking_direction():
-	var player_position_x = player.global_position.x
-	var direction = player_position_x - self.global_position.x
-	if direction > 0:
+	if distance_to_player > 0:
 		return 1
 	else:
 		return -1
@@ -59,3 +76,6 @@ func get_looking_direction():
 func _on_weapon_weapon_touched():
 	parried = true
 
+func _on_weapon_player_touched():
+	HitStopManager.hit_stop_short()
+	player.touched = true
