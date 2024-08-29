@@ -520,7 +520,7 @@ region_rect = Rect2(0, 360, 640, 360)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-48, 248)
-motion_scale = Vector2(0, 0)
+motion_scale = Vector2(0.01, 0)
 
 [node name="tour" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2(1000.22, 287)
