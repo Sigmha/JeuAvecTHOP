@@ -62,9 +62,9 @@ func new_stance():
 
 func rand_stance():
 	var stance_tab = ["high", "medium", "low"]
-	var rand_stance = randi_range(0, 2)
-	actual_stance = stance_tab[rand_stance]
-	return stance_tab[rand_stance]
+	var rand_number = randi_range(0, 2)
+	actual_stance = stance_tab[rand_number]
+	return stance_tab[rand_number]
 
 #Retourne là où on regarde se si la souris est à droite où à gauche du perso
 func get_looking_direction():

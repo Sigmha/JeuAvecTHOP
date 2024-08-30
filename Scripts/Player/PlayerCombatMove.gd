@@ -16,6 +16,7 @@ var move_speed := 500
 var arm_frame:int
 var looking_direction:int
 var stance:String
+var distance_weapon
 
 func Enter():
 	character.actual_state = "combat move"
@@ -24,7 +25,9 @@ func Enter():
 	character.attacking = false
 	character_collision.position.x = character.init_collision_player_position.x
 	changed_looking_direction.emit()
-	changed_looking_direction.emit()
+	changed_stance.emit()
+	distance_weapon = character.get_distance_weapon(stance)
+	weapon.set_weapon_position(looking_direction, distance_weapon, 0, stance, arm_frame)
 
 func Exit():
 	body_sprite.visible = false
@@ -39,7 +42,7 @@ func Physics_Update(delta):
 	if looking_direction != character.get_looking_direction():
 		changed_looking_direction.emit()
 		
-	var distance_weapon = character.get_distance_weapon(stance)
+	distance_weapon = character.get_distance_weapon(stance)
 	arm_frame = arm_sprite.get_frame()
 	
 	weapon.set_weapon_position(looking_direction, distance_weapon, 0, stance, arm_frame)

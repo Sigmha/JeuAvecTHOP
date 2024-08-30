@@ -58,9 +58,9 @@ func get_falling_direction():
 		return -1
 
 func pushed(delta):
-	if stun_timing < stun_timer * 14/10:
+	if stun_timing < stun_timer * 13/10:
 		character.velocity.x = pushed_velocity
-	elif stun_timing < stun_timer * 14/6:
+	elif stun_timing < stun_timer * 13/6:
 		particules_sol.emitting = true
 		character.velocity.x *= exp(- coeff_frott * delta)
 	else:
