@@ -649,8 +649,8 @@ position = Vector2(1089, -492)
 scale = Vector2(7.4785, 7.4785)
 texture = ExtResource("10_d288r")
 
-[node name="ShopV1" type="Sprite2D" parent="."]
+[node name="ShopV1" type="Sprite2D" parent="decoration"]
 z_index = -1
-position = Vector2(2572, -557)
-scale = Vector2(6.582, 6.582)
+position = Vector2(2676.12, -455.532)
+scale = Vector2(4.95507, 4.32225)
 texture = ExtResource("13_n67vc")
