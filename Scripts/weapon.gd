@@ -80,12 +80,12 @@ func set_dummy_weapon_position(looking_direction, distance_weapon, attacking, st
 			rotation = 0
 
 func disable_weapon():
-	$WeaponCollision/ColorRect.visible = false
+	#$WeaponCollision/ColorRect.visible = false
 	weapon_sprite.visible = false
 	weapon_collision.disabled = true
 
 func enable_weapon():
-	$WeaponCollision/ColorRect.visible = true
+	#$WeaponCollision/ColorRect.visible = true
 	weapon_sprite.visible = true
 	weapon_collision.disabled = false
 

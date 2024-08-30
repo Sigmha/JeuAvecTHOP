@@ -1,4 +1,4 @@
-[gd_scene load_steps=146 format=3 uid="uid://b43h0vguqe8jw"]
+[gd_scene load_steps=144 format=3 uid="uid://b43h0vguqe8jw"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_na8sa"]
 [ext_resource type="PackedScene" uid="uid://bc5ea8icchh2o" path="res://Scenes/weapon.tscn" id="2_ii4go"]
@@ -592,10 +592,6 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t8n7j"]
-atlas = ExtResource("3_khyeq")
-region = Rect2(0, 160, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxdf2"]
 atlas = ExtResource("3_khyeq")
 region = Rect2(32, 160, 32, 32)
@@ -639,10 +635,6 @@ region = Rect2(128, 192, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4r7gx"]
 atlas = ExtResource("3_khyeq")
 region = Rect2(160, 192, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pa8ey"]
-atlas = ExtResource("4_k6b8x")
-region = Rect2(0, 160, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7qs1x"]
 atlas = ExtResource("4_k6b8x")
@@ -692,9 +684,6 @@ region = Rect2(160, 192, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t8n7j")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_kxdf2")
 }, {
 "duration": 1.0,
@@ -729,12 +718,9 @@ animations = [{
 }],
 "loop": false,
 "name": &"left",
-"speed": 14.0
+"speed": 13.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pa8ey")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7qs1x")
 }, {
@@ -770,7 +756,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"right",
-"speed": 14.0
+"speed": 13.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vn4gr"]
@@ -1094,7 +1080,7 @@ animation = &"left"
 visible = false
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_ey3xb")
-animation = &"right"
+animation = &"left"
 
 [node name="CityMove" type="AnimatedSprite2D" parent="PlayerSpriteComposition"]
 visible = false
@@ -1186,8 +1172,9 @@ fixed_fps = 180
 emitting = false
 amount = 32
 process_material = SubResource("ParticleProcessMaterial_rrmjq")
-lifetime = 0.15
+lifetime = 0.5
 one_shot = true
+speed_scale = 3.0
 explosiveness = 1.0
 randomness = 0.2
 

@@ -547,7 +547,7 @@ motion_scale = Vector2(0.1, 0)
 motion_mirroring = Vector2(1923, 0)
 
 [node name="foret_loin" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-position = Vector2(1006, 330)
+position = Vector2(1000, 330)
 scale = Vector2(3.00503, 3.00503)
 texture = ExtResource("7_hfw42")
 region_enabled = true
@@ -559,7 +559,7 @@ motion_scale = Vector2(0.3, 0)
 motion_mirroring = Vector2(1916, 0)
 
 [node name="foret_proche" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
-position = Vector2(1008, 305.5)
+position = Vector2(1000, 305.5)
 scale = Vector2(2.99444, 3.125)
 texture = ExtResource("7_hfw42")
 region_enabled = true

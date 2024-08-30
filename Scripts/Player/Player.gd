@@ -3,7 +3,6 @@ class_name Player
 
 @export var rooling_cooldown:float = 1
 
-
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var win_size:Vector2
 var is_in_fight:bool = true
@@ -15,13 +14,13 @@ var is_rolling:bool = false
 var rooling_cooldown_timer
 var actual_state:String
 var actual_stance:String
+var actual_looking_direction:int
 var dummy:Dummy
 var ennemy:Ennemy
 
 @onready var player_collision = $PlayerCollision
 @onready var touched_label:Label = $TouchedLabel
 @onready var state_machine = $StateMachine
-
 
 func _ready():
 	dummy = get_tree().get_first_node_in_group("Dummy")
@@ -31,7 +30,7 @@ func _ready():
 	win_size = get_viewport_rect().size
 
 func _physics_process(delta):
-	touched_label.text = actual_state
+	touched_label.text = str(int(self.global_position.y - get_global_mouse_position().y))
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		move_and_slide()
@@ -62,13 +61,14 @@ func get_distance_weapon(stance):
 #Renvoie la stance actuelle
 func get_stance():
 	var stance: String
-	var mouse_position = get_viewport().get_mouse_position()
-	if mouse_position.y < win_size.y / 3:
-		stance = "high"
-	elif mouse_position.y < 2 * win_size.y / 3:
+	var mouse_position_y = get_global_mouse_position().y
+	var dist_to_player = self.global_position.y - mouse_position_y
+	if dist_to_player < 11 * global_scale.x:
+		stance = "low"
+	elif dist_to_player < 22 * global_scale.x:
 		stance = "medium"
 	else:
-		stance = "low"
+		stance = "high"
 	actual_stance = stance
 	return stance
 
@@ -77,8 +77,10 @@ func get_looking_direction():
 	var mouse_position_x = get_global_mouse_position().x
 	var direction = mouse_position_x - self.global_position.x
 	if direction > 0:
+		actual_looking_direction = 1
 		return 1
 	else:
+		actual_looking_direction = -1
 		return -1
 
 func _on_weapon_dummy_touched():

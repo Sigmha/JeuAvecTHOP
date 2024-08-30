@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://c65yjd5w85phn"]
+[gd_scene load_steps=104 format=3 uid="uid://c65yjd5w85phn"]
 
 [ext_resource type="Script" path="res://Scripts/PNJ/BasicEnnemy/basic_ennemy.gd" id="1_5fk8c"]
 [ext_resource type="PackedScene" uid="uid://bc5ea8icchh2o" path="res://Scenes/weapon.tscn" id="1_th5qk"]
@@ -492,10 +492,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ubput"]
-atlas = ExtResource("2_jnn3u")
-region = Rect2(0, 160, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_632xi"]
 atlas = ExtResource("2_jnn3u")
 region = Rect2(32, 160, 32, 32)
@@ -539,10 +535,6 @@ region = Rect2(128, 192, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hchai"]
 atlas = ExtResource("2_jnn3u")
 region = Rect2(160, 192, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ev174"]
-atlas = ExtResource("3_ggjdr")
-region = Rect2(0, 160, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xtx55"]
 atlas = ExtResource("3_ggjdr")
@@ -592,9 +584,6 @@ region = Rect2(160, 192, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ubput")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_632xi")
 }, {
 "duration": 1.0,
@@ -629,12 +618,9 @@ animations = [{
 }],
 "loop": false,
 "name": &"left",
-"speed": 14.0
+"speed": 13.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ev174")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xtx55")
 }, {
@@ -670,7 +656,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"right",
-"speed": 14.0
+"speed": 13.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t5s1w"]
@@ -781,7 +767,7 @@ position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_33646")
 
 [node name="weapon" parent="." instance=ExtResource("1_th5qk")]
-position = Vector2(16, -9)
+position = Vector2(8, -10)
 
 [node name="SpriteComposition" type="Node2D" parent="."]
 modulate = Color(0.482353, 1, 0, 1)
@@ -795,7 +781,6 @@ animation = &"attack_right"
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_4li4l")
 animation = &"LowArmAttack_right"
-frame = 2
 
 [node name="Hit" type="AnimatedSprite2D" parent="SpriteComposition"]
 visible = false
