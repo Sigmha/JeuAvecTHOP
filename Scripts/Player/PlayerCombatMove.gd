@@ -4,6 +4,13 @@ class_name PlayerCombatMove
 signal changed_stance
 signal changed_looking_direction
 
+const EPEE_CURSEUR_BD = preload("res://Assets/curseur/epeeCurseurBD.png")
+const EPEE_CURSEUR_BG = preload("res://Assets/curseur/epeeCurseurBG.png")
+const EPEE_CURSEUR_HD = preload("res://Assets/curseur/epeeCurseurHD.png")
+const EPEE_CURSEUR_HG = preload("res://Assets/curseur/epeeCurseurHG.png")
+const EPEE_CURSEUR_MD = preload("res://Assets/curseur/epeeCurseurMD.png")
+const EPEE_CURSEUR_MG = preload("res://Assets/curseur/epeeCurseurMG.png")
+
 @export_group("Necessary")
 @export var character:Player
 @export var character_collision:CollisionShape2D
@@ -97,12 +104,30 @@ func set_stance_sprite(new_stance, new_looking_direction):
 	body_sprite.set_frame(0)
 	body_sprite.play('idle' + direction)
 
+func set_mouse_cursor():
+	if looking_direction == 1:
+		if stance == "high":
+			Input.set_custom_mouse_cursor(EPEE_CURSEUR_HD)
+		if stance == "medium":
+			Input.set_custom_mouse_cursor(EPEE_CURSEUR_MD)
+		if stance == "low":
+			Input.set_custom_mouse_cursor(EPEE_CURSEUR_BD)
+	elif looking_direction == -1:
+		if stance == "high":
+			Input.set_custom_mouse_cursor(EPEE_CURSEUR_HG)
+		if stance == "medium":
+			Input.set_custom_mouse_cursor(EPEE_CURSEUR_MG)
+		if stance == "low":
+			Input.set_custom_mouse_cursor(EPEE_CURSEUR_BG)
+
 func _on_changed_stance():
 	stance = character.get_stance()
 	set_stance_sprite(stance ,character.get_looking_direction())
+	set_mouse_cursor()
 
 
 func _on_changed_looking_direction():
 	stance = character.get_stance()
 	looking_direction = character.get_looking_direction()
 	set_stance_sprite(stance ,looking_direction)
+	set_mouse_cursor()
