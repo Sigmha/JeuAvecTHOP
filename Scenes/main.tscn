@@ -135,7 +135,7 @@ z_index = -1
 position = Vector2(831.322, -242)
 
 [node name="MaisonV1_0" type="Sprite2D" parent="decoration"]
-position = Vector2(1040, -429)
+position = Vector2(1089.68, -550)
 scale = Vector2(9.08, 9.08)
 texture = ExtResource("6_ok4xs")
 
