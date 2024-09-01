@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5pmo0ul8igcs"]
+[gd_scene load_steps=13 format=3 uid="uid://c5pmo0ul8igcs"]
 
 [ext_resource type="PackedScene" uid="uid://b43h0vguqe8jw" path="res://Scenes/player.tscn" id="1_nognl"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_ro2m0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://rbfag0nhbhs7" path="res://Assets/decoration/maison_V1.0.png" id="6_ok4xs"]
 [ext_resource type="Script" path="res://Scripts/ParallaxTour.gd" id="7_bvxpi"]
 [ext_resource type="Script" path="res://Scenes/Camera2D_monde_principale.gd" id="8_wddkv"]
+[ext_resource type="PackedScene" uid="uid://cbhjixnufh8yt" path="res://Scenes/pause_menu.tscn" id="9_a03no"]
 [ext_resource type="PackedScene" uid="uid://c65yjd5w85phn" path="res://Scenes/PNJ/basic_ennemy.tscn" id="9_n3wro"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ygtah"]
@@ -206,3 +207,7 @@ position = Vector2(-1117, -587)
 scale = Vector2(6.582, 6.582)
 collision_layer = 2
 collision_mask = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("9_a03no")]
