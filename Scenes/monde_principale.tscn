@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://btxfcmjx1tg57"]
+[gd_scene load_steps=32 format=3 uid="uid://btxfcmjx1tg57"]
 
 [ext_resource type="PackedScene" uid="uid://b43h0vguqe8jw" path="res://Scenes/player.tscn" id="1_qbcf1"]
 [ext_resource type="Script" path="res://Scripts/monde_principale.gd" id="1_qmpw3"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://osseeaytwhne" path="res://Assets/background/monde_principal/background_monde_principaleV2.png" id="7_hfw42"]
 [ext_resource type="Texture2D" uid="uid://de8c600r3gxlk" path="res://Assets/decoration/maison_joueurV2.png" id="10_d288r"]
 [ext_resource type="Texture2D" uid="uid://6pl5wsist5nd" path="res://Assets/decoration/shopV2.png" id="13_n67vc"]
-[ext_resource type="PackedScene" uid="uid://cbhjixnufh8yt" path="res://Scenes/pause_menu.tscn" id="14_jlcaf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_32q56"]
 texture = ExtResource("2_o3pmo")
@@ -655,7 +654,3 @@ z_index = -1
 position = Vector2(2676.12, -455.532)
 scale = Vector2(4.95507, 4.32225)
 texture = ExtResource("13_n67vc")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("14_jlcaf")]
