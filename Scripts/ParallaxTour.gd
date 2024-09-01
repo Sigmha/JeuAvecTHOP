@@ -8,7 +8,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if is_Tour_tombe:
 		motion_offset += Vector2(0,5)
 		await get_tree().create_timer(1).timeout

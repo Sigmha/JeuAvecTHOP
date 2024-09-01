@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://h7pceacrhwep"]
 
 [ext_resource type="Script" path="res://Scripts/PNJ/dummy.gd" id="1_vx45n"]
-[ext_resource type="PackedScene" uid="uid://bc5ea8icchh2o" path="res://Scenes/weapon.tscn" id="2_ys2no"]
+[ext_resource type="PackedScene" uid="uid://bc5ea8icchh2o" path="res://Scenes/Components/weapon.tscn" id="2_ys2no"]
 [ext_resource type="Texture2D" uid="uid://bryuv4osb7u11" path="res://Assets/PNJ/Dummy/dummy_spritesheet.png" id="3_vj1gv"]
 [ext_resource type="Script" path="res://Scripts/PNJ/StateMachine.gd" id="5_tpvig"]
 [ext_resource type="Script" path="res://Scripts/PNJ/DummyCombatMove.gd" id="6_ijmkv"]
@@ -104,6 +104,7 @@ position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_hvijp")
 
 [node name="ColorRect" type="ColorRect" parent="DummyCollision"]
+visible = false
 offset_left = -3.0
 offset_top = -14.0
 offset_right = 3.0

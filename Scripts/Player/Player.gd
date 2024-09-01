@@ -1,19 +1,26 @@
 extends CharacterBody2D
 class_name Player
 
+@export var max_health:int = 2
 @export var rooling_cooldown:float = 1
+@export var attack_damage:int = 1
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var win_size:Vector2
-var is_in_fight:bool = true
 var init_collision_player_position:Vector2
+#State booleen
+var is_in_fight:bool = true
 var attacking:bool = false
 var touched:bool = false
 var parried:bool = false
 var is_rolling:bool = false
+#timers
 var rooling_cooldown_timer
+#truc dans l'instant
 var actual_state:String
 var actual_stance:String
+var current_health:int
+#Other characters
 var actual_looking_direction:int
 var dummy:Dummy
 var ennemy:Ennemy
@@ -21,8 +28,12 @@ var ennemy:Ennemy
 @onready var player_collision = $PlayerCollision
 @onready var touched_label:Label = $TouchedLabel
 @onready var state_machine = $StateMachine
+@onready var health_bar:HeatlhBar = $CanvasLayer/HealthBar
 
 func _ready():
+	health_bar.set_max_health(max_health)
+	current_health = max_health
+	health_bar.update_health(current_health)
 	dummy = get_tree().get_first_node_in_group("Dummy")
 	ennemy = get_tree().get_first_node_in_group("Ennemy")
 	rooling_cooldown_timer = 0
@@ -90,6 +101,6 @@ func _on_weapon_weapon_touched():
 	parried = true
 
 func _on_weapon_ennemy_touched():
-	HitStopManager.hit_stop_short()
+	#HitStopManager.hit_stop_short()
 	ennemy.touched = true
 	

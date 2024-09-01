@@ -49,8 +49,10 @@ func Physics_Update(delta):
 	character.move_and_slide()
 	
 	#Verifie si on a été touché
-	if character.touched:
+	if character.touched and character.current_health > 1:
 		Transiotioned.emit(self,"EnnemyHit")
+	elif character.touched and character.current_health <= 1:
+		Transiotioned.emit(self,"EnnemyDying")
 	
 	if change_stance_timer <= 0:
 		stance = character.new_stance()

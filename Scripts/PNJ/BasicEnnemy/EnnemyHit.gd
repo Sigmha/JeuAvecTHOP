@@ -31,6 +31,7 @@ func Enter():
 	elif falling_direction == -1:
 		hit_sprite.play("left")
 	
+	update_damage_taken()
 	weapon.disable_weapon()
 
 func Exit():
@@ -66,4 +67,8 @@ func pushed(delta):
 	else:
 		particules_sol.emitting = false
 		character.velocity.x = 0
-	character.position.x += - falling_direction * character.velocity.x * delta	
+	character.position.x += - falling_direction * character.velocity.x * delta
+
+func update_damage_taken():
+	character.current_health -= character.player.attack_damage
+	character.health_bar.update_health(character.current_health)

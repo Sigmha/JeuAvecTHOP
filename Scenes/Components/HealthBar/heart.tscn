@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dymrwu84jhh0r"]
+
+[ext_resource type="Texture2D" uid="uid://dw6o5p8qpalou" path="res://Assets/Components/HealthBar/heart.png" id="1_4xp87"]
+[ext_resource type="Script" path="res://Scripts/Components/HealthBar/heart.gd" id="1_gb7dv"]
+
+[node name="Heart" type="Panel"]
+script = ExtResource("1_gb7dv")
+
+[node name="HeartSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_4xp87")
+centered = false
+hframes = 5
+frame = 4
