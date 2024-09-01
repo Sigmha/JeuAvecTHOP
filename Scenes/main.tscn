@@ -93,16 +93,6 @@ script = ExtResource("1_ro2m0")
 position = Vector2(-299, -343)
 script = ExtResource("8_wddkv")
 
-[node name="FPS" type="Label" parent="Camera2D"]
-offset_left = 406.0
-offset_top = -533.0
-offset_right = 572.0
-offset_bottom = -478.0
-scale = Vector2(3.222, 1.78002)
-text = "fleches pour bouger
-click gauche attaquer"
-horizontal_alignment = 2
-
 [node name="Label" type="Label" parent="."]
 offset_left = 536.322
 offset_top = -776.0
@@ -110,6 +100,15 @@ offset_right = 608.322
 offset_bottom = -753.0
 scale = Vector2(6.0719, 3.35448)
 text = "PROUTTT"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -152.678
+offset_top = -665.0
+offset_right = 13.3224
+offset_bottom = -590.0
+scale = Vector2(6.0719, 3.35448)
+text = "fleches pour bouger
+click gauche attaquer"
 
 [node name="stance" type="Label" parent="."]
 offset_left = 1021.32

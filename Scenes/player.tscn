@@ -1,7 +1,7 @@
-[gd_scene load_steps=157 format=3 uid="uid://b43h0vguqe8jw"]
+[gd_scene load_steps=144 format=3 uid="uid://b43h0vguqe8jw"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_na8sa"]
-[ext_resource type="PackedScene" uid="uid://bc5ea8icchh2o" path="res://Scenes/Components/weapon.tscn" id="2_ii4go"]
+[ext_resource type="PackedScene" uid="uid://bc5ea8icchh2o" path="res://Scenes/weapon.tscn" id="2_ii4go"]
 [ext_resource type="Texture2D" uid="uid://dcmmn2v367p2v" path="res://Assets/Player/test_player_AttackMove_left_spritesheet.png" id="3_khyeq"]
 [ext_resource type="Texture2D" uid="uid://cipctxnwxvbd" path="res://Assets/Player/test_player_AttackMove_right_spritesheet.png" id="4_k6b8x"]
 [ext_resource type="Script" path="res://Scripts/Player/StateMachine.gd" id="5_q3hq0"]
@@ -11,10 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/Player/PlayerHit.gd" id="9_ifbag"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerRolling.gd" id="10_6tsuu"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCityMove.gd" id="11_r5y8r"]
-[ext_resource type="Script" path="res://Scripts/Player/PlayerDying.gd" id="13_cunii"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerParried.gd" id="13_pxp85"]
-[ext_resource type="Script" path="res://Scripts/Player/MouseCursorManager.gd" id="13_uaq2v"]
-[ext_resource type="PackedScene" uid="uid://dca7hofnvxe83" path="res://Scenes/Components/HealthBar/health_bar.tscn" id="14_h2qte"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1vnpl"]
 radius = 3.0
@@ -595,46 +592,6 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p6m27"]
-atlas = ExtResource("3_khyeq")
-region = Rect2(32, 160, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o4qmw"]
-atlas = ExtResource("3_khyeq")
-region = Rect2(64, 160, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bdhbs"]
-atlas = ExtResource("3_khyeq")
-region = Rect2(96, 160, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yj7ib"]
-atlas = ExtResource("3_khyeq")
-region = Rect2(128, 160, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v1xdj"]
-atlas = ExtResource("3_khyeq")
-region = Rect2(160, 160, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s1ete"]
-atlas = ExtResource("4_k6b8x")
-region = Rect2(32, 160, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hj4kk"]
-atlas = ExtResource("4_k6b8x")
-region = Rect2(64, 160, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gos8i"]
-atlas = ExtResource("4_k6b8x")
-region = Rect2(96, 160, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k3y8t"]
-atlas = ExtResource("4_k6b8x")
-region = Rect2(128, 160, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t0v2x"]
-atlas = ExtResource("4_k6b8x")
-region = Rect2(160, 160, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxdf2"]
 atlas = ExtResource("3_khyeq")
 region = Rect2(32, 160, 32, 32)
@@ -725,46 +682,6 @@ region = Rect2(160, 192, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ey3xb"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p6m27")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o4qmw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bdhbs")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_yj7ib")
-}, {
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_v1xdj")
-}],
-"loop": false,
-"name": &"dying_left",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s1ete")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hj4kk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gos8i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k3y8t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t0v2x")
-}],
-"loop": false,
-"name": &"dying_right",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kxdf2")
@@ -1126,14 +1043,12 @@ color_ramp = SubResource("GradientTexture1D_nj7mx")
 
 [node name="Player" type="CharacterBody2D" groups=["Joueur"]]
 script = ExtResource("1_na8sa")
-max_health = 4
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_1vnpl")
 
 [node name="ColorRect" type="ColorRect" parent="PlayerCollision"]
-visible = false
 offset_left = -3.0
 offset_top = -14.0
 offset_right = 3.0
@@ -1165,7 +1080,7 @@ animation = &"left"
 visible = false
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_ey3xb")
-animation = &"dying_left"
+animation = &"left"
 
 [node name="CityMove" type="AnimatedSprite2D" parent="PlayerSpriteComposition"]
 visible = false
@@ -1242,14 +1157,6 @@ weapon = NodePath("../../Weapon")
 particules_sol = NodePath("../../Paticules/ParticulesSol")
 particles_weapon = NodePath("../../Paticules/ParticulesWeapon")
 
-[node name="PlayerDying" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "character_collision", "hit_sprite", "weapon", "particules_sol")]
-script = ExtResource("13_cunii")
-character = NodePath("../..")
-character_collision = NodePath("../../PlayerCollision")
-hit_sprite = NodePath("../../PlayerSpriteComposition/Hit")
-weapon = NodePath("../../Weapon")
-particules_sol = NodePath("../../Paticules/ParticulesSol")
-
 [node name="Paticules" type="Node2D" parent="."]
 
 [node name="ParticulesSol" type="GPUParticles2D" parent="Paticules"]
@@ -1271,26 +1178,10 @@ speed_scale = 3.0
 explosiveness = 1.0
 randomness = 0.2
 
-[node name="MouseCursorManager" type="Node" parent="." node_paths=PackedStringArray("character")]
-script = ExtResource("13_uaq2v")
-character = NodePath("..")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("14_h2qte")]
-layout_direction = 2
-offset_left = 19.0
-offset_top = 20.0
-offset_right = 19.0
-offset_bottom = 20.0
-scale = Vector2(5, 5)
-
 [connection signal="dummy_touched" from="Weapon" to="." method="_on_weapon_dummy_touched"]
 [connection signal="ennemy_touched" from="Weapon" to="." method="_on_weapon_ennemy_touched"]
 [connection signal="weapon_touched" from="Weapon" to="." method="_on_weapon_weapon_touched"]
 [connection signal="changed_looking_direction" from="StateMachine/PlayerCombatMove" to="StateMachine/PlayerCombatMove" method="_on_changed_looking_direction"]
-[connection signal="changed_looking_direction" from="StateMachine/PlayerCombatMove" to="MouseCursorManager" method="_on_player_combat_move_changed_looking_direction"]
 [connection signal="changed_stance" from="StateMachine/PlayerCombatMove" to="StateMachine/PlayerCombatMove" method="_on_changed_stance"]
-[connection signal="changed_stance" from="StateMachine/PlayerCombatMove" to="MouseCursorManager" method="_on_player_combat_move_changed_stance"]
 [connection signal="changed_looking_side" from="StateMachine/PlayerCityMove" to="StateMachine/PlayerCityMove" method="_on_changed_looking_side"]
 [connection signal="changed_movement" from="StateMachine/PlayerCityMove" to="StateMachine/PlayerCityMove" method="_on_changed_movement"]

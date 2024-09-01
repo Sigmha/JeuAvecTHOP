@@ -13,7 +13,7 @@ class_name PlayerHit
 
 var init_collision_position:Vector2
 var stun_timer: float
-var ennemy:Ennemy
+var ennemy:CharacterBody2D
 var falling_direction:int
 
 func Enter():
@@ -34,7 +34,6 @@ func Enter():
 	elif falling_direction == -1:
 		hit_sprite.play("left")
 	
-	update_damage_taken()
 	weapon.disable_weapon()
 
 func Exit():
@@ -45,11 +44,12 @@ func Exit():
 	hit_sprite.stop()
 	weapon.enable_weapon()
 
-func Update(delta):
+func Update(delta):	
 	if stun_timer < 0:
 		Transiotioned.emit(self, "PlayerCombatMove")
 	
 	stun_timer -= delta
+	
 
 func Physics_Update(delta):
 	pushed(delta)
@@ -70,8 +70,4 @@ func pushed(delta):
 	else:
 		particules_sol.emitting = false
 		character.velocity.x = 0
-	character.position.x += - falling_direction * character.velocity.x * delta
-
-func update_damage_taken():
-	character.current_health -= ennemy.attack_damage
-	character.health_bar.update_health(character.current_health)
+	character.position.x += - falling_direction * character.velocity.x * delta	
