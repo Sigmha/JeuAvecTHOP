@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dca7hofnvxe83"]
+
+[ext_resource type="Script" path="res://Scripts/Components/HealthBar/HeartContainer.gd" id="1_gmipj"]
+
+[node name="HealthBar" type="HBoxContainer"]
+theme_override_constants/separation = 16
+script = ExtResource("1_gmipj")

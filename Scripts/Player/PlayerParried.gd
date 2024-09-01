@@ -35,12 +35,9 @@ func Enter():
 	
 	particules_sol.emitting = true
 	if character.attacking:
-		#explosion_position = character.global_position
-		#weapon_particle_material.set_emission_shape_offset(Vector3(explosion_position.x, explosion_position.y, 1))
 		particles_weapon.position = Vector2(looking_direction, 1) * (distance_weapon[1][arm_sprite.get_frame()] + weapon.weapon_length * Vector2(cos(weapon.rotation), looking_direction * sin(weapon.rotation)) )
 	else:
-		explosion_position = Vector2(looking_direction, 1) * (distance_weapon[0][arm_sprite.get_frame()] + weapon.weapon_length * Vector2(cos(weapon.rotation), looking_direction * sin(weapon.rotation)) )
-		weapon_particle_material.set_emission_shape_offset(Vector3(explosion_position.x, explosion_position.y, 0))
+		particles_weapon.position = Vector2(looking_direction, 1) * (distance_weapon[0][arm_sprite.get_frame()] + weapon.weapon_length * Vector2(cos(weapon.rotation), looking_direction * sin(weapon.rotation)) )
 	particles_weapon.emitting = true
 	
 	move_speed = pushed_velocity

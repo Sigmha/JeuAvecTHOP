@@ -37,8 +37,10 @@ func Physics_Update(_delta):
 	
 	weapon.set_weapon_position(looking_direction, distance_weapon, 1, stance, arm_frame)
 	
-	if character.touched:
+	if character.touched and character.current_health > 1:
 		Transiotioned.emit(self,"PlayerHit")
+	elif character.touched and character.current_health <= 1:
+		Transiotioned.emit(self,"PlayerDying")
 		
 	if !Input.is_action_pressed("LeftClick"):
 		Transiotioned.emit(self, "PlayerCombatMove")

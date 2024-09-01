@@ -2,6 +2,8 @@ extends CharacterBody2D
 class_name Ennemy
 
 @export var attacking_distance:int = 35
+@export var attack_damage:int = 1
+@export var max_health = 2
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var win_size:Vector2
@@ -9,25 +11,30 @@ var init_collision_ennemy_position:Vector2
 var attacking:bool = false
 var touched:bool = false
 var parried:bool = false
-var player:CharacterBody2D
+var player:Player
 var actual_state:String
 var actual_stance:String
 var distance_to_player: float
+var current_health:int
 
 @onready var ennemy_collision = $Collision
 @onready var state_machine = $StateMachine
 @onready var label = $Label
 @onready var label_2 = $Label2
+@onready var health_bar:HeatlhBar = $HealthBar
 
 func _ready():
+	health_bar.set_max_health(max_health)
+	current_health = max_health
+	health_bar.update_health(current_health)
 	player = get_tree().get_first_node_in_group("Joueur")
 	init_collision_ennemy_position = ennemy_collision.position
 	win_size = get_viewport_rect().size
 
 func _physics_process(delta):
 	distance_to_player = player.global_position.x - self.global_position.x
-	label.text = str(touched)
-	label_2.text = actual_state
+	label.text = ""
+	label_2.text = ""
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
