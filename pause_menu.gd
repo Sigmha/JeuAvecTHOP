@@ -1,6 +1,6 @@
 extends Control
 
-@onready var main_menu = preload("res://Scenes/main_menu.tscn") as PackedScene
+@onready var main_menu = load("res://Scenes/main_menu.tscn") as PackedScene
 @onready var panel_container_option = $PanelContainerOPTION
 
 
