@@ -1,0 +1,256 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7t8aqypqq4io"]
+
+[ext_resource type="PackedScene" uid="uid://b43h0vguqe8jw" path="res://Scenes/player.tscn" id="1_fksfw"]
+[ext_resource type="PackedScene" uid="uid://bpg08o8tvq150" path="res://Scenes/pause_menu.tscn" id="2_flqm3"]
+[ext_resource type="PackedScene" uid="uid://c65yjd5w85phn" path="res://Scenes/PNJ/basic_ennemy.tscn" id="2_pbjqy"]
+[ext_resource type="PackedScene" uid="uid://c25k5orcjriw5" path="res://Scenes/grille.tscn" id="3_snqwn"]
+[ext_resource type="Texture2D" uid="uid://cei01q6eps4dj" path="res://Assets/Components/option/option_hud.PNG" id="5_3ib6h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_km82k"]
+size = Vector2(40.1587, 40)
+
+[node name="etage_1" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(962, -577)
+position_smoothing_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_fksfw")]
+position = Vector2(140, -219)
+scale = Vector2(6.582, 6.582)
+
+[node name="BasicEnnemy" parent="." instance=ExtResource("2_pbjqy")]
+position = Vector2(1593, -241)
+scale = Vector2(6.582, 6.582)
+
+[node name="CanvasLayer_TEMPO" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer_TEMPO"]
+offset_left = 13.0
+offset_top = -8.0
+offset_right = 1933.0
+offset_bottom = 1072.0
+color = Color(0.0605303, 0.0605303, 0.0605303, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="pause_menu" parent="CanvasLayer2" instance=ExtResource("2_flqm3")]
+
+[node name="nom_salle_TEMPO" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 5845.0
+offset_top = -1259.0
+offset_right = 5885.0
+offset_bottom = -1219.0
+
+[node name="Label" type="Label" parent="nom_salle_TEMPO"]
+layout_mode = 0
+offset_left = -4938.0
+offset_top = 350.0
+offset_right = -4806.0
+offset_bottom = 665.0
+theme_override_font_sizes/font_size = 231
+text = "1"
+
+[node name="Label2" type="Label" parent="nom_salle_TEMPO"]
+layout_mode = 0
+offset_left = -2971.0
+offset_top = 350.0
+offset_right = -2839.0
+offset_bottom = 665.0
+theme_override_font_sizes/font_size = 231
+text = "2
+"
+
+[node name="Label3" type="Label" parent="nom_salle_TEMPO"]
+layout_mode = 0
+offset_left = -1077.0
+offset_top = 350.0
+offset_right = -945.0
+offset_bottom = 665.0
+theme_override_font_sizes/font_size = 231
+text = "3"
+
+[node name="Label4" type="Label" parent="nom_salle_TEMPO"]
+layout_mode = 0
+offset_left = 908.0
+offset_top = 350.0
+offset_right = 1040.0
+offset_bottom = 665.0
+theme_override_font_sizes/font_size = 231
+text = "4"
+
+[node name="Label5" type="Label" parent="nom_salle_TEMPO"]
+layout_mode = 0
+offset_left = 2820.0
+offset_top = 350.0
+offset_right = 2952.0
+offset_bottom = 665.0
+theme_override_font_sizes/font_size = 231
+text = "5"
+
+[node name="Label6" type="Label" parent="nom_salle_TEMPO"]
+layout_mode = 0
+offset_left = 3997.0
+offset_top = 392.0
+offset_right = 4372.0
+offset_bottom = 707.0
+theme_override_font_sizes/font_size = 231
+text = "FIN"
+
+[node name="mur_tempo" type="Node2D" parent="."]
+position = Vector2(4, -14)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="mur_tempo"]
+position = Vector2(13, -1105)
+scale = Vector2(290.632, 1.96525)
+
+[node name="ColorRect" type="ColorRect" parent="mur_tempo/StaticBody2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mur_tempo/StaticBody2D"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_km82k")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="mur_tempo"]
+position = Vector2(11, -181)
+scale = Vector2(290.792, 5.00525)
+
+[node name="ColorRect" type="ColorRect" parent="mur_tempo/StaticBody2D2"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mur_tempo/StaticBody2D2"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_km82k")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="mur_tempo"]
+position = Vector2(1969, -1275)
+rotation = 1.5708
+scale = Vector2(20.6716, 1.96525)
+
+[node name="ColorRect" type="ColorRect" parent="mur_tempo/StaticBody2D3"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mur_tempo/StaticBody2D3"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_km82k")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="mur_tempo"]
+position = Vector2(32.0001, -1117)
+rotation = 1.5708
+scale = Vector2(27.7916, 1.96525)
+
+[node name="ColorRect" type="ColorRect" parent="mur_tempo/StaticBody2D4"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mur_tempo/StaticBody2D4"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_km82k")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="mur_tempo"]
+position = Vector2(3906, -1258)
+rotation = 1.5708
+scale = Vector2(20.6716, 1.96525)
+
+[node name="ColorRect" type="ColorRect" parent="mur_tempo/StaticBody2D6"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mur_tempo/StaticBody2D6"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_km82k")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="mur_tempo"]
+position = Vector2(5841, -1245)
+rotation = 1.5708
+scale = Vector2(20.1116, 1.96525)
+
+[node name="ColorRect" type="ColorRect" parent="mur_tempo/StaticBody2D8"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mur_tempo/StaticBody2D8"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_km82k")
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="mur_tempo"]
+position = Vector2(7777, -1226)
+rotation = 1.5708
+scale = Vector2(19.4716, 1.96525)
+
+[node name="ColorRect" type="ColorRect" parent="mur_tempo/StaticBody2D10"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mur_tempo/StaticBody2D10"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_km82k")
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="mur_tempo"]
+position = Vector2(9712, -1208)
+rotation = 1.5708
+scale = Vector2(19.2716, 1.96525)
+
+[node name="ColorRect" type="ColorRect" parent="mur_tempo/StaticBody2D12"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mur_tempo/StaticBody2D12"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_km82k")
+
+[node name="StaticBody2D13" type="StaticBody2D" parent="mur_tempo"]
+position = Vector2(11648, -1192)
+rotation = 1.5708
+scale = Vector2(26.7116, 1.96525)
+
+[node name="ColorRect" type="ColorRect" parent="mur_tempo/StaticBody2D13"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mur_tempo/StaticBody2D13"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_km82k")
+
+[node name="grilles" type="Node2D" parent="."]
+position = Vector2(4, -14)
+
+[node name="grille" parent="grilles" instance=ExtResource("3_snqwn")]
+position = Vector2(1931, -314)
+scale = Vector2(4.92, 4.92)
+
+[node name="grille2" parent="grilles" instance=ExtResource("3_snqwn")]
+position = Vector2(3867, -314)
+scale = Vector2(4.92, 4.92)
+
+[node name="grille3" parent="grilles" instance=ExtResource("3_snqwn")]
+position = Vector2(5803, -314)
+scale = Vector2(4.92, 4.92)
+
+[node name="grille4" parent="grilles" instance=ExtResource("3_snqwn")]
+position = Vector2(7735, -314)
+scale = Vector2(4.92, 4.92)
+
+[node name="grille5" parent="grilles" instance=ExtResource("3_snqwn")]
+position = Vector2(9676, -314)
+scale = Vector2(4.92, 4.92)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10849, -627)
+texture = ExtResource("5_3ib6h")

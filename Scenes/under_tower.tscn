@@ -1,0 +1,135 @@
+[gd_scene load_steps=10 format=3 uid="uid://c67kp2begcwyn"]
+
+[ext_resource type="Script" path="res://Scenes/Camera2D_monde_principale.gd" id="1_wn02v"]
+[ext_resource type="Texture2D" uid="uid://bbdl1sfktwnms" path="res://Assets/tileset/tileset_dehors_V1.3.png" id="4_i1ik0"]
+[ext_resource type="PackedScene" uid="uid://bpg08o8tvq150" path="res://Scenes/pause_menu.tscn" id="4_yjbmt"]
+[ext_resource type="Script" path="res://Scripts/Area2D_chemin_maison.gd" id="5_3aeer"]
+[ext_resource type="PackedScene" uid="uid://b43h0vguqe8jw" path="res://Scenes/player.tscn" id="5_kqyte"]
+[ext_resource type="Script" path="res://Scripts/Area2D_entrer_tour.gd" id="6_r8piu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qnncd"]
+texture = ExtResource("4_i1ik0")
+texture_region_size = Vector2i(32, 32)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -14.7323, 16, -14.7323, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -14.7323, 16, -14.7323, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -14.7323, 16, -14.7323, 16, 16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -14.7323, 16, -14.7323, 16, 16, -16, 16)
+4:1/0 = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -14.7323, 16, -14.7323, 16, 16, -16, 16)
+16:1/0 = 0
+16:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+16:1/0/physics_layer_0/angular_velocity = 0.0
+17:1/0 = 0
+17:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+17:1/0/physics_layer_0/angular_velocity = 0.0
+18:1/0 = 0
+18:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+18:1/0/physics_layer_0/angular_velocity = 0.0
+16:2/0 = 0
+16:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+16:2/0/physics_layer_0/angular_velocity = 0.0
+16:3/0 = 0
+16:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+16:3/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_syq8f"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/3 = SubResource("TileSetAtlasSource_qnncd")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cejfm"]
+size = Vector2(204, 247.5)
+
+[node name="under_tower" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-2000, -450)
+script = ExtResource("1_wn02v")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(96, -49)
+scale = Vector2(6.582, 6.582)
+tile_set = SubResource("TileSet_syq8f")
+rendering_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(-2, 65539, 1, -1, 65539, 1, -65536, 262147, 1, -65535, 131075, 1, -65534, 131075, 1, -65533, 131075, 1, -65532, 65539, 1, -65531, 65539, 1, -65530, 65539, 1, -65529, 196611, 1, -3, 3, 1, -65528, 65539, 1, -65527, 196611, 1, -65526, 262147, 1, -65525, 65539, 1, -65524, 65539, 1, -65523, 196611, 1, -65522, 131075, 1, -65521, 65539, 1, -65520, 131075, 1, -65519, 262147, 1, -65518, 196611, 1, -65517, 262147, 1, -65516, 196611, 1, -65515, 196611, 1, -65514, 131075, 1, -65513, 131075, 1, -65512, 196611, 1, -65511, 65539, 1, -65510, 65539, 1, -65509, 131075, 1, -65508, 131075, 1, -65507, 196611, 1, -65506, 196611, 1, -65505, 131075, 1, -65504, 262147, 1, -65503, 65539, 1, -65502, 131075, 1, -65501, 131075, 1, -65500, 196611, 1, -65499, 131075, 1)
+layer_1/name = "devant"
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array(-65545, 1048578, 2, -9, 1048578, 3)
+
+[node name="Player" parent="." instance=ExtResource("5_kqyte")]
+position = Vector2(425, -266)
+scale = Vector2(6.582, 6.582)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="pause_menu" parent="CanvasLayer" instance=ExtResource("4_yjbmt")]
+
+[node name="interaction" type="Node2D" parent="."]
+
+[node name="ColorRectMaison" type="ColorRect" parent="interaction"]
+z_index = -1
+offset_left = 334.0
+offset_top = -501.0
+offset_right = 538.0
+offset_bottom = -254.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D_chemin_maison" type="Area2D" parent="interaction/ColorRectMaison"]
+script = ExtResource("5_3aeer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction/ColorRectMaison/Area2D_chemin_maison"]
+position = Vector2(102, 123.25)
+shape = SubResource("RectangleShape2D_cejfm")
+
+[node name="Label" type="Label" parent="interaction/ColorRectMaison/Area2D_chemin_maison"]
+offset_left = 5.0
+offset_top = -63.0
+offset_right = 188.0
+offset_bottom = -21.0
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRecttour" type="ColorRect" parent="interaction"]
+z_index = -1
+offset_left = 1573.0
+offset_top = -501.0
+offset_right = 1777.0
+offset_bottom = -254.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D_entrer_tour" type="Area2D" parent="interaction/ColorRecttour"]
+script = ExtResource("6_r8piu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction/ColorRecttour/Area2D_entrer_tour"]
+position = Vector2(102, 123.25)
+shape = SubResource("RectangleShape2D_cejfm")
+
+[node name="Label" type="Label" parent="interaction/ColorRecttour/Area2D_entrer_tour"]
+offset_left = 5.0
+offset_top = -63.0
+offset_right = 188.0
+offset_bottom = -21.0
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="interaction/ColorRectMaison/Area2D_chemin_maison" to="interaction/ColorRectMaison/Area2D_chemin_maison" method="_on_body_entered"]
+[connection signal="body_exited" from="interaction/ColorRectMaison/Area2D_chemin_maison" to="interaction/ColorRectMaison/Area2D_chemin_maison" method="_on_body_exited"]
+[connection signal="body_entered" from="interaction/ColorRecttour/Area2D_entrer_tour" to="interaction/ColorRecttour/Area2D_entrer_tour" method="_on_body_entered"]
+[connection signal="body_exited" from="interaction/ColorRecttour/Area2D_entrer_tour" to="interaction/ColorRecttour/Area2D_entrer_tour" method="_on_body_exited"]
