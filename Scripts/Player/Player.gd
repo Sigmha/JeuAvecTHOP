@@ -1,9 +1,10 @@
 extends CharacterBody2D
 class_name Player
 
-@export var max_health:int = 2
+@export var max_health:int = 4
+@export var max_stam:int = 4
 @export var rooling_cooldown:float = 1
-@export var attack_damage:int = 1
+@export var attack_damage:int = 2
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var win_size:Vector2
@@ -14,14 +15,16 @@ var attacking:bool = false
 var touched:bool = false
 var parried:bool = false
 var is_rolling:bool = false
+var is_parring:bool = false
 #timers
 var rooling_cooldown_timer
 #truc dans l'instant
 var actual_state:String
 var actual_stance:String
 var current_health:int
-#Other characters
+var current_stam:int
 var actual_looking_direction:int
+#Other characters
 var dummy:Dummy
 var ennemy:Ennemy
 
@@ -29,11 +32,19 @@ var ennemy:Ennemy
 @onready var touched_label:Label = $TouchedLabel
 @onready var state_machine = $StateMachine
 @onready var health_bar:HeatlhBar = $CanvasLayer/HealthBar
+@onready var stamina_bar:StaminaBar = $StaminaBar
+@onready var parrying_timer = $Timers/ParryingTimer
+@onready var weapon = $Weapon
 
 func _ready():
 	health_bar.set_max_health(max_health)
 	current_health = max_health
 	health_bar.update_health(current_health)
+	
+	stamina_bar.set_max_stam(max_stam)
+	current_stam = max_stam
+	stamina_bar.update_stam(current_stam)
+	
 	dummy = get_tree().get_first_node_in_group("Dummy")
 	ennemy = get_tree().get_first_node_in_group("Ennemy")
 	rooling_cooldown_timer = 0
@@ -41,7 +52,6 @@ func _ready():
 	win_size = get_viewport_rect().size
 
 func _physics_process(delta):
-	touched_label.text = str(int(self.global_position.y - get_global_mouse_position().y))
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		move_and_slide()
@@ -101,6 +111,10 @@ func _on_weapon_weapon_touched():
 	parried = true
 
 func _on_weapon_ennemy_touched():
-	#HitStopManager.hit_stop_short()
+	if ennemy.current_health == 1:
+		HitStopManager.hit_stop_short()
 	ennemy.touched = true
-	
+
+func _on_parrying_timer_timeout():
+	weapon.set_modulate("ffffff")
+	is_parring = false

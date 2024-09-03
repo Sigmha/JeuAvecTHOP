@@ -15,6 +15,9 @@ var rolling_timer:float
 var looking_direction:int
 
 func Enter():
+	character.current_stam -= 1
+	character.stamina_bar.update_stam(character.current_stam)
+	
 	character.is_rolling = true
 	character.actual_state = 'rooling'
 	rolling_sprite.speed_scale = 1 / rolling_time

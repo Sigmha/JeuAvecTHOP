@@ -43,7 +43,7 @@ func Enter():
 	move_speed = pushed_velocity
 	pushed_timer = pushed_time
 	
-	if character.attacking:
+	if 0:
 		weapon.disable_weapon()
 		stun_timer = stun_time
 		up_timer = up_time

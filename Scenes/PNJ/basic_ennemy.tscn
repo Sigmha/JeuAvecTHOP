@@ -884,7 +884,6 @@ initial_state = NodePath("EnnemyCombatMove")
 
 [node name="EnnemyCombatMove" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "character_collision", "body_sprite", "arm_sprite", "weapon")]
 script = ExtResource("6_4h52t")
-change_stance_min_time = 0.5
 character = NodePath("../..")
 character_collision = NodePath("../../Collision")
 body_sprite = NodePath("../../SpriteComposition/Body")
@@ -930,9 +929,9 @@ particules_sol = NodePath("../../ParticulesSol")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -20.0
-offset_top = -42.0
+offset_top = -61.0
 offset_right = 20.0
-offset_bottom = -30.0
+offset_bottom = -49.0
 theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
 

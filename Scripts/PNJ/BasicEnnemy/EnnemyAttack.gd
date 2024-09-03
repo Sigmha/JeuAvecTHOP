@@ -51,10 +51,10 @@ func Physics_Update(delta):
 		attack_timer -= delta
 	
 	#Verifie si on a été touché
-	if character.touched and character.current_health > 1:
-		Transiotioned.emit(self,"EnnemyHit")
-	elif character.touched and character.current_health <= 1:
+	if character.touched and character.current_health <= character.player.attack_damage:
 		Transiotioned.emit(self,"EnnemyDying")
+	elif character.touched and character.current_health > character.player.attack_damage:
+		Transiotioned.emit(self,"EnnemyHit")
 	
 	if character.parried:
 		Transiotioned.emit(self,"EnnemyParried")

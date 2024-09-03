@@ -4,7 +4,7 @@ class_name EnnemyCombatMove
 signal changed_stance
 signal changed_looking_direction
 
-@export var change_stance_min_time:float = 1
+@export var change_stance_min_time:float = 0.5
 @export var change_stance_max_time:float = 2
 @export_group("Necessary")
 @export var character:Ennemy
@@ -49,10 +49,11 @@ func Physics_Update(delta):
 	character.move_and_slide()
 	
 	#Verifie si on a été touché
-	if character.touched and character.current_health > 1:
-		Transiotioned.emit(self,"EnnemyHit")
-	elif character.touched and character.current_health <= 1:
+	if character.touched and character.current_health <= character.player.attack_damage:
 		Transiotioned.emit(self,"EnnemyDying")
+	elif character.touched and character.current_health > character.player.attack_damage:
+		Transiotioned.emit(self,"EnnemyHit")
+	
 	
 	if change_stance_timer <= 0:
 		stance = character.new_stance()

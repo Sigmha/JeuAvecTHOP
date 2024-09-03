@@ -1,4 +1,4 @@
-[gd_scene load_steps=157 format=3 uid="uid://b43h0vguqe8jw"]
+[gd_scene load_steps=158 format=3 uid="uid://b43h0vguqe8jw"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_na8sa"]
 [ext_resource type="PackedScene" uid="uid://bc5ea8icchh2o" path="res://Scenes/Components/weapon.tscn" id="2_ii4go"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Scripts/Player/PlayerParried.gd" id="13_pxp85"]
 [ext_resource type="Script" path="res://Scripts/Player/MouseCursorManager.gd" id="13_uaq2v"]
 [ext_resource type="PackedScene" uid="uid://dca7hofnvxe83" path="res://Scenes/Components/HealthBar/health_bar.tscn" id="14_h2qte"]
+[ext_resource type="PackedScene" uid="uid://cmyt1cfelrrvp" path="res://Scenes/Components/StaminaBar/stamina_bar.tscn" id="16_das0u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1vnpl"]
 radius = 3.0
@@ -1126,7 +1127,6 @@ color_ramp = SubResource("GradientTexture1D_nj7mx")
 
 [node name="Player" type="CharacterBody2D" groups=["Joueur"]]
 script = ExtResource("1_na8sa")
-max_health = 4
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -14)
@@ -1185,19 +1185,19 @@ offset_top = -38.0
 offset_right = 50.0
 offset_bottom = -15.0
 scale = Vector2(0.298121, 0.298121)
-text = "touched"
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_q3hq0")
 initial_state = NodePath("PlayerCombatMove")
 
-[node name="PlayerCombatMove" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "character_collision", "body_sprite", "arm_sprite", "weapon")]
+[node name="PlayerCombatMove" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "character_collision", "body_sprite", "arm_sprite", "weapon", "parrying_timer")]
 script = ExtResource("6_sjw7j")
 character = NodePath("../..")
 character_collision = NodePath("../../PlayerCollision")
 body_sprite = NodePath("../../PlayerSpriteComposition/BodySprite")
 arm_sprite = NodePath("../../PlayerSpriteComposition/Arm")
 weapon = NodePath("../../Weapon")
+parrying_timer = NodePath("../../Timers/ParryingTimer")
 
 [node name="PlayerAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "character_collision", "body_sprite", "arm_sprite", "weapon")]
 script = ExtResource("7_mhdk2")
@@ -1285,6 +1285,24 @@ offset_right = 19.0
 offset_bottom = 20.0
 scale = Vector2(5, 5)
 
+[node name="StaminaBar" parent="." instance=ExtResource("16_das0u")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -2.0
+offset_top = -32.0
+offset_right = -2.0
+offset_bottom = -32.0
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="ParryingTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="StamTimer" type="Timer" parent="Timers"]
+
 [connection signal="dummy_touched" from="Weapon" to="." method="_on_weapon_dummy_touched"]
 [connection signal="ennemy_touched" from="Weapon" to="." method="_on_weapon_ennemy_touched"]
 [connection signal="weapon_touched" from="Weapon" to="." method="_on_weapon_weapon_touched"]
@@ -1294,3 +1312,4 @@ scale = Vector2(5, 5)
 [connection signal="changed_stance" from="StateMachine/PlayerCombatMove" to="MouseCursorManager" method="_on_player_combat_move_changed_stance"]
 [connection signal="changed_looking_side" from="StateMachine/PlayerCityMove" to="StateMachine/PlayerCityMove" method="_on_changed_looking_side"]
 [connection signal="changed_movement" from="StateMachine/PlayerCityMove" to="StateMachine/PlayerCityMove" method="_on_changed_movement"]
+[connection signal="timeout" from="Timers/ParryingTimer" to="." method="_on_parrying_timer_timeout"]

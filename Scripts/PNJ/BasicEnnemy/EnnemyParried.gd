@@ -23,9 +23,9 @@ var arm_frame
 var stance
 var distance_weapon
 var direction:String
+var stun:bool
 
 func Enter():
-	
 	looking_direction = character.get_looking_direction()
 	stance = character.actual_stance
 	distance_weapon = character.get_distance_weapon(stance)
@@ -34,8 +34,9 @@ func Enter():
 	move_speed = pushed_velocity
 	pushed_timer = pushed_time
 	
-	if character.attacking:
+	if character.player.is_parring:
 		weapon.disable_weapon()
+		stun = true
 		stun_timer = stun_time
 		up_timer = up_time
 		character.actual_state = 'stun'
@@ -44,13 +45,14 @@ func Enter():
 		character.actual_state = 'parried'
 		stun_timer = 0
 		up_timer = 0
+		stun = false
 		body_sprite.visible = true
 		arm_sprite.visible = true
 
 func Exit():
 	character.parried = false
 	weapon.enable_weapon()
-	if character.attacking:
+	if stun:
 		stun_sprite.visible = false
 	else:
 		body_sprite.visible = false
@@ -60,7 +62,9 @@ func Update(_delta):
 	pass
 
 func Physics_Update(delta):
-	if character.touched:
+	if character.touched and character.current_health <= character.player.attack_damage:
+		Transiotioned.emit(self,"EnnemyDying")
+	elif character.touched and character.current_health > character.player.attack_damage:
 		Transiotioned.emit(self,"EnnemyHit")
 	
 	if pushed_timer > 0:

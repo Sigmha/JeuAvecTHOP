@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmyt1cfelrrvp"]
+
+[ext_resource type="Script" path="res://Scripts/Components/StaminaBar/stamina_bar.gd" id="1_itpyx"]
+
+[node name="StaminaBar" type="HBoxContainer"]
+theme_override_constants/separation = 4
+alignment = 1
+script = ExtResource("1_itpyx")

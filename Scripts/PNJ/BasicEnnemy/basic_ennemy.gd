@@ -33,8 +33,8 @@ func _ready():
 
 func _physics_process(delta):
 	distance_to_player = player.global_position.x - self.global_position.x
-	label.text = ""
-	label_2.text = ""
+	label.text = actual_state
+	label_2.text = str(current_health)
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta

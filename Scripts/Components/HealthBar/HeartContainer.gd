@@ -9,7 +9,7 @@ func set_max_health(max_health:int):
 		add_child(heart)
 	
 func update_health(current_health:int):
-	var heart: = get_children()
+	var heart = get_children()
 	
 	for i in range(current_health):
 		heart[i].update_heart(true)

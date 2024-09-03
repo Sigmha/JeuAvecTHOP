@@ -10,6 +10,7 @@ signal changed_looking_direction
 @export var body_sprite:AnimatedSprite2D
 @export var arm_sprite:AnimatedSprite2D
 @export var weapon:Weapon
+@export var parrying_timer:Timer
 
 var init_collision_position:Vector2
 var move_speed := 500
@@ -66,12 +67,19 @@ func Physics_Update(delta):
 	character.position.x += delta * direction * move_speed
 	character.move_and_slide()
 	
+	if Input.is_action_just_pressed("RightClick") and character.current_stam > 0 and parrying_timer.is_stopped():
+		parrying_timer.start()
+		character.is_parring = true
+		character.current_stam -= 1
+		character.stamina_bar.update_stam(character.current_stam)
+		weapon.set_modulate("29b2ff")
+	
 	#attaque
 	if Input.is_action_just_pressed("LeftClick"):
 		Transiotioned.emit(self,"PlayerAttack")
 	
 	#roulade
-	if Input.is_action_just_pressed("ui_accept") and character.rooling_cooldown_timer <= 0:
+	if Input.is_action_just_pressed("ui_accept") and character.rooling_cooldown_timer <= 0 and character.current_stam > 0:
 		Transiotioned.emit(self,"PlayerRolling")
 	
 	var parried = character.parried
