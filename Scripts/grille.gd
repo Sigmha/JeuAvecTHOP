@@ -38,4 +38,4 @@ func ouvrir_grille():
 	grille_colision.disabled = true
 	
 func changer_pos_cam():
-	camera_2d.position += Vector2(1930,0)
+	camera_2d.position += Vector2(1900,0)

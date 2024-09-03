@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c25k5orcjriw5"]
+[gd_scene load_steps=5 format=3 uid="uid://c25k5orcjriw5"]
 
 [ext_resource type="Script" path="res://Scripts/grille.gd" id="1_5lrsr"]
+[ext_resource type="Texture2D" uid="uid://onigbsh3aker" path="res://Assets/decoration/grille.png" id="2_jhx6j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3byhm"]
-size = Vector2(25, 55)
+size = Vector2(109.041, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m65w1"]
-size = Vector2(20, 54)
+size = Vector2(20, 64)
 
 [node name="grille" type="Node2D"]
 script = ExtResource("1_5lrsr")
@@ -14,30 +15,18 @@ script = ExtResource("1_5lrsr")
 [node name="grille" type="StaticBody2D" parent="."]
 scale = Vector2(0.256784, 1)
 
+[node name="Sprite2D" type="Sprite2D" parent="grille"]
+scale = Vector2(3.89432, 1)
+texture = ExtResource("2_jhx6j")
+
 [node name="grille_colision" type="CollisionShape2D" parent="grille"]
+position = Vector2(-1.85696e-06, 0)
 shape = SubResource("RectangleShape2D_3byhm")
 
-[node name="ColorRect" type="ColorRect" parent="grille"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = -27.5
-offset_right = 12.0
-offset_bottom = 27.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(1, 0.184314, 0.12549, 1)
-
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(11, 0)
+position = Vector2(28, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(9, 0)
 shape = SubResource("RectangleShape2D_m65w1")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

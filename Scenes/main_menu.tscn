@@ -118,6 +118,12 @@ theme_override_font_sizes/font_size = 50
 text = "Monde principale
 "
 
+[node name="Button_etage1" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Etage 1
+"
+
 [node name="Button_quitter" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
@@ -126,4 +132,5 @@ text = "Quitter
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Button_monde_test" to="." method="_on_button_monde_test_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Button_monde_principale" to="." method="_on_button_monde_principale_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Button_etage1" to="." method="_on_button_etage_1_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Button_quitter" to="." method="_on_button_quitter_pressed"]
