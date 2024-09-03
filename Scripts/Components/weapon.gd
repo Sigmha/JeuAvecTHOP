@@ -5,16 +5,22 @@ signal weapon_touched
 signal dummy_touched
 signal player_touched
 signal ennemy_touched
+signal weapon_changed
 
 var weapon_length: int = 16
 var collison_weapon_size: Vector2
 var play_once_attacking: bool
+
+enum weapon_type {Couteau, Epee, Epee_longue}
+var current_weapon
 
 @onready var weapon_sprite = $WeaponSprite
 @onready var weapon_collision = $WeaponCollision
 
 func _ready():
 	collison_weapon_size = weapon_collision.shape.size
+	current_weapon = weapon_type.Epee
+	set_weapon_from_weapon_type()
 
 #Change la position de l'épée en fonction de la direction dans laquelle on
 #regarde, si on est en train d'attaquer et la stance.
@@ -79,6 +85,15 @@ func set_dummy_weapon_position(looking_direction, distance_weapon, attacking, st
 			position = Vector2(-1, 1) * distance_weapon[1] - Vector2(weapon_length, 0)
 			rotation = 0
 
+func set_weapon_from_weapon_type():
+	match current_weapon:
+		weapon_type.Epee:
+			weapon_sprite.frame = 0
+		weapon_type.Epee_longue:
+			weapon_sprite.frame = 1
+		weapon_type.Couteau:
+			weapon_sprite.frame = 2
+
 func disable_weapon():
 	#$WeaponCollision/ColorRect.visible = false
 	weapon_sprite.visible = false
@@ -100,4 +115,6 @@ func _on_body_entered(body):
 func _on_area_entered(area):
 	if area is Weapon:
 		weapon_touched.emit()
-	
+
+func _on_weapon_changed():
+	set_weapon_from_weapon_type()

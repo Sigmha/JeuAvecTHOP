@@ -7,7 +7,7 @@ extends Control
 func _ready():
 	resume()
 
-func _process(delta):
+func _process(_delta):
 	testEsc()
 
 func resume():
