@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bc5ea8icchh2o"]
 
 [ext_resource type="Script" path="res://Scripts/Components/weapon.gd" id="1_p3iw0"]
-[ext_resource type="Texture2D" uid="uid://gi8o51qdlven" path="res://Assets/Components/Weapons/weapons.png" id="2_g3bgm"]
+[ext_resource type="Texture2D" uid="uid://0nga2ukjv76y" path="res://Assets/Components/Weapons/weapon.png" id="2_trfth"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0j3t1"]
 size = Vector2(15, 3)
@@ -13,8 +13,7 @@ script = ExtResource("1_p3iw0")
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 position = Vector2(8, 0)
-texture = ExtResource("2_g3bgm")
-hframes = 3
+texture = ExtResource("2_trfth")
 
 [node name="WeaponCollision" type="CollisionShape2D" parent="."]
 position = Vector2(8.5, -0.5)
@@ -30,4 +29,3 @@ color = Color(1, 0.0901961, 0.0901961, 0.658824)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="weapon_changed" from="." to="." method="_on_weapon_changed"]
