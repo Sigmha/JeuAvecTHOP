@@ -1,7 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://hawtudqu0i81"]
+[gd_scene load_steps=9 format=3 uid="uid://hawtudqu0i81"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ajtab"]
 [ext_resource type="Texture2D" uid="uid://bj5lgflu1s7fc" path="res://Assets/background/monde_principal/background_monde_principal_V2.0.png" id="1_r517e"]
+[ext_resource type="FontFile" uid="uid://bksjhi5gqjana" path="res://Assets/font/Jacquard 12/Jacquard12-Regular.ttf" id="3_8fuxg"]
+
+[sub_resource type="FontVariation" id="FontVariation_j63th"]
+base_font = ExtResource("3_8fuxg")
+
+[sub_resource type="FontVariation" id="FontVariation_wvxbw"]
+base_font = ExtResource("3_8fuxg")
+
+[sub_resource type="FontVariation" id="FontVariation_ksj77"]
+base_font = ExtResource("3_8fuxg")
+
+[sub_resource type="FontVariation" id="FontVariation_on0dx"]
+base_font = ExtResource("3_8fuxg")
+
+[sub_resource type="FontVariation" id="FontVariation_n0tkc"]
+base_font = ExtResource("3_8fuxg")
 
 [node name="Main_Menu" type="Control"]
 layout_mode = 3
@@ -80,11 +96,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 14
-theme_override_constants/outline_size = 24
+theme_override_fonts/font = SubResource("FontVariation_j63th")
 theme_override_font_sizes/font_size = 150
-text = "TITRE DU JEU"
+text = "Titre du jeu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -108,24 +122,28 @@ layout_mode = 2
 
 [node name="Button_monde_test" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_wvxbw")
 theme_override_font_sizes/font_size = 50
 text = "Monde test
 "
 
 [node name="Button_monde_principale" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_ksj77")
 theme_override_font_sizes/font_size = 50
 text = "Monde principale
 "
 
 [node name="Button_etage1" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_on0dx")
 theme_override_font_sizes/font_size = 50
 text = "Etage 1
 "
 
 [node name="Button_quitter" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_n0tkc")
 theme_override_font_sizes/font_size = 50
 text = "Quitter
 "
