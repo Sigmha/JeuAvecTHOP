@@ -52,6 +52,8 @@ func _ready():
 	win_size = get_viewport_rect().size
 
 func _physics_process(delta):
+	touched_label.text = str(weapon.position)
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		move_and_slide()
@@ -61,6 +63,13 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("ui_focus_next"):
 		is_in_fight = !is_in_fight
+	
+	if Input.is_action_just_pressed("MoletteUp"):
+		weapon.current_weapon = posmod(weapon.current_weapon + 1, 3)
+		weapon.weapon_changed.emit()
+	if Input.is_action_just_pressed("MoletteDown"):
+		weapon.current_weapon = posmod(weapon.current_weapon - 1, 3)
+		weapon.weapon_changed.emit()
 	
 #A CHANGER SI ON CHANGE LE SPRITE, reprendre les mesures pour la position de
 #l'épée en idle et en attaque pour les 3 stances

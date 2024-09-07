@@ -25,8 +25,9 @@ func _process(delta):
 		est_passer = false
 		
 
-func _on_area_2d_body_entered(body: PhysicsBody2D):
-	est_passer = true
+func _on_area_2d_body_entered(body):
+	if body is Player:
+		est_passer = true
 
 func fermer_grille():
 	grille.visible = true

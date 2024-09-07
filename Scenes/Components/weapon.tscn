@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc5ea8icchh2o"]
+[gd_scene load_steps=6 format=3 uid="uid://bc5ea8icchh2o"]
 
 [ext_resource type="Script" path="res://Scripts/Components/weapon.gd" id="1_p3iw0"]
-[ext_resource type="Texture2D" uid="uid://0nga2ukjv76y" path="res://Assets/Components/Weapons/weapon.png" id="2_trfth"]
+[ext_resource type="Texture2D" uid="uid://dawgimws6mw0o" path="res://Assets/Components/Weapons/weapons.png" id="2_g3bgm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0j3t1"]
 size = Vector2(15, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cypot"]
+size = Vector2(19, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_id255"]
+size = Vector2(11, 3)
 
 [node name="weapon" type="Area2D"]
 collision_layer = 2
@@ -13,13 +19,15 @@ script = ExtResource("1_p3iw0")
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 position = Vector2(8, 0)
-texture = ExtResource("2_trfth")
+texture = ExtResource("2_g3bgm")
+hframes = 3
+frame = 2
 
-[node name="WeaponCollision" type="CollisionShape2D" parent="."]
+[node name="EpeeCollision" type="CollisionShape2D" parent="."]
 position = Vector2(8.5, -0.5)
 shape = SubResource("RectangleShape2D_0j3t1")
 
-[node name="ColorRect" type="ColorRect" parent="WeaponCollision"]
+[node name="ColorRect" type="ColorRect" parent="EpeeCollision"]
 visible = false
 offset_left = -7.5
 offset_top = -1.5
@@ -27,5 +35,32 @@ offset_right = 7.5
 offset_bottom = 1.5
 color = Color(1, 0.0901961, 0.0901961, 0.658824)
 
+[node name="EpeeLongueCollision" type="CollisionShape2D" parent="."]
+position = Vector2(10.5, -0.5)
+shape = SubResource("RectangleShape2D_cypot")
+
+[node name="ColorRect2" type="ColorRect" parent="EpeeLongueCollision"]
+visible = false
+offset_left = -9.5
+offset_top = -1.5
+offset_right = 5.5
+offset_bottom = 1.5
+scale = Vector2(1.30307, 1.16184)
+color = Color(1, 0.0901961, 0.0901961, 0.658824)
+
+[node name="CouteauCollision" type="CollisionShape2D" parent="."]
+position = Vector2(6.5, -0.5)
+shape = SubResource("RectangleShape2D_id255")
+
+[node name="ColorRect3" type="ColorRect" parent="CouteauCollision"]
+visible = false
+offset_left = -5.5
+offset_top = -1.5
+offset_right = 9.5
+offset_bottom = 1.5
+scale = Vector2(0.768778, 1.16184)
+color = Color(1, 0.0901961, 0.0901961, 0.658824)
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="weapon_changed" from="." to="." method="_on_weapon_changed"]
