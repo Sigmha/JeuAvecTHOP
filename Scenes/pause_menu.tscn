@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpg08o8tvq150"]
+[gd_scene load_steps=8 format=3 uid="uid://bpg08o8tvq150"]
 
 [ext_resource type="Script" path="res://pause_menu.gd" id="1_t3cxk"]
 [ext_resource type="Texture2D" uid="uid://cei01q6eps4dj" path="res://Assets/Components/option/option_hud.PNG" id="2_oy4xy"]
+[ext_resource type="FontFile" uid="uid://bksjhi5gqjana" path="res://Assets/font/Jacquard 12/Jacquard12-Regular.ttf" id="2_tdd6e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nall"]
 bg_color = Color(0.6, 0.6, 0.6, 0.305882)
+
+[sub_resource type="FontVariation" id="FontVariation_0hcua"]
+base_font = ExtResource("2_tdd6e")
+
+[sub_resource type="FontVariation" id="FontVariation_x3f83"]
+base_font = ExtResource("2_tdd6e")
+
+[sub_resource type="FontVariation" id="FontVariation_abf4k"]
+base_font = ExtResource("2_tdd6e")
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -28,16 +38,19 @@ theme_override_constants/separation = 240
 
 [node name="resume" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_0hcua")
 theme_override_font_sizes/font_size = 140
 text = "Resume"
 
 [node name="option" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_x3f83")
 theme_override_font_sizes/font_size = 140
 text = "Option"
 
 [node name="quitter" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_abf4k")
 theme_override_font_sizes/font_size = 140
 text = "Quitter"
 
