@@ -5,17 +5,24 @@ class_name Player
 @export var max_stam:int = 4
 @export var rooling_cooldown:float = 1
 @export var attack_damage:int = 2
+@export_group('Move speed combat')
+@export var couteau_move_speed:int = 500
+@export var epee_longue_move_speed:int = 300
+@export var epee_move_speed:int = 400
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var win_size:Vector2
 var init_collision_player_position:Vector2
+var move_speed:int
 #State booleen
 var is_in_fight:bool = true
 var attacking:bool = false
 var touched:bool = false
-var parried:bool = false
 var is_rolling:bool = false
+var can_roll:bool = true
+var parried:bool = false
 var is_parring:bool = false
+var can_parry:bool = true
 #timers
 var rooling_cooldown_timer
 #truc dans l'instant
@@ -34,9 +41,12 @@ var ennemy:Ennemy
 @onready var health_bar:HeatlhBar = $CanvasLayer/HealthBar
 @onready var stamina_bar:StaminaBar = $StaminaBar
 @onready var parrying_timer = $Timers/ParryingTimer
-@onready var weapon = $Weapon
+@onready var weapon: Weapon = $Weapon
 
 func _ready():
+	weapon.weapon_changed.connect(set_weapon_buffs)
+	weapon.weapon_changed.emit()
+	
 	health_bar.set_max_health(max_health)
 	current_health = max_health
 	health_bar.update_health(current_health)
@@ -52,7 +62,7 @@ func _ready():
 	win_size = get_viewport_rect().size
 
 func _physics_process(delta):
-	touched_label.text = str(weapon.position)
+	touched_label.text = str(move_speed)
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -112,6 +122,21 @@ func get_looking_direction():
 	else:
 		actual_looking_direction = -1
 		return -1
+
+func set_weapon_buffs():
+	match weapon.current_weapon:
+		weapon.weapon_type.Epee:
+			can_roll = true
+			attack_damage = 1
+			move_speed = epee_move_speed
+		weapon.weapon_type.Epee_longue:
+			can_roll = false
+			attack_damage = 1
+			move_speed = epee_longue_move_speed
+		weapon.weapon_type.Couteau:
+			can_roll = true
+			attack_damage = 1
+			move_speed = couteau_move_speed
 
 func _on_weapon_dummy_touched():
 	pass

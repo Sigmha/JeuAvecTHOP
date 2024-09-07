@@ -133,12 +133,12 @@ func move_weapon_collision(looking_direction):
 			if looking_direction == 1:
 				epee_longue_collision.position.x = 20 - collison_weapon_size.x / 2
 			elif looking_direction == -1:
-				epee_longue_collision.position.x = collison_weapon_size.x / 2
+				epee_longue_collision.position.x = -4 + collison_weapon_size.x / 2
 		weapon_type.Couteau:
 			if looking_direction == 1:
 				couteau_collision.position.x = 12 - collison_weapon_size.x / 2
 			elif looking_direction == -1:
-				couteau_collision.position.x = collison_weapon_size.x / 2
+				couteau_collision.position.x = 4 + collison_weapon_size.x / 2
 
 func disable_weapon():
 	#$WeaponCollision/ColorRect.visible = false

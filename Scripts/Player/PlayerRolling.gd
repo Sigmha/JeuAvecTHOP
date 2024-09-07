@@ -15,7 +15,8 @@ var rolling_timer:float
 var looking_direction:int
 
 func Enter():
-	character.current_stam -= 1
+	if weapon.current_weapon != weapon.weapon_type.Couteau:
+		character.current_stam -= 1
 	character.stamina_bar.update_stam(character.current_stam)
 	
 	character.is_rolling = true

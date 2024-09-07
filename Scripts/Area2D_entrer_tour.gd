@@ -6,13 +6,15 @@ var is_inside = false
 
 
 
-func _on_body_entered(body: PhysicsBody2D):
-	is_inside = true
-	label.text = "z ou fleche haut"
+func _on_body_entered(body):
+	if body is Player:
+		is_inside = true
+		label.text = "z ou fleche haut"
 
-func _on_body_exited(body: PhysicsBody2D):
-	is_inside = false
-	label.text = "is_inside = false"
+func _on_body_exited(body):
+	if body is Player:
+		is_inside = false
+		label.text = "is_inside = false"
 
 
 # Called when the node enters the scene tree for the first time.
