@@ -657,12 +657,12 @@ texture = ExtResource("10_d288r")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="pause_menu" parent="CanvasLayer" instance=ExtResource("14_h6ayy")]
-
 [node name="DentV1" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(1859, 60)
 scale = Vector2(6.582, 6.582)
 texture = ExtResource("14_tk5w3")
+
+[node name="pause_menu" parent="CanvasLayer" instance=ExtResource("14_h6ayy")]
 
 [node name="interaction" type="Node2D" parent="."]
 

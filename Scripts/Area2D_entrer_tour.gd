@@ -25,7 +25,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if is_inside == true:
 		if Input.is_action_just_pressed("interagir"):
 			get_tree().change_scene_to_file("res://Scenes/Etages_Tour/etage_1.tscn")

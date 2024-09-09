@@ -6,11 +6,11 @@ var is_inside = false
 
 
 
-func _on_body_entered(body: PhysicsBody2D):
+func _on_body_entered(_body: PhysicsBody2D):
 	is_inside = true
 	label.text = "z ou fleche haut"
 
-func _on_body_exited(body: PhysicsBody2D):
+func _on_body_exited(_body: PhysicsBody2D):
 	is_inside = false
 	label.text = "is_inside = false"
 
@@ -23,7 +23,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if is_inside == true:
 		if Input.is_action_just_pressed("interagir"):
 			get_tree().change_scene_to_file("res://Scenes/under_tower.tscn")

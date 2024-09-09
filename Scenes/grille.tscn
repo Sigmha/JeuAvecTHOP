@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c25k5orcjriw5"]
+[gd_scene load_steps=8 format=3 uid="uid://c25k5orcjriw5"]
 
 [ext_resource type="Script" path="res://Scripts/grille.gd" id="1_5lrsr"]
 [ext_resource type="Texture2D" uid="uid://onigbsh3aker" path="res://Assets/decoration/grille.png" id="2_jhx6j"]
@@ -8,6 +8,66 @@ size = Vector2(109.041, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m65w1"]
 size = Vector2(20, 64)
+
+[sub_resource type="Animation" id="Animation_qfe8r"]
+resource_name = "tombe"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("grille:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -50), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("grille/CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_v4q3x"]
+resource_name = "ouvre"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("grille:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("grille/CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_73gd0"]
+_data = {
+"ouvre": SubResource("Animation_v4q3x"),
+"tombe": SubResource("Animation_qfe8r")
+}
 
 [node name="grille" type="Node2D"]
 script = ExtResource("1_5lrsr")
@@ -23,10 +83,32 @@ texture = ExtResource("2_jhx6j")
 position = Vector2(-1.85696e-06, 0)
 shape = SubResource("RectangleShape2D_3byhm")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="grille"]
+position = Vector2(0, 32)
+scale = Vector2(3.89432, 1)
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 1.0
+randomness = 0.65
+emission_shape = 3
+emission_rect_extents = Vector2(15, 1)
+spread = 180.0
+initial_velocity_max = 200.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 2.0
+scale_amount_max = 10.0
+
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(28, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_m65w1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_73gd0")
+}
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
